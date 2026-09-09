@@ -1,4 +1,4 @@
-# Your startup name here
+# Dice Duel (placeholder name)
 
 [My Notes](notes.md)
 
@@ -42,7 +42,7 @@ I am going to use the required technologies in the following ways.
 - **React** - Description here
 - **Service** - Description here
 - **DB/Login** - Description here
-- **WebSocket** - Description here
+- **WebSocket** - Leaderboard that gets updated live
 
 ## 🚀 Specification Deliverable
 
