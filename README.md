@@ -37,11 +37,11 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
+- **HTML** - Structure game board, dice, leaderboard, score displays, and page elements such as login and headers
+- **CSS** - Style the above html elements such as the board, dice, leaderboard, and adding visual buttons to the page headers. Also will be used for simple animations/transitions, such as the number appearing on the die. 
+- **React** - Manage changing game states such as score updating, dice rolls, game turns, and win conditions
+- **Service** - I will implement a client server architecture that sends requests and responses back and forth such as authentication requests
+- **DB/Login** - mySQL database that tracks username, password, and authtokens. Also a db for the leaderboard, and it will hash passwords with salt.
 - **WebSocket** - Leaderboard that gets updated live
 
 ## 🚀 Specification Deliverable
