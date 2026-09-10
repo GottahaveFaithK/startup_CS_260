@@ -29,9 +29,9 @@ sequenceDiagram
 
 ### Key features
 
-- Core Game Rules 
-- Describe your key feature
-- Describe your key feature
+- Core Game Rules - players take turns rolling and placing dice on a 3 by 3 board. Dice are scored on their number and placement, and score bonuses are generated when placing dice of the same number in the same column. Placing a die in a column eliminates any of your oponents dice with the same number in the opposite column.
+- Computer Opponent - A CPU that makes legal moves each turn. The base opponent will attempt to place dice of the same number in the same column rather than making purely random moves.
+- Leaderboard - Players can submit their scores to the leaderboard and can view the highest scores. The leaderboard will update live using websocket.
 
 ### Technologies
 
