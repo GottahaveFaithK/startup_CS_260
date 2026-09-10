@@ -29,7 +29,7 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
+- Core Game Rules 
 - Describe your key feature
 - Describe your key feature
 
@@ -39,10 +39,10 @@ I am going to use the required technologies in the following ways.
 
 - **HTML** - Structure game board, dice, leaderboard, score displays, and page elements such as login and headers
 - **CSS** - Style the above html elements such as the board, dice, leaderboard, and adding visual buttons to the page headers. Also will be used for simple animations/transitions, such as the number appearing on the die. 
-- **React** - Manage changing game states such as score updating, dice rolls, game turns, and win conditions
-- **Service** - I will implement a client server architecture that sends requests and responses back and forth such as authentication requests
+- **React** - Manage changing game states such as score updating, dice rolls, game turns, and win conditions. React components will be utilized to organize the different parts of the game. 
+- **Service** - I will implement a client server architecture with multiple endpoints. These endpoints will support user registration, login, logout, and retrieving leaderboard information. The application will also make a call to the third party API: https://uselessfacts.jsph.pl/
 - **DB/Login** - mySQL database that tracks username, password, and authtokens. Also a db for the leaderboard, and it will hash passwords with salt.
-- **WebSocket** - Leaderboard that gets updated live
+- **WebSocket** - Server will push leaderboard updates to connected clients whenever new scores are submitted
 
 ## 🚀 Specification Deliverable
 
