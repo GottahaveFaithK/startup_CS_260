@@ -12,20 +12,14 @@ I will make a simple dice game based on a minigame found in "Cult of The Lamb" c
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Dice-Duel is a browser based strategy game based on "Knucklebones" from "Cult of the Lamb". Players can compete against a computer opponent by rolling and placing dice to achieve a higher score and thwart the computer. Players can track the high scores on a leaderboard and submit their own scores.
 
 ### Design
 
-![Design image](placeholder.png)
+![rough_design_sketch.jpeg](rough_design_sketch.jpeg)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This is a rough sketch of the design. This is a layout idea that I will likely return to over the week, tweak, and make a more comprehensive mock-up of before doing the html. The purpose of this is to get a general idea of the elements and placement.
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
