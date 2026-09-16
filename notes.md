@@ -15,7 +15,13 @@ This file represents what I have learned about web programming.
 
 ## AWS
 
-Interesting things I have learned about AWS
+Ensure AWS is listening to port 80 so you can access it. 
+
+Public elastic IP: http://52.72.15.253
+
+Address: http://dice260.click
+
+When setting DNS, do * to get any traffic with the root of your address
 
 ## HTML
 
