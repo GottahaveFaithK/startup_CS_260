@@ -25,7 +25,8 @@ When setting DNS, do * to get any traffic with the root of your address
 
 ## HTML
 
-Interesting things I have learned about HTML
+It is best to avoid using <br> to try and space out elements. That is because CSS is more effective when structuring elements, and it is better to leave that responsibility to CSS. Utilizng structure pieces like headers and footers are very useful to get the proper page formatting and divisions for the later structures to build off of. HTML is almost like a wireframe, an initial way to view the raw structure and ideas so you can later iterate on it and make it look pretty and add functionality.
+It is pretty easy to draw your own images and add them in html.
 
 ## React
 
