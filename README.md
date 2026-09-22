@@ -4,12 +4,6 @@
 
 I will make a simple dice game based on a minigame found in "Cult of The Lamb" called "knucklebones". It has 3 by 3 boards for each player, and players take turns rolling and placing dice. Points are scored based on number and placement. I will implement a computer to play against with a basic strategy that is better than pure random placements. There will be a score leaderboard that will have live updates. If I have the time, I will make different cpus to play against with different strategies, or add basic dialogue from the opponent in response to certain events.
 
-> [!NOTE]
-> This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
-> If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
-
 ### Elevator pitch
 
 Dice-Duel is a browser based strategy game based on "Knucklebones" from "Cult of the Lamb". Players can compete against a computer opponent by rolling and placing dice to achieve a higher score and thwart the computer. Players can track the high scores on a leaderboard and submit their own scores.
@@ -72,7 +66,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] **3rd party API placeholder** - Random fact API on the leaderboard page.
 - [x] **Images** - Primary image is a duck that I drew, it will be a computer opponent. It will be scaled up with CSS.
 - [x] **Login placeholder** - I have a login and registration placeholder, both in the header and on the login page.
-- [x] **DB data placeholder** - The leaderboard table and login forms.
+- [x] **DB data placeholder** - The leaderboard holding score data and login holding user data.
 - [x] **WebSocket placeholder** - Leaderboard scores live updates.
 
 ## 🚀 CSS deliverable
