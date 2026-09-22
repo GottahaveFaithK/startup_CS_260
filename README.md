@@ -56,24 +56,24 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [X ] **Rented EC2 server** - I did not complete this part of the deliverable.
-- [ ] **Leased domain name** - I did not complete this part of the deliverable.
-- [ ] **Server accessible** from my domain: [https://yourdomainnamehere.click](https://yourdomainnamehere.click) - I did not complete this part of the deliverable.
+- [X] **Rented EC2 server** 
+- [X] **Leased domain name**
+- [X] **Server accessible** from my domain: [https://yourdomainnamehere.click](https://dice260.click) 
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [x] **HTML pages** - 3 html pages: index, login, and leaderboard.
+- [x] **Proper HTML element usage** - Utilizes headers, footers, and main body sections. I also have a table to represent my diceboard temporarily, and a table to represent the leaderboard. Divs are used. as well as sections for the larger elements.
+- [x] **Links** - Links to github and the other HTML pages.
+- [x] **Text** - Includes temporary headings, labels, and score displays.
+- [x] **3rd party API placeholder** - Random fact API on the leaderboard page.
+- [x] **Images** - Primary image is a duck that I drew, it will be a computer opponent. It will be scaled up with CSS.
+- [x] **Login placeholder** - I have a login and registration placeholder, both in the header and on the login page.
+- [x] **DB data placeholder** - The leaderboard table and login forms.
+- [x] **WebSocket placeholder** - Leaderboard scores live updates.
 
 ## 🚀 CSS deliverable
 
