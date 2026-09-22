@@ -1,10 +1,96 @@
-#placeholder
-#Header is the navigation page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Duel</title>
+</head>
 
-#Content: Do I want to have a login page before you can play or view the game, or
-# do I want it to open to play but leaderboard requires a score?
-# if seperate login page, this is the login page. Otherwise this might be login and gameplay,
-# login would be displayed in header... would need to switch to logout. Is that more complex? Less?
-# Other pages needed: About, Leaderboard
+<body>
+    <header>
+        <h1>Dice Duel</h1>
 
-#Footer must contain link to github repository
+        <nav>
+            <a href="index.html">Play</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Opponent</h2>
+
+            <img src="images/opponent-placeholder.png"
+                 alt="Computer opponent">
+
+            <h3>Computer</h3>
+            <p>Score: <span>0</span></p>
+
+            <p>"Let's see what you've got."</p>
+        </section>
+
+        <section>
+            <h2>Computer Board</h2>
+
+            <div>
+                <div>
+                    <div>3</div>
+                    <div>3</div>
+                    <div></div>
+                </div>
+
+                <div>
+                    <div>2</div>
+                    <div></div>
+                    <div>2</div>
+                </div>
+
+                <div>
+                    <div></div>
+                    <div>5</div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Your Board</h2>
+
+            <div>
+                <div>
+                    <div>4</div>
+                    <div></div>
+                    <div>4</div>
+                </div>
+
+                <div>
+                    <div></div>
+                    <div>6</div>
+                    <div></div>
+                </div>
+
+                <div>
+                    <div>2</div>
+                    <div>2</div>
+                    <div>2</div>
+                </div>
+            </div>
+
+            <p>Your Score: <span>18</span></p>
+        </section>
+
+        <section>
+            <h2>Current Die</h2>
+
+            <div>5</div>
+
+            <button>Roll Die</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Dice Duel <a href = https://github.com/GottahaveFaithK/startup_CS_260>Github</a></p>
+    </footer>
+</body>
+</html>
