@@ -52,7 +52,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [X] **Rented EC2 server** 
 - [X] **Leased domain name**
-- [X] **Server accessible** from my domain: [https://yourdomainnamehere.click](https://dice260.click) 
+- [X] **Server accessible** from my domain: [https://dice260.click](https://dice260.click) 
 
 ## 🚀 HTML deliverable
 
@@ -74,7 +74,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [X] **Visually appealing colors and layout. No overflowing elements.** - There are no overflowing elements, I tried to make it look visually appealing. I drew my own duck CPU and dice, as well as animations for both, and implemented them via CSS keyframes.
+- [X] **Visually appealing colors and layout. No overflowing elements.** - There are no overflowing elements, I tried to make it look visually appealing. I drew my own duck CPU and dice in aesprite for this project, as well as animations for both, and implemented them via CSS keyframes.
 - [X] **Use of a CSS framework** - I used bootstrap and it's grid classes
 - [X] **All visual elements styled using CSS** - Yes, the nav, footer, background, duck, game elements, table, and everything is styled using CSS
 - [X] **Responsive to window resizing using flexbox and/or grid display** - The window is responsive. I also tested mobile view, and adjusted the layout so that while the score box is technically before the player's board on desktop, when it shrinks past medium size the score board actually goes below the player's board, to best be legible. 
