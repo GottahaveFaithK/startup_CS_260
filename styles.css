@@ -173,3 +173,38 @@ h3 {
         background-position: -294px 0;
     }
 }
+
+.opponent-avatar {
+    width: 144px;
+    height: 144px;
+    margin: 1rem auto;
+
+    background-image: url("images/ducksheet.png");
+    background-repeat: no-repeat;
+    background-size: 3312px 144px;
+    image-rendering: pixelated;
+
+    animation: duck-idle 1s infinite steps(1, end);
+}
+
+@keyframes duck-idle {
+    0% {
+        background-position: 0 0;
+    }
+
+    20% {
+        background-position: -144px 0;
+    }
+
+    40% {
+        background-position: -288px 0;
+    }
+
+    60% {
+        background-position: -432px 0;
+    }
+
+    80% {
+        background-position: -576px 0;
+    }
+}
