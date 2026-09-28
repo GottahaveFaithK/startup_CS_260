@@ -73,13 +73,13 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
-- [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [X] **Visually appealing colors and layout. No overflowing elements.** - There are no overflowing elements, I tried to make it look visually appealing. I drew my own duck CPU and dice, as well as animations for both, and implemented them via CSS keyframes.
+- [X] **Use of a CSS framework** - I used bootstrap and it's grid classes
+- [X] **All visual elements styled using CSS** - Yes, the nav, footer, background, duck, game elements, table, and everything is styled using CSS
+- [X] **Responsive to window resizing using flexbox and/or grid display** - The window is responsive. I also tested mobile view, and adjusted the layout so that while the score box is technically before the player's board on desktop, when it shrinks past medium size the score board actually goes below the player's board, to best be legible. 
+- [X] **Use of a imported font** - I used Press Start 2P from Google Fonts
+- [X] **Use of different types of selectors including element, class, ID, and pseudo selectors** - ID is used to highlight the current user on the login page. Element selectors are used very liberally for things such as setting all header fonts to the Press Start 2P font. The dice duel page is full of class selectors. Some examples of this are the game boards, dice, duck, player board cells, and so on. Pseudo selectors such as hover and active are used, so when you hover over the empty slots on your board they highlight. Similarly, active is used so when you click on a login field, it gets a gold highlight along the textbox. The Roll Dice button also utilizes a pseudo selector to shift the button down slightly when clicked, and pseudoselectors are used to determine if board cells containe a die. 
 
 ## 🚀 React part 1: Routing deliverable
 
