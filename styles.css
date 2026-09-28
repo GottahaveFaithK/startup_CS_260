@@ -100,26 +100,26 @@ h3 {
     transform: translateY(2px);
 }
 
-.die-one {
+.die-six {
     background-position: 0 0;
 }
 
-.die-two {
+.die-five {
     background-position: -49px 0;
 }
 
-.die-three {
+.die-four {
     background-position: -98px 0;
 }
 
-.die-four {
+.die-three {
     background-position: -147px 0;
 }
 
-.die-five {
+.die-two {
     background-position: -196px 0;
 }
 
-.die-six {
+.die-one {
     background-position: -245px 0;
 }
