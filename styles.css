@@ -123,3 +123,53 @@ h3 {
 .die-one {
     background-position: -245px 0;
 }
+
+
+.roll-button {
+    background-color: #d9a441;
+    color: #2b211b;
+    border: 3px solid #3a2a20;
+    padding: 0.75rem 1rem;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.roll-button:hover {
+    background-color: #f2e6d0;
+}
+
+.roll-button:active {
+    transform: translateY(2px);
+}
+
+.score-section {
+    margin-bottom: 2rem;
+}
+
+.current-die-section {
+    border-top: 3px solid #3a2a20;
+    padding-top: 1.5rem;
+}
+
+.current-die-section .die {
+    margin-top: 0.5rem;
+}
+
+.current-die-section .roll-button {
+    margin-top: 0.5rem;
+}
+
+.rolling {
+    animation: roll-die 0.6s steps(6) infinite;
+}
+
+@keyframes roll-die {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: -294px 0;
+    }
+}
