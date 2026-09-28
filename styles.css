@@ -377,3 +377,20 @@ footer a:hover {
 .register-panel h2 {
     text-align: center;
 }
+
+.current-user-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 3px solid #3a2a20;
+    text-align: center;
+}
+
+.current-user-panel h2 {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.current-user-panel p {
+    margin: 0.75rem 0 0;
+}
