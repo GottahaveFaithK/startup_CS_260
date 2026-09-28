@@ -85,7 +85,7 @@ h3 {
     font-size: 1.5rem;
 }
 
-.board-cell:hover {
+.board-cell:hover:not(:has(.die)) {
     background-color: #d9a441;
 }
 
