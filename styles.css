@@ -88,3 +88,38 @@ h3 {
 .board-cell:hover {
     background-color: #d9a441;
 }
+
+.die {
+    display: inline-block;
+    width: 49px;
+    height: 49px;
+    background-image: url("images/die.png");
+    background-repeat: no-repeat;
+    background-size: 294px 49px;
+    image-rendering: pixelated;
+    transform: translateY(2px);
+}
+
+.die-one {
+    background-position: 0 0;
+}
+
+.die-two {
+    background-position: -49px 0;
+}
+
+.die-three {
+    background-position: -98px 0;
+}
+
+.die-four {
+    background-position: -147px 0;
+}
+
+.die-five {
+    background-position: -196px 0;
+}
+
+.die-six {
+    background-position: -245px 0;
+}
