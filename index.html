@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="site-header">
         <h1>Dice Duel</h1>
 
         <nav>
@@ -19,78 +19,80 @@
             <a href="login.html">Login</a>
         </nav>
     </header>
-    <main class="container">
-        <section>
-            <h2>Opponent</h2>
+    <main main class = "container game-table">
+        <div class="row">
+            <section class="col-md-6">
+                <h2>Opponent</h2>
 
-            <img src="images/Duck1.png"
-                 alt="Computer opponent">
+                <img src="images/Duck1.png"
+                    alt="Computer opponent">
 
-            <h3>Computer</h3>
-            <p>Score: <span>0</span></p>
+                <h3>Computer</h3>
+                <p>Score: <span>0</span></p>
 
-            <p>"Let's see what you've got."</p>
-        </section>
+                <p>"Let's see what you've got."</p>
+            </section>
 
-        <section>
-            <h2>Computer Board</h2>
+            <section class="col-md-6">
+                <h2>Computer Board</h2>
 
-            <table>
-                <tr>
-                    <td>3</td>
-                    <td>3</td>
-                    <td></td>
-                </tr>
+                <table>
+                    <tr>
+                        <td>3</td>
+                        <td>3</td>
+                        <td></td>
+                    </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td></td>
-                    <td>2</td>
-                </tr>
+                    <tr>
+                        <td>2</td>
+                        <td></td>
+                        <td>2</td>
+                    </tr>
 
-                <tr>
-                    <td></td>
-                    <td>5</td>
-                    <td></td>
-                </tr>
-            </table>
-        </section>
+                    <tr>
+                        <td></td>
+                        <td>5</td>
+                        <td></td>
+                    </tr>
+                </table>
+            </section>
 
-        <section>
-            <h2>Your Board</h2>
+            <section class="col">
+                <h2>Your Board</h2>
 
-            <table>
-                <tr>
-                    <td>4</td>
-                    <td></td>
-                    <td>4</td>
-                </tr>
+                <table>
+                    <tr>
+                        <td>4</td>
+                        <td></td>
+                        <td>4</td>
+                    </tr>
 
-                <tr>
-                    <td></td>
-                    <td>6</td>
-                    <td></td>
-                </tr>
+                    <tr>
+                        <td></td>
+                        <td>6</td>
+                        <td></td>
+                    </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>2</td>
+                    </tr>
+                </table>
 
-            <p>Your Score: <span>18</span></p>
-        </section>
+                <p>Your Score: <span>18</span></p>
+            </section>
 
-        <section>
-            <h2>Current Die</h2>
+            <section class="col">
+                <h2>Current Die</h2>
 
-            <div>
-                <span>5</span>
-            </div>
+                <div>
+                    <span>5</span>
+                </div>
 
-            <button>Roll Die</button>
-        </section>
+                <button>Roll Die</button>
+            </section>
+        </div>
     </main>
 
     <footer>
