@@ -310,3 +310,23 @@ footer a:hover {
     color: #f2e6d0;
     font-size: 0.85rem;
 }
+
+.random-fact-panel {
+    background-color: #8a6548;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border: 3px solid #3a2a20;
+    text-align: center;
+}
+
+.random-fact-panel h2 {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.random-fact {
+    margin: 0.5rem auto 0;
+    max-width: 700px;
+    line-height: 1.6;
+    color: #f2e6d0;
+}
