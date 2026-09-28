@@ -367,6 +367,12 @@ footer a:hover {
     color: #2b211b;
 }
 
+.login-panel input:focus,
+.register-panel input:focus {
+    border-color: #d9a441;
+    outline: none;
+}
+
 .register-panel {
     background-color: #8a6548;
     padding: 1rem;
@@ -393,4 +399,9 @@ footer a:hover {
 
 .current-user-panel p {
     margin: 0.75rem 0 0;
+}
+
+#current-user {
+    color: #f2e6d0;
+    font-weight: bold;
 }
