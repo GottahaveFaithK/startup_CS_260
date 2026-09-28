@@ -19,79 +19,88 @@
             <a href="login.html">Login</a>
         </nav>
     </header>
-    <main main class = "container game-table">
+    <main class = "container game-table">
         <div class="row">
-            <section class="game-panel col-md-4">
+            <section class="game-panel col-md-4 order-1">
                 <h2>Opponent</h2>
 
                 <img src="images/Duck1.png"
                     alt="Computer opponent">
 
                 <h3>Computer</h3>
-                <p>Score: <span>0</span></p>
 
                 <p>"Let's see what you've got."</p>
             </section>
 
-            <section class="game-panel col-md-8">
+            <section class="game-panel col-md-8 board-panel order-2">
                 <h2>Computer Board</h2>
 
-                <table>
+                <table class="game-board">
                     <tr>
-                        <td>3</td>
-                        <td>3</td>
-                        <td></td>
+                        <td class="board-cell">3</td>
+                        <td class="board-cell">3</td>
+                        <td class="board-cell"></td>
                     </tr>
 
                     <tr>
-                        <td>2</td>
-                        <td></td>
-                        <td>2</td>
+                        <td class="board-cell">2</td>
+                        <td class="board-cell"></td>
+                        <td class="board-cell">2</td>
                     </tr>
 
                     <tr>
-                        <td></td>
-                        <td>5</td>
-                        <td></td>
+                        <td class="board-cell"></td>
+                        <td class="board-cell">5</td>
+                        <td class="board-cell"></td>
                     </tr>
                 </table>
             </section>
 
-            <section class="game-panel col-md-8 offset-md-4">
-                <h2>Your Board</h2>
-
-                <table>
-                    <tr>
-                        <td>4</td>
-                        <td></td>
-                        <td>4</td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td>6</td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                    </tr>
-                </table>
-
-                <p>Your Score: <span>18</span></p>
-            </section>
-
-            <section class="game-panel col-md-8 offset-md-4">
-                <h2>Current Die</h2>
-
+            <section class="game-panel col-md-4 order-4 order-md-3">
                 <div>
-                    <span>5</span>
+                    <h2>Score</h2>
+
+                    <p>Computer: <span>0</span></p>
+                    <p>You: <span>18</span></p>
                 </div>
 
-                <button>Roll Die</button>
+                <div>
+                    <h2>Current Die</h2>
+
+                    <div>
+                        <span>5</span>
+                    </div>
+
+                    <button>Roll Die</button>
+                </div>
             </section>
+
+            <section class="game-panel col-md-8 board-panel order-3 order-md-4">
+
+            <table class="game-board">
+                <tr>
+                    <td class="board-cell">4</td>
+                    <td class="board-cell"></td>
+                    <td class="board-cell">4</td>
+                </tr>
+
+                <tr>
+                    <td class="board-cell"></td>
+                    <td class="board-cell">6</td>
+                    <td class="board-cell"></td>
+                </tr>
+
+                <tr>
+                    <td class="board-cell">2</td>
+                    <td class="board-cell">2</td>
+                    <td class="board-cell">2</td>
+                </tr>
+            </table>
+
+                <h2>Your Board</h2>
+
+            </section>
+
         </div>
     </main>
 
