@@ -34,5 +34,4 @@ CSS can be used in the same file as HTML, however it is more customary to have s
 I learned a lot more when implementing CSS on my project. There are settings to keep art pixelated which was needed for my animations and art. Class selectors are very helpful for specific formatting and behavior, such as the player's game board, where each cell highlights when hovered over. Class selectors may be my favourite aspect of bootstrap. Keyframes can handle spritesheets if you specify which pixels to focus on. You can make custom responsive behavior using the order functionality in bootstrap, and this allows you to set a certain order for sections on web and a different order on mobile for better reading. Pseudoselectors can be used to make something look more responsive, such as login boxes, hovering over elements, or moving a button when it is clicked. 
 
 ## React
-
-Interesting things I have learned about React
+For this project I used Vite. All references to class need to be switched to className when using react, and the input requires a closing mark in JS when it doesn't in html. Vite is setup to expect images in the public folder, but the public folder is not meant to be part of the path when referencing the images. 

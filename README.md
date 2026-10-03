@@ -85,10 +85,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - I did not complete this part of the deliverable.
+- [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [X] **Bundled using Vite** - Downloaded and activated Vite, and setup the project accordingly
+- [X] **Components** - Converted html pages into react components and added individual css files for styling
+- [X] **Router** - Added react router to navigate between the play, leaderboard, and login pages
 
 ## 🚀 React part 2: Reactivity deliverable
 
