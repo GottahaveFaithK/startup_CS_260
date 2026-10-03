@@ -1,9 +1,110 @@
 import React from 'react';
+import './play.css';
 
 export default function Play() {
     return (
-        <main>
-            <h1>Play</h1>
+        <main class = "container game-table">
+            <div class="row">
+                <section class="game-panel opponent-panel col-md-4 order-1">
+                    <h2>Opponent</h2>
+
+                    <div class="opponent-avatar"></div>
+
+                    <p class="opponent-name">Computer</p>
+
+                    <div class="dialogue-box">
+                        <p class="opponent-dialogue">Let's see what you've got.</p>
+                    </div>
+                </section>
+
+                <section class="game-panel col-md-8 board-panel order-2">
+                    <h2>Computer Board</h2>
+
+                    <table class="game-board">
+                        <tr>
+                            <td class="board-cell">
+                                <span class="die die-one"></span>
+                            </td>
+                            <td class="board-cell">
+                                <span class="die die-three"></span>
+                            </td>
+                            <td class="board-cell"></td>
+                        </tr>
+
+                        <tr>
+                            <td class="board-cell">
+                                <span class="die die-two"></span>
+                            </td>
+                            <td class="board-cell"></td>
+                            <td class="board-cell">
+                                <span class="die die-two"></span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="board-cell"></td>
+                            <td class="board-cell">
+                                <span class="die die-five"></span>
+                            </td>
+                            <td class="board-cell"></td>
+                        </tr>
+                    </table>
+                </section>
+
+                <section class="game-panel col-md-4 order-4 order-md-3">
+                    <div class="score-section">
+                        <h2>Score</h2>
+
+                        <p>Computer: <span>0</span></p>
+                        <p>You: <span>18</span></p>
+                    </div>
+
+                    <div class="current-die-section">
+                        <h2>Current Die</h2>
+
+                        <div>
+                            <span class="die die-five rolling"></span>
+                        </div>
+
+                        <button class="roll-button">Roll Die</button>
+                    </div>
+                </section>
+
+                <section class="game-panel col-md-8 board-panel order-3 order-md-4">
+
+                <table class="game-board player-board">
+                    <tr>
+                        <td class="board-cell">
+                            <span class="die die-four"></span>
+                        </td>
+                        <td class="board-cell"></td>
+                        <td class="board-cell">
+                            <span class="die die-four"></span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="board-cell"></td>
+                        <td class="board-cell">
+                            <span class="die die-six"></span>
+                        </td>
+                        <td class="board-cell"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="board-cell">
+                            <span class="die die-two"></span>
+                        </td>
+                        <td class="board-cell"></td>
+                        <td class="board-cell"></td>
+                    </tr>
+                </table>
+
+                    <h2>Your Board</h2>
+
+                </section>
+
+            </div>
         </main>
     );
 }
