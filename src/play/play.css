@@ -122,12 +122,11 @@
     height: 192px;
     margin: 1rem auto;
 
-    background-image: url("/opponent_sheets/ducksheet.png");
     background-repeat: no-repeat;
     background-size: 4416px 192px;
     image-rendering: pixelated;
 
-    animation: duck-idle 1s infinite steps(1, end);
+    animation: opponent-idle 1s infinite steps(1, end);
 }
 
 .opponent-panel {
@@ -155,7 +154,7 @@
     line-height: 1.6;
 }
 
-@keyframes duck-idle {
+@keyframes opponent-idle {
     0% {
         background-position: 0 0;
     }

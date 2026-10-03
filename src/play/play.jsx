@@ -1,19 +1,26 @@
 import React from 'react';
 import './play.css';
+import opponents from '../opponents/opponents';
 
 export default function Play() {
+
+    const opponent = opponents.duck;
+
     return (
         <main className = "container background-table">
             <div className="row">
                 <section className="game-panel opponent-panel col-md-4 order-1">
                     <h2>Opponent</h2>
 
-                    <div className="opponent-avatar"></div>
+                    <div
+                        className="opponent-avatar"
+                        style={{ backgroundImage: `url(${opponent.spriteSheet})` }}
+                    ></div>
 
-                    <p className="opponent-name">Computer</p>
+                    <p className="opponent-name">{opponent.name}</p>
 
                     <div className="dialogue-box">
-                        <p className="opponent-dialogue">Let's see what you've got.</p>
+                        <p className="opponent-dialogue">{opponent.dialogue}</p>
                     </div>
                 </section>
 
@@ -24,28 +31,43 @@ export default function Play() {
                         <tbody>
                             <tr>
                                 <td className="board-cell">
-                                    <span className="die die-one"></span>
+                                    <span
+                                        className="die die-one"
+                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                    ></span>
                                 </td>
                                 <td className="board-cell">
-                                    <span className="die die-three"></span>
+                                    <span
+                                        className="die die-three"
+                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                    ></span>
                                 </td>
                                 <td className="board-cell"></td>
                             </tr>
 
                             <tr>
                                 <td className="board-cell">
-                                    <span className="die die-two"></span>
+                                    <span
+                                        className="die die-two"
+                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                    ></span>
                                 </td>
                                 <td className="board-cell"></td>
                                 <td className="board-cell">
-                                    <span className="die die-two"></span>
+                                    <span
+                                        className="die die-two"
+                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                    ></span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td className="board-cell"></td>
                                 <td className="board-cell">
-                                    <span className="die die-five"></span>
+                                    <span
+                                        className="die die-five"
+                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                    ></span>
                                 </td>
                                 <td className="board-cell"></td>
                             </tr>
