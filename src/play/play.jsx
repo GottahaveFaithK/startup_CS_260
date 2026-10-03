@@ -21,33 +21,35 @@ export default function Play() {
                     <h2>Computer Board</h2>
 
                     <table className="game-board">
-                        <tr>
-                            <td className="board-cell">
-                                <span className="die die-one"></span>
-                            </td>
-                            <td className="board-cell">
-                                <span className="die die-three"></span>
-                            </td>
-                            <td className="board-cell"></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td className="board-cell">
+                                    <span className="die die-one"></span>
+                                </td>
+                                <td className="board-cell">
+                                    <span className="die die-three"></span>
+                                </td>
+                                <td className="board-cell"></td>
+                            </tr>
 
-                        <tr>
-                            <td className="board-cell">
-                                <span className="die die-two"></span>
-                            </td>
-                            <td className="board-cell"></td>
-                            <td className="board-cell">
-                                <span className="die die-two"></span>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td className="board-cell">
+                                    <span className="die die-two"></span>
+                                </td>
+                                <td className="board-cell"></td>
+                                <td className="board-cell">
+                                    <span className="die die-two"></span>
+                                </td>
+                            </tr>
 
-                        <tr>
-                            <td className="board-cell"></td>
-                            <td className="board-cell">
-                                <span className="die die-five"></span>
-                            </td>
-                            <td className="board-cell"></td>
-                        </tr>
+                            <tr>
+                                <td className="board-cell"></td>
+                                <td className="board-cell">
+                                    <span className="die die-five"></span>
+                                </td>
+                                <td className="board-cell"></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </section>
 
@@ -73,6 +75,7 @@ export default function Play() {
                 <section className="game-panel col-md-8 board-panel order-3 order-md-4">
 
                 <table className="game-board player-board">
+                    <tbody>
                     <tr>
                         <td className="board-cell">
                             <span className="die die-four"></span>
@@ -98,6 +101,7 @@ export default function Play() {
                         <td className="board-cell"></td>
                         <td className="board-cell"></td>
                     </tr>
+                    </tbody>
                 </table>
 
                     <h2>Your Board</h2>
