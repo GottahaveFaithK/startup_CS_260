@@ -10,34 +10,33 @@ import Scores from './scores/scores';
 
 export default function App() {
     return (
-        <div className="body">
+        <BrowserRouter>
+            <div className="body">
 
-            <header class="site-header">
-                <h1>Dice Duel</h1>
+                <header className="site-header">
+                    <h1>Dice Duel</h1>
 
-                <nav class="site-nav">
-                    <a href="index.html">Play</a>
-                    <a href="leaderboard.html">Leaderboard</a>
-                    <a href="login.html">Login</a>
-                </nav>
-            </header>
+                    <nav className="site-nav">
+                        <NavLink to="/">Play</NavLink>
+                        <NavLink to="/scores">Scores</NavLink>
+                        <NavLink to="/login">Login</NavLink>
+                    </nav>
+                </header>
+                    <Routes>
+                        <Route path="/" element={<Play />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/scores" element={<Scores />} />
+                    </Routes>
 
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<Play />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/scores" element={<Scores />} />
-                </Routes>
-            </BrowserRouter>
-
-            <footer>
-                <p>
-                    Dice Duel | Created by Faith Kirkham |
-                    <a href="https://github.com/GottahaveFaithK/startup_CS_260">
-                        GitHub
-                    </a>
-                </p>
-            </footer>
-        </div>
+                <footer>
+                    <p>
+                        Dice Duel | Created by Faith Kirkham |
+                        <a href="https://github.com/GottahaveFaithK/startup_CS_260">
+                            GitHub
+                        </a>
+                    </p>
+                </footer>
+            </div>
+        </BrowserRouter>
     );
 }
