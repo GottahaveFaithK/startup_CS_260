@@ -1,0 +1,95 @@
+.leaderboard-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    border: 3px solid #3a2a20;
+}
+
+.leaderboard-panel h2 {
+    text-align: center;
+}
+
+.leaderboard {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+}
+
+.leaderboard th,
+.leaderboard td {
+    padding: 0.75rem;
+    border: 3px solid #3a2a20;
+    text-align: center;
+}
+
+.leaderboard th {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 0.7rem;
+    color: #f2e6d0;
+}
+
+.leaderboard td {
+    color: #f2e6d0;
+}
+
+.live-updates-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 3px solid #3a2a20;
+}
+
+.live-updates-panel h2 {
+    text-align: center;
+}
+
+.live-updates-panel p {
+    margin: 0.75rem 0;
+    text-align: center;
+}
+
+.live-updates-panel p:last-child {
+    color: #f2e6d0;
+    font-size: 0.85rem;
+}
+
+.random-fact-panel {
+    background-color: #8a6548;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    border: 3px solid #3a2a20;
+    text-align: center;
+}
+
+.random-fact-panel h2 {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.random-fact {
+    margin: 0.5rem auto 0;
+    max-width: 700px;
+    line-height: 1.6;
+    color: #f2e6d0;
+}
+
+.current-user-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 3px solid #3a2a20;
+    text-align: center;
+}
+
+.current-user-panel h2 {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.current-user-panel p {
+    margin: 0.75rem 0 0;
+}
+
+#current-user {
+    color: #f2e6d0;
+    font-weight: bold;
+}
