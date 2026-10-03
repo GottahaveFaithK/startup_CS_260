@@ -18,7 +18,7 @@ export default function App() {
 
                     <nav className="site-nav">
                         <NavLink to="/">Play</NavLink>
-                        <NavLink to="/scores">Scores</NavLink>
+                        <NavLink to="/scores">Leaderboard</NavLink>
                         <NavLink to="/login">Login</NavLink>
                     </nav>
                 </header>

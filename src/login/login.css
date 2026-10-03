@@ -1,0 +1,51 @@
+.login-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    border: 3px solid #3a2a20;
+}
+
+.login-panel h2 {
+    text-align: center;
+}
+
+.login-panel form,
+.register-panel form {
+    max-width: 500px;
+    margin: 1.5rem auto 0;
+}
+
+.login-panel form div,
+.register-panel form div {
+    margin-bottom: 1rem;
+}
+
+.login-panel label,
+.register-panel label {
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.login-panel input,
+.register-panel input {
+    width: 100%;
+    padding: 0.6rem;
+    border: 3px solid #3a2a20;
+    background-color: #f2e6d0;
+    color: #2b211b;
+}
+
+.login-panel input:focus,
+.register-panel input:focus {
+    border-color: #d9a441;
+    outline: none;
+}
+
+.register-panel {
+    background-color: #8a6548;
+    padding: 1rem;
+    border: 3px solid #3a2a20;
+}
+
+.register-panel h2 {
+    text-align: center;
+}
