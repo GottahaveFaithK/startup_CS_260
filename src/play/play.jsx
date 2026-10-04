@@ -4,7 +4,7 @@ import opponents from '../opponents/opponents';
 
 export default function Play() {
 
-    const opponent = opponents.duck;
+    const opponent = opponents.pigeon;
 
     return (
         <main className = "container background-table">

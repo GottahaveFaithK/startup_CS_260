@@ -19,6 +19,16 @@ const opponents = {
         special: null,
     },
 
+    pigeon: {
+        name: 'Pigeon',
+        dialogue: "Placeholder Dialogue",
+        spriteSheet: '/opponent_sheets/pigeon.png',
+        diceSheet: '/dice_sets/pigeondie.png',
+        strategy: 'gap_max',
+
+        special: 'null',
+    },
+
     kea: {
         name: 'Kea',
         dialogue: "Oooh! Let's play a game!",
