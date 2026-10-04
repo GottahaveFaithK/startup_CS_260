@@ -1,57 +1,68 @@
 const opponents = {
     duck: {
         name: 'Duck',
-        dialogue: "Placeholder dialogue",
+        dialogue: "Good luck!",
+        flavorText: "He's just happy to be here",
         spriteSheet: '/opponent_sheets/ducksheet.png',
         diceSheet: '/dice_sets/die.png',
         strategy: 'balanced',
 
         special: null,
-        //"He's just happy to be here"
+    },
+
+    vulture: {
+        name: 'Vulture',
+        flavorText: "Her favorite part is destroying her opponent's dice",
+        dialogue: "Let us begin.",
+        spriteSheet: '/opponent_sheets/vulture.png',
+        diceSheet: '/dice_sets/vulturedie.png',
+        strategy: 'aggressive',
+
+        special: null,
     },
 
     peacock: {
         name: 'Peacock',
+        flavorText: "So naturally talented he has never read the rules",
         dialogue: "You dare challenge the master?",
         spriteSheet: '/opponent_sheets/peacock.png',
         diceSheet: '/dice_sets/peacockdie.png',
         strategy: 'random',
 
         special: null,
-        //"So naturally talented he has never read the rules"
     },
 
     pigeon: {
         name: 'Pigeon',
-        dialogue: "Placeholder Dialogue",
+        flavorText: "Would like people to stop underestimating him",
+        dialogue: "Everyone assumes I'm the worst player. Peacock doesn't even know how to play!",
         spriteSheet: '/opponent_sheets/pigeon.png',
         diceSheet: '/dice_sets/pigeondie.png',
         strategy: 'gap_max',
 
-        special: 'null',
-        //"Would like people to stop underestimating him"
+        special: null,
     },
 
     kea: {
         name: 'Kea',
+        flavorText: "She got kicked out of poker for counting cards",
         dialogue: "Oooh! Let's play a game!",
         spriteSheet: '/opponent_sheets/kea.png',
         diceSheet: '/dice_sets/keadie.png',
         strategy: 'one_round_ahead',
 
         special: 'ask_for_roll',
-        //"She got kicked out of poker for counting cards"
     },
 
     magpie: {
         name: 'Magpie',
-        dialogue: "Placeholder Dialogue",
+        flavorText: "Her \"lucky dice\" have never rolled a one",
+        dialogue: "Ehehehe, I have a good feeling about this match",
         spriteSheet: '/opponent_sheets/magpie.png',
         diceSheet: '/dice_sets/magpiedie.png',
         strategy: 'balanced',
 
         special: 'loaded_dice',
-        //"Her "lucky dice" have never rolled a one"
     },
 };
 
