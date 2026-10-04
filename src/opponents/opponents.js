@@ -14,7 +14,7 @@ const opponents = {
         dialogue: "You dare challenge the master?",
         spriteSheet: '/opponent_sheets/peacock.png',
         diceSheet: '/dice_sets/peacockdie.png',
-        strategy: 'balanced',
+        strategy: 'random',
 
         special: null,
     },
@@ -27,6 +27,16 @@ const opponents = {
         strategy: 'one_round_ahead',
 
         special: 'ask_for_roll',
+    },
+
+    magpie: {
+        name: 'Magpie',
+        dialogue: "Placeholder Dialogue",
+        spriteSheet: '/opponent_sheets/magpie.png',
+        diceSheet: '/dice_sets/magpiedie.png',
+        strategy: 'balanced',
+
+        special: 'loaded_dice',
     },
 };
 
