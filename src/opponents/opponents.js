@@ -7,6 +7,7 @@ const opponents = {
         strategy: 'balanced',
 
         special: null,
+        //"He's just happy to be here"
     },
 
     peacock: {
@@ -17,6 +18,7 @@ const opponents = {
         strategy: 'random',
 
         special: null,
+        //"So naturally talented he has never read the rules"
     },
 
     pigeon: {
@@ -27,6 +29,7 @@ const opponents = {
         strategy: 'gap_max',
 
         special: 'null',
+        //"Would like people to stop underestimating him"
     },
 
     kea: {
@@ -37,6 +40,7 @@ const opponents = {
         strategy: 'one_round_ahead',
 
         special: 'ask_for_roll',
+        //"She got kicked out of poker for counting cards"
     },
 
     magpie: {
@@ -47,6 +51,7 @@ const opponents = {
         strategy: 'balanced',
 
         special: 'loaded_dice',
+        //"Her "lucky dice" have never rolled a one"
     },
 };
 
