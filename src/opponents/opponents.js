@@ -38,7 +38,7 @@ const opponents = {
         dialogue: "Everyone assumes I'm the worst player. Peacock doesn't even know how to play!",
         spriteSheet: '/opponent_sheets/pigeon.png',
         diceSheet: '/dice_sets/pigeondie.png',
-        strategy: 'gap_max',
+        strategy: 'gap_max', //not favoring increasing his own score or destroyign dice, but trying to pick whichever increases his score most
 
         special: null,
     },
@@ -49,7 +49,7 @@ const opponents = {
         dialogue: "Oooh! Let's play a game!",
         spriteSheet: '/opponent_sheets/kea.png',
         diceSheet: '/dice_sets/keadie.png',
-        strategy: 'one_round_ahead',
+        strategy: 'one_round_ahead', //same as pigeon but looks at possibilities for the players next turn, and the her next turn
 
         special: 'ask_for_roll',
     },
