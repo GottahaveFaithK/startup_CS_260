@@ -101,7 +101,7 @@ Roll a 1:
 Roll a 6:
 - Highest scoring potential sometimes causes overthinking, don't you think?
 Player Wins:
--
+-Excellent! Let's play again!
 Player Loses:
 -
 Player Destroys Dice:
@@ -124,6 +124,7 @@ Roll a 6:
 - Ehehehe
 - Well would you look at that
 Player Wins:
+-How did this happen? Do I need new dice?
 -
 Player Loses:
 -
