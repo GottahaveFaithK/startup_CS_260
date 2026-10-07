@@ -4,6 +4,22 @@ Roll a 1:
 - Whelp
 - Sometimes I feel like these clog up my board
 - What do I do with this?
+Roll a 6:
+-
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
 
 Peacock
 Roll a 1:
@@ -14,6 +30,20 @@ Roll a 1:
 - Don't laugh
 Roll a 6:
 - Pure unadulterated skill 
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
 
 Vulture
 Roll a 1:
@@ -21,6 +51,22 @@ Roll a 1:
 - How fortunate for you
 - This wont stop the inevitible
 - If you get the opportunity, destroy this die
+Roll a 6:
+-
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
 
 Pigeon
 Roll a 1:
@@ -30,6 +76,20 @@ Roll a 1:
 - At least you know these dice arent loaded
 Roll a 6:
 - Honestly I expected a 1
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
 
 Kea
 Roll a 1:
@@ -40,6 +100,20 @@ Roll a 1:
 - Is it weird if I somewhat enjoy 1's? They keep me thinking
 Roll a 6:
 - Highest scoring potential sometimes causes overthinking, don't you think?
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
 
 Magpie
 Roll a 1:
@@ -49,3 +123,17 @@ Roll a 6:
 - What are the odds
 - Ehehehe
 - Well would you look at that
+Player Wins:
+-
+Player Loses:
+-
+Player Destroys Dice:
+-
+Bird Destroys Dice:
+-
+Player Good Move:
+-
+Bird Good Move:
+-
+Game Start:
+-
