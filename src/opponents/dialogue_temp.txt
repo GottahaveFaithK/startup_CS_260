@@ -40,15 +40,19 @@ Player Wins:
 - Could I speak to some sort of referee or rule keeper?
 Player Loses:
 - I win, how utterly predictable.
-- 
+- All according to my master plan.
+- Don't feel bad, you lost to the best after all. 
 Player Destroys Dice:
--
+- How uncouth! 
+- Well I never
+- How did you do that?
+- You will regret this!
 Bird Destroys Dice:
--
+- 
 Player Good Move:
 -
 Bird Good Move:
--
+- Yet another masterstroke by me.
 Game Start:
 -
 
