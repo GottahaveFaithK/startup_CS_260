@@ -5,7 +5,9 @@ Roll a 1:
 - Sometimes I feel like these clog up my board
 - What do I do with this?
 Roll a 6:
--
+- Oh! This is good 
+- Let's roll that again next turn
+- Great roll
 Player Wins:
 -
 Player Loses:
@@ -32,6 +34,8 @@ Roll a 6:
 - Pure unadulterated skill 
 - Naturally
 - Do you envy my talent? 
+- As I intended
+- Envy doesn't look good on you.
 Player Wins:
 - How could this be?
 - This is an affront!
@@ -48,7 +52,7 @@ Player Destroys Dice:
 - How did you do that?
 - You will regret this!
 Bird Destroys Dice:
-- 
+- Too easy
 Player Good Move:
 -
 Bird Good Move:
@@ -63,7 +67,9 @@ Roll a 1:
 - This wont stop the inevitible
 - If you get the opportunity, destroy this die
 Roll a 6:
--
+- Hmmm
+- Acceptable
+- How useful
 Player Wins:
 -
 Player Loses:
@@ -87,6 +93,8 @@ Roll a 1:
 - At least you know these dice arent loaded
 Roll a 6:
 - Honestly I expected a 1
+- Let me have this
+- It's the small things
 Player Wins:
 -
 Player Loses:
@@ -109,8 +117,11 @@ Roll a 1:
 - Next game we should alter scoring and make 1's valuable for novelty
 - Luck is such a fickle friend
 - Is it weird if I somewhat enjoy 1's? They keep me thinking
+- With a one the game is not won, yet I am not done
 Roll a 6:
 - Highest scoring potential sometimes causes overthinking, don't you think?
+- Decisions, decisions 
+- Six in the mix, my board it may fix
 Player Wins:
 -Excellent! Let's play again!
 Player Loses:
