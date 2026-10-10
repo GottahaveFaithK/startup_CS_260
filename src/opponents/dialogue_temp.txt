@@ -1,18 +1,19 @@
 Duck
 Roll a 1:
-- That wasn't really what I had hoped for
-- Whelp
-- Sometimes I feel like these clog up my board
+- That wasn't really what I had hoped for.
+- Whelp.
+- Sometimes I feel like these clog up my board.
 - What do I do with this?
 Roll a 6:
-- Oh! This is good 
-- Let's roll that again next turn
-- Great roll
+- Oh! This is good !
+- Let's roll that again next turn.
+- Great roll!
 Player Wins:
 - Good game!
 - You are good at this!
 - Nice! Do you have any advice for me?
 - Guess it's not my night.
+- You're playing like Kea! I think...
 Player Loses:
 - Good game!
 - Oh! I won!
@@ -22,9 +23,9 @@ Player Destroys Dice:
 - Hey!
 - Wait!
 Bird Destroys Dice:
-- I don't like those
-- Lets clear the board
-- Don't mind me
+- I don't like those.
+- Let's clear the board.
+- Don't mind me.
 Player Good Move:
 - Woah
 - Solid!
@@ -39,22 +40,22 @@ Game Start:
 
 Peacock
 Roll a 1:
-- How incongrous
+- How incongruous.
 - Bah!
-- I demand a reroll
-- Well I am number one, so perhaps this is poetic
-- Don't laugh
+- I demand a reroll!
+- Well I am number one, so perhaps this is poetic.
+- Don't laugh.
 Roll a 6:
-- Pure unadulterated skill 
-- Naturally
+- Pure unadulterated skill. 
+- Naturally.
 - Do you envy my talent? 
-- As I intended
+- As I intended.
 - Envy doesn't look good on you.
 Player Wins:
 - How could this be?
 - This is an affront!
 - Why you must have cheated!
-- I don't understand
+- I don't understand.
 - Could I speak to some sort of referee or rule keeper?
 Player Loses:
 - I win, how utterly predictable.
@@ -62,7 +63,7 @@ Player Loses:
 - Don't feel bad, you lost to the best after all. 
 Player Destroys Dice:
 - How uncouth! 
-- Well I never
+- Well I never!
 - How did you do that?
 - You will regret this!
 Bird Destroys Dice:
@@ -85,13 +86,13 @@ Game Start:
 Vulture
 Roll a 1:
 - ...
-- How fortunate for you
-- This wont stop the inevitible
-- If you get the opportunity, destroy this die
+- How fortunate for you.
+- This wont stop the inevitible.
+- If you get the opportunity, destroy this die.
 Roll a 6:
-- Hmmm
-- Acceptable
-- How useful
+- Hmmm...
+- Acceptable.
+- How useful.
 Player Wins:
 - Well done.
 - You executed a better if less satisfying strategy.
@@ -112,6 +113,7 @@ Bird Destroys Dice:
 - This is why I play.
 - Destroyed.
 - Watch the score fall.
+- Yes.
 Player Good Move:
 - So be it.
 - Noted.
@@ -127,13 +129,13 @@ Game Start:
 Pigeon
 Roll a 1:
 - Can we switch dice?
-- Oh... joy
-- I know it's statistics, but I think these dice hate me 
-- At least you know these dice arent loaded
+- Oh... joy.
+- I know it's statistics, but I think these dice hate me.
+- At least you know these dice arent loaded.
 Roll a 6:
-- Honestly I expected a 1
-- Let me have this
-- It's the small things
+- Honestly I expected a 1.
+- Let me have this.
+- It's the small things.
 Player Wins:
 - These cursed dice.
 - Congrats.
@@ -163,22 +165,23 @@ Bird Good Move:
 - Finally!
 - I'm happy with that one.
 - Please don't attack this column.
+- Don't get excited, don't get excited. The game isn't won yet.
 Game Start:
 - Everyone assumes I'm the worst player. Peacock doesn't even know how to play!
 - Here we go again.
 
 Kea
 Roll a 1:
-- Ah well, we can work with this
-- That changes a few things
-- Next game we should alter scoring and make 1's valuable for novelty
-- Luck is such a fickle friend
-- Is it weird if I somewhat enjoy 1's? They keep me thinking
-- With a one the game is not won, yet I am not done
+- Ah well, we can work with this.
+- That changes a few things.
+- Next game we should alter scoring and make 1's valuable for novelty.
+- Luck is such a fickle friend.
+- Is it weird if I somewhat enjoy 1's? They keep me thinking.
+- With a one the game is not won yet I am not done. Ha!
 Roll a 6:
 - Highest scoring potential sometimes causes overthinking, don't you think?
-- Decisions, decisions 
-- Six in the mix, my board it may fix
+- Decisions, decisions.
+- Six in the mix, my board it may fix!
 Player Wins:
 - Excellent! Let's play again!
 - Rematch, please! This is the most fun I have had in a while. 
@@ -202,6 +205,8 @@ Player Good Move:
 - Yes! Excellent!
 - My position is seeming precarious!
 - I love it!
+- Writing that one down.
+- Delightful! Do it again!
 Bird Good Move:
 - I'm on a rolllllllll.
 - I am never fully certain if this is luck or skill.
@@ -211,12 +216,12 @@ Game Start:
 
 Magpie
 Roll a 1:
-- How did you hack the system
+- How did you hack the system?!
 Roll a 6:
-- Lucky day
-- What are the odds
-- Ehehehe
-- Well would you look at that
+- Lucky day!
+- What are the odds.
+- Ehehehe...
+- Well would you look at that.
 Player Wins:
 - How did this happen? Do I need new dice?
 - Fine, fine, you win.
@@ -226,7 +231,7 @@ Player Loses:
 - Wow! What a *lucky* game!
 - Don't question the rolls darling, I won fair and square.
 - Another win for me!
-- Ehehehehehe
+- Ehehehehehe...
 Player Destroys Dice:
 - Hey! Don't touch those!
 - My dice!!!
@@ -239,10 +244,11 @@ Player Good Move:
 - Savor that moment, luck isn't on your side.
 - Oh nooooooo, whatever will I do?
 - Tsk tsk.
+- Oooooh how scaaaary.
 Bird Good Move:
 - Can't stop me!
 - Hehe, another great move. 
 - Here I go again!
 - I think I'm going to win this!
 Game Start:
--Ehehehe, I have a good feeling about this match
+-Ehehehe, I have a good feeling about this match.
