@@ -134,17 +134,34 @@ Roll a 6:
 - Let me have this
 - It's the small things
 Player Wins:
--
+- These cursed dice.
+- Congrats.
+- I'm not terrible, am I?
+- Please tell me you have a lot of experience in the game.
+- How...nevermind. Good game.
 Player Loses:
--
+- I won?!
+- Thank you.
+- Were you going easy on me?
+- It was a tight game.
+- If you want to play again, you can use my dice. No pressure though.
 Player Destroys Dice:
--
+- Oh...
+- Yeah, I would have done the same.
+- Please don't.
+- Fair.
 Bird Destroys Dice:
--
+- Don't be mad.
+- It was the best avaliable move.
+- Call me Vulture with plays like this. Haha... yeah that was bad. Sorry.
 Player Good Move:
--
+- Good play.
+- That may be a problem for me.
+- Don't love that.
 Bird Good Move:
--
+- Finally!
+- I'm happy with that one.
+- Please don't attack this column.
 Game Start:
 - Everyone assumes I'm the worst player. Peacock doesn't even know how to play!
 - Here we go again.
@@ -162,7 +179,8 @@ Roll a 6:
 - Decisions, decisions 
 - Six in the mix, my board it may fix
 Player Wins:
--Excellent! Let's play again!
+- Excellent! Let's play again!
+- Rematch, please! This is the most fun I have had in a while. 
 Player Loses:
 -
 Player Destroys Dice:
