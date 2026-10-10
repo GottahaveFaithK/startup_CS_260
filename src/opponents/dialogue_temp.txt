@@ -21,7 +21,7 @@ Player Good Move:
 Bird Good Move:
 -
 Game Start:
--
+- Good luck!
 
 Peacock
 Roll a 1:
@@ -58,7 +58,8 @@ Player Good Move:
 Bird Good Move:
 - Yet another masterstroke by me.
 Game Start:
--
+- You dare challenge the master?
+- Prepare yourself to be truly humbled.
 
 Vulture
 Roll a 1:
@@ -83,7 +84,7 @@ Player Good Move:
 Bird Good Move:
 -
 Game Start:
--
+- Let us begin.
 
 Pigeon
 Roll a 1:
@@ -108,7 +109,8 @@ Player Good Move:
 Bird Good Move:
 -
 Game Start:
--
+- Everyone assumes I'm the worst player. Peacock doesn't even know how to play!
+- Here we go again.
 
 Kea
 Roll a 1:
@@ -135,7 +137,7 @@ Player Good Move:
 Bird Good Move:
 -
 Game Start:
--
+-Oooh! Let's play a game!
 
 Magpie
 Roll a 1:
@@ -159,4 +161,4 @@ Player Good Move:
 Bird Good Move:
 -
 Game Start:
--
+-Ehehehe, I have a good feeling about this match
