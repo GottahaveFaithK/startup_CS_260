@@ -73,6 +73,7 @@ Player Good Move:
 - Dumb luck.
 - I doubt that is even legal.
 - This changes nothing!
+- Harumph.
 Bird Good Move:
 - Yet another masterstroke by me.
 - You've already lost.
@@ -194,7 +195,7 @@ Player Destroys Dice:
 - Ohohoho! It's on!
 - Is this why the singular is called die? Ha!
 Bird Destroys Dice:
-- Let's tidy things up a bit!
+- Let's tidy things up!
 - The die shall die!
 - Pop goes the weasel! Do you know where that phrase came from? I don't!
 Player Good Move:
@@ -217,17 +218,31 @@ Roll a 6:
 - Ehehehe
 - Well would you look at that
 Player Wins:
--How did this happen? Do I need new dice?
--
+- How did this happen? Do I need new dice?
+- Fine, fine, you win.
+- I thought I had the advantage?
 Player Loses:
--
+- I am Fortune's favourite. 
+- Wow! What a *lucky* game!
+- Don't question the rolls darling, I won fair and square.
+- Another win for me!
+- Ehehehehehe
 Player Destroys Dice:
--
+- Hey! Don't touch those!
+- My dice!!!
+- Stop it!
 Bird Destroys Dice:
--
+- Yoink!
+- You won't be needing these.
+- No more of those dull dice.
 Player Good Move:
--
+- Savor that moment, luck isn't on your side.
+- Oh nooooooo, whatever will I do?
+- Tsk tsk.
 Bird Good Move:
--
+- Can't stop me!
+- Hehe, another great move. 
+- Here I go again!
+- I think I'm going to win this!
 Game Start:
 -Ehehehe, I have a good feeling about this match
