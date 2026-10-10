@@ -9,17 +9,31 @@ Roll a 6:
 - Let's roll that again next turn
 - Great roll
 Player Wins:
--
+- Good game!
+- You are good at this!
+- Nice! Do you have any advice for me?
+- Guess it's not my night.
 Player Loses:
--
+- Good game!
+- Oh! I won!
+- It was a close game.
 Player Destroys Dice:
--
+- I was using those.
+- Hey!
+- Wait!
 Bird Destroys Dice:
--
+- I don't like those
+- Lets clear the board
+- Don't mind me
 Player Good Move:
--
+- Woah
+- Solid!
+- Great move!
+- I might be in trouble.
 Bird Good Move:
--
+- I think I'm getting the hang of this
+- Things are looking up!
+- Yes!
 Game Start:
 - Good luck!
 
@@ -52,11 +66,17 @@ Player Destroys Dice:
 - How did you do that?
 - You will regret this!
 Bird Destroys Dice:
-- Too easy
+- Too easy.
+- Get your pathetic dice off the board.
+- Vanquished!
 Player Good Move:
--
+- Dumb luck.
+- I doubt that is even legal.
+- This changes nothing!
 Bird Good Move:
 - Yet another masterstroke by me.
+- You've already lost.
+- You can forfeit anytime. 
 Game Start:
 - You dare challenge the master?
 - Prepare yourself to be truly humbled.
