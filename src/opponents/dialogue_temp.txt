@@ -181,16 +181,30 @@ Roll a 6:
 Player Wins:
 - Excellent! Let's play again!
 - Rematch, please! This is the most fun I have had in a while. 
+- Again please! I have a few things I want to test. 
+- A win well deserved!
+- Another match!
 Player Loses:
--
+- Another round? I think you can win the next one.
+- Not bad!
+- I'm always down for a rematch if you want?
 Player Destroys Dice:
--
+- Pruning my board? How fun!
+- Time to pivot!
+- Ohohoho! It's on!
+- Is this why the singular is called die? Ha!
 Bird Destroys Dice:
--
+- Let's tidy things up a bit!
+- The die shall die!
+- Pop goes the weasel! Do you know where that phrase came from? I don't!
 Player Good Move:
--
+- Yes! Excellent!
+- My position is seeming precarious!
+- I love it!
 Bird Good Move:
--
+- I'm on a rolllllllll.
+- I am never fully certain if this is luck or skill.
+- Watch the numbers soar!
 Game Start:
 -Oooh! Let's play a game!
 
