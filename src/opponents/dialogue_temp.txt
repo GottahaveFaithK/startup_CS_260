@@ -92,19 +92,36 @@ Roll a 6:
 - Acceptable
 - How useful
 Player Wins:
--
+- Well done.
+- You executed a better if less satisfying strategy.
+- I accept this defeat.
 Player Loses:
--
+- Your pieces all fell before me.
+- It is over.
+- May I keep a die as a trophy?
 Player Destroys Dice:
--
+- Such a rush, isn't it?
+- Good.
+- Do you find it as rewarding as I do?
+- Adequate.
 Bird Destroys Dice:
--
+- Crushed.
+- I had been hoping to do this exact thing.
+- Perfect.
+- This is why I play.
+- Destroyed.
+- Watch the score fall.
 Player Good Move:
--
+- So be it.
+- Noted.
+- Chasing a higher score I presume.
 Bird Good Move:
--
+- A needed placement.
+- Already thinking of how to destroy this arrangement? Good.
+- ...
 Game Start:
 - Let us begin.
+- I hope you brought plenty of dice.
 
 Pigeon
 Roll a 1:
