@@ -9,6 +9,7 @@ export default function Play() {
     const [isRolling, setIsRolling] = useState(false)
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
+    const [playerBoard, setPlayerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]])
 
     function rollDie() {
         if(isRolling == true){
@@ -117,31 +118,17 @@ export default function Play() {
 
                 <table className="game-board player-board">
                     <tbody>
-                    <tr>
-                        <td className="board-cell">
-                            <span className="die die-four"></span>
-                        </td>
-                        <td className="board-cell"></td>
-                        <td className="board-cell">
-                            <span className="die die-four"></span>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td className="board-cell"></td>
-                        <td className="board-cell">
-                            <span className="die die-six"></span>
-                        </td>
-                        <td className="board-cell"></td>
-                    </tr>
-
-                    <tr>
-                        <td className="board-cell">
-                            <span className="die die-two"></span>
-                        </td>
-                        <td className="board-cell"></td>
-                        <td className="board-cell"></td>
-                    </tr>
+                        {playerBoard.map((row, rowIndex) => (
+                            <tr key={rowIndex}>
+                                {row.map((die, colIndex) => (
+                                    <td className="board-cell" key={colIndex}>
+                                        {die !== null && (
+                                            <span className={`die die-${dieFaces[die - 1]}`}></span>
+                                        )}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
 
