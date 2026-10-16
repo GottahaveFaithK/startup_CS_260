@@ -162,6 +162,10 @@
     line-height: 1.6;
 }
 
+.score-heading {
+  font-size: 14px;
+}
+
 @keyframes opponent-idle {
     0% {
         background-position: 0 0;

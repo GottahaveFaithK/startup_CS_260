@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
+import { calculateColumnScore, calculateScore } from './game/scoring';
 
 export default function Play() {
 
@@ -17,6 +18,9 @@ export default function Play() {
     const [computerDie, setComputerDie] = useState(null);
 
     const [isComputerTurn, setIsComputerTurn] = useState(false);
+
+    const playerScore = calculateScore(playerBoard);
+    const computerScore = calculateScore(computerBoard);
 
 
     function rollDie() {
@@ -157,8 +161,13 @@ export default function Play() {
                     <div className="score-section">
                         <h2>Score</h2>
 
-                        <p>Computer: <span>0</span></p>
-                        <p>You: <span>18</span></p>
+                        <h3 className="score-heading">
+                            Your Score: {playerScore}
+                        </h3>
+
+                        <h3 className="score-heading">
+                            {opponent.name}'s Score: {computerScore}
+                        </h3>
                     </div>
 
                     <div className="current-die-section">
