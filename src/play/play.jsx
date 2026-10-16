@@ -1,10 +1,26 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
 
 export default function Play() {
 
     const opponent = opponents.duck;
+    const [currentDie, setCurrentDie] = useState(5);
+    const [isRolling, setIsRolling] = useState(false)
+
+    const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
+
+    function rollDie() {
+        if(isRolling == true){
+            return;
+        }
+        setIsRolling(true)
+
+        setTimeout(() => {
+            setCurrentDie(Math.floor(Math.random() * 6) + 1)
+            setIsRolling(false)
+        }, 1500);
+    }
 
     return (
         <main className = "container background-table">
@@ -81,16 +97,19 @@ export default function Play() {
 
                         <p>Computer: <span>0</span></p>
                         <p>You: <span>18</span></p>
+                        <p>{currentDie}</p>
                     </div>
 
                     <div className="current-die-section">
                         <h2>Current Die</h2>
 
                         <div>
-                            <span className="die die-five rolling"></span>
+                            <span
+                                className={`die die-${dieFaces[currentDie - 1]} ${isRolling ? 'rolling' : ''}`}
+                            ></span>
                         </div>
 
-                        <button className="roll-button">Roll Die</button>
+                        <button className="roll-button" onClick={rollDie}>Roll Die</button>
                     </div>
                 </section>
 
