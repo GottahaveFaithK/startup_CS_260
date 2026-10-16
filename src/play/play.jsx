@@ -4,6 +4,7 @@ import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
+import OpponentAvatar from '../components/OpponentAvatar';
 
 
 import DialogueBox from '../components/dialogueBox';
