@@ -50,24 +50,40 @@ export default function Play() {
         );
 
         setPlayerBoard(updatedBoard);
+        console.log("Player board after placing:", updatedBoard);
+
+        const updatedComputerBoard = computerBoard.map(row =>
+            row.map((die, c) => {
+                if (c === colIndex && die === currentDie) {
+                    return null;
+                }
+                return die;
+            })
+        );
+
+        setComputerBoard(updatedComputerBoard);
 
         setTimeout(() => {
-            computerTurn();
+            computerTurn(updatedComputerBoard, updatedBoard);
             setIsRollable(true);
         }, 1000);
     }
 
-    function computerTurn() {
+    function computerTurn(currentComputerBoard, currentPlayerBoard) {
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
 
-        const choice = chooseDuckMove(roll, computerBoard, playerBoard);
+        const choice = chooseDuckMove(
+            roll,
+            currentComputerBoard,
+            currentPlayerBoard
+        );
 
         if (choice === null) {
             return;
         }
 
-        const updatedBoard = computerBoard.map((row, rowIndex) =>
+        const updatedBoard = currentComputerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
                 if (
                     rowIndex === choice.rowIndex &&
@@ -80,6 +96,20 @@ export default function Play() {
         );
 
         setComputerBoard(updatedBoard);
+        console.log("Duck rolled:", roll);
+    console.log("Duck chose column:", choice.colIndex);
+    console.log("Player board before destruction:", playerBoard);
+
+        const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
+            row.map((die, colIndex) => {
+                if (colIndex === choice.colIndex && die === roll) {
+                    return null;
+                }
+                return die;
+            })
+        );
+
+        setPlayerBoard(updatedPlayerBoard);
     }
 
     return (
