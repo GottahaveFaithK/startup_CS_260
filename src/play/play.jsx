@@ -129,6 +129,12 @@ export default function Play() {
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
+        
+        if (roll === 1) {
+            triggerDialogue('rollOne');
+        } else if (roll === 6) {
+            triggerDialogue('rollSix');
+        }
 
         const choice = chooseDuckMove(
             roll,

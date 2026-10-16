@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-function DialogueBox({ text, speed = 60 }) {
+function DialogueBox({ text, speed = 70 }) {
   const [visibleText, setVisibleText] = useState('');
 
   useEffect(() => {
