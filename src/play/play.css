@@ -22,10 +22,14 @@
 }
 
 .board-cell {
+    width: 33.333%;
+    height: 93px;
+    padding: 0;
+    box-sizing: border-box;
     background-color: #5a3826;
     border: 4px solid #3a2a20;
     text-align: center;
-    font-size: 1.5rem;
+    vertical-align: middle;
 }
 
 .player-board .board-cell:hover:not(:has(.die)) {
@@ -33,14 +37,18 @@
 }
 
 .die {
-    display: inline-block;
+    display: block;
     width: 49px;
     height: 49px;
+    margin: 0;
     background-image: url("/dice_sets/die.png");
     background-repeat: no-repeat;
     background-size: 294px 49px;
     image-rendering: pixelated;
-    transform: translateY(2px);
+}
+
+.board-cell .die {
+    margin: 0 auto;
 }
 
 .die-six {

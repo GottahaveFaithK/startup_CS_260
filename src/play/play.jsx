@@ -23,6 +23,27 @@ export default function Play() {
         }, 1500);
     }
 
+    function placeDie(rowIndex, colIndex) {
+        if (isRolling) {
+            return;
+        }
+
+        if (playerBoard[rowIndex][colIndex] !== null) {
+            return;
+        }
+
+        const updatedBoard = playerBoard.map((row, r) =>
+            row.map((die, c) => {
+                if (r === rowIndex && c === colIndex) {
+                    return currentDie;
+                }
+                return die;
+            })
+        );
+
+        setPlayerBoard(updatedBoard);
+    }
+
     return (
         <main className = "container background-table">
             <div className="row">
@@ -121,7 +142,11 @@ export default function Play() {
                         {playerBoard.map((row, rowIndex) => (
                             <tr key={rowIndex}>
                                 {row.map((die, colIndex) => (
-                                    <td className="board-cell" key={colIndex}>
+                                    <td
+                                        className="board-cell"
+                                        key={colIndex}
+                                        onClick={() => placeDie(rowIndex, colIndex)}
+                                    >
                                         {die !== null && (
                                             <span className={`die die-${dieFaces[die - 1]}`}></span>
                                         )}
