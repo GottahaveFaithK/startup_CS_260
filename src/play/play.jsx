@@ -7,15 +7,22 @@ export default function Play() {
     const opponent = opponents.duck;
     const [currentDie, setCurrentDie] = useState(5);
     const [isRolling, setIsRolling] = useState(false)
+    const [isRollable, setIsRollable] = useState(true);
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
-    const [playerBoard, setPlayerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]])
+    const [playerBoard, setPlayerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
+
+    const [computerBoard, setComputerBoard] = useState([[6, 3, null], [2, null, 2],[null, 5, null]]);
+    const [computerDie, setComputerDie] = useState(null);
+
 
     function rollDie() {
-        if(isRolling == true){
+        if(isRolling || !isRollable){
             return;
         }
+
         setIsRolling(true)
+        setIsRollable(false)
 
         setTimeout(() => {
             setCurrentDie(Math.floor(Math.random() * 6) + 1)
@@ -24,7 +31,7 @@ export default function Play() {
     }
 
     function placeDie(rowIndex, colIndex) {
-        if (isRolling) {
+        if (isRolling || isRollable) {
             return;
         }
 
@@ -42,6 +49,48 @@ export default function Play() {
         );
 
         setPlayerBoard(updatedBoard);
+
+        setTimeout(() => {
+            computerTurn();
+            setIsRollable(true);
+        }, 1000);
+    }
+
+    function computerTurn() {
+        const roll = Math.floor(Math.random() * 6) + 1;
+        setComputerDie(roll);
+
+        const emptyCells = [];
+
+        computerBoard.forEach((row, rowIndex) => {
+            row.forEach((die, colIndex) => {
+                if (die === null) {
+                    emptyCells.push({ rowIndex, colIndex });
+                }
+            });
+        });
+
+        if (emptyCells.length === 0) {
+            return;
+        }
+
+        const choice = emptyCells[
+            Math.floor(Math.random() * emptyCells.length)
+        ];
+
+        const updatedBoard = computerBoard.map((row, rowIndex) =>
+            row.map((die, colIndex) => {
+                if (
+                    rowIndex === choice.rowIndex &&
+                    colIndex === choice.colIndex
+                ) {
+                    return roll;
+                }
+                return die;
+            })
+        );
+
+        setComputerBoard(updatedBoard);
     }
 
     return (
@@ -67,48 +116,20 @@ export default function Play() {
 
                     <table className="game-board">
                         <tbody>
-                            <tr>
-                                <td className="board-cell">
-                                    <span
-                                        className="die die-one"
-                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                    ></span>
-                                </td>
-                                <td className="board-cell">
-                                    <span
-                                        className="die die-three"
-                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                    ></span>
-                                </td>
-                                <td className="board-cell"></td>
-                            </tr>
-
-                            <tr>
-                                <td className="board-cell">
-                                    <span
-                                        className="die die-two"
-                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                    ></span>
-                                </td>
-                                <td className="board-cell"></td>
-                                <td className="board-cell">
-                                    <span
-                                        className="die die-two"
-                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                    ></span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td className="board-cell"></td>
-                                <td className="board-cell">
-                                    <span
-                                        className="die die-five"
-                                        style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                    ></span>
-                                </td>
-                                <td className="board-cell"></td>
-                            </tr>
+                            {computerBoard.map((row, rowIndex) => (
+                                <tr key={rowIndex}>
+                                    {row.map((die, colIndex) => (
+                                        <td className="board-cell" key={colIndex}>
+                                            {die !== null && (
+                                                <span
+                                                    className={`die die-${dieFaces[die - 1]}`}
+                                                    style={{ backgroundImage: `url(${opponent.diceSheet})` }}
+                                                ></span>
+                                            )}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </section>
@@ -119,7 +140,7 @@ export default function Play() {
 
                         <p>Computer: <span>0</span></p>
                         <p>You: <span>18</span></p>
-                        <p>{currentDie}</p>
+                        <button onClick={computerTurn}>Test Computer Turn</button>
                     </div>
 
                     <div className="current-die-section">
