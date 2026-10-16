@@ -115,17 +115,9 @@ export default function Play() {
 
         const events = [];
 
-        const playerGoodMove = playerBoard.some(
-            row => row[colIndex] === currentDie
-        );
-
         const destroyedComputerDice = computerBoard.some(
             row => row[colIndex] === currentDie
         );
-
-        if (playerGoodMove) {
-            events.push('playerGoodMove');
-        }
 
         if (destroyedComputerDice) {
             events.push('playerDestroysDice');
@@ -209,17 +201,9 @@ export default function Play() {
             return false;
         }
 
-        const birdGoodMove = currentComputerBoard.some(
-            row => row[choice.colIndex] === roll
-        );
-
         const destroyedPlayerDice = currentPlayerBoard.some(
             row => row[choice.colIndex] === roll
         );
-
-        if (birdGoodMove) {
-            events.push('birdGoodMove');
-        }
 
         if (destroyedPlayerDice) {
             events.push('birdDestroysDice');
