@@ -1,4 +1,4 @@
-
+import OpponentAvatar from '../components/opponentAvatar';
 
 .game-panel {
     background-color: #8a6548;

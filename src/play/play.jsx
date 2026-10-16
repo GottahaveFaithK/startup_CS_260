@@ -270,10 +270,7 @@ export default function Play() {
                 <section className="game-panel opponent-panel col-md-4 order-1">
                     <h2>Opponent</h2>
 
-                    <div
-                        className="opponent-avatar"
-                        style={{ backgroundImage: `url(${opponent.spriteSheet})` }}
-                    ></div>
+                    <OpponentAvatar opponent={opponent} animation="idle" />
 
                     <p className="opponent-name">{opponent.name}</p>
 
