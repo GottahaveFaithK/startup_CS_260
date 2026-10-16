@@ -16,6 +16,8 @@ export default function Play() {
     const [computerBoard, setComputerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
     const [computerDie, setComputerDie] = useState(null);
 
+    const [isComputerTurn, setIsComputerTurn] = useState(false);
+
 
     function rollDie() {
         if(isRolling || !isRollable){
@@ -32,7 +34,7 @@ export default function Play() {
     }
 
     function placeDie(rowIndex, colIndex) {
-        if (isRolling || isRollable) {
+        if (isRolling || isRollable || isComputerTurn) {
             return;
         }
 
@@ -50,7 +52,6 @@ export default function Play() {
         );
 
         setPlayerBoard(updatedBoard);
-        console.log("Player board after placing:", updatedBoard);
 
         const updatedComputerBoard = computerBoard.map(row =>
             row.map((die, c) => {
@@ -62,9 +63,11 @@ export default function Play() {
         );
 
         setComputerBoard(updatedComputerBoard);
+    setIsComputerTurn(true);
 
         setTimeout(() => {
             computerTurn(updatedComputerBoard, updatedBoard);
+            setIsComputerTurn(false);
             setIsRollable(true);
         }, 1000);
     }
@@ -96,9 +99,6 @@ export default function Play() {
         );
 
         setComputerBoard(updatedBoard);
-        console.log("Duck rolled:", roll);
-    console.log("Duck chose column:", choice.colIndex);
-    console.log("Player board before destruction:", playerBoard);
 
         const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
@@ -170,7 +170,13 @@ export default function Play() {
                             ></span>
                         </div>
 
-                        <button className="roll-button" onClick={rollDie}>Roll Die</button>
+                        <button
+                            className="roll-button"
+                            onClick={rollDie}
+                            disabled={isRolling || !isRollable || isComputerTurn}
+                        >
+                            Roll Die
+                        </button>
                     </div>
                 </section>
 
