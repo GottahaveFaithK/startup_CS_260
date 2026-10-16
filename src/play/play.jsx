@@ -3,6 +3,7 @@ import './play.css';
 import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { calculateColumnScore, calculateScore } from './game/scoring';
+import { isBoardFull } from './game/gameRules';
 
 export default function Play() {
 
@@ -21,6 +22,8 @@ export default function Play() {
 
     const playerScore = calculateScore(playerBoard);
     const computerScore = calculateScore(computerBoard);
+
+    const [gameOver, setGameOver] = useState(false);
 
 
     function rollDie() {
@@ -67,7 +70,13 @@ export default function Play() {
         );
 
         setComputerBoard(updatedComputerBoard);
-    setIsComputerTurn(true);
+
+        if (isBoardFull(updatedBoard) || isBoardFull(updatedComputerBoard)) {
+            setGameOver(true);
+            setIsRollable(false);
+            return;
+        }
+        setIsComputerTurn(true);
 
         setTimeout(() => {
             computerTurn(updatedComputerBoard, updatedBoard);
@@ -114,6 +123,9 @@ export default function Play() {
         );
 
         setPlayerBoard(updatedPlayerBoard);
+        if (isBoardFull(updatedBoard) || isBoardFull(updatedPlayerBoard)) {
+            setGameOver(true);
+        }
     }
 
     return (
@@ -168,6 +180,16 @@ export default function Play() {
                         <h3 className="score-heading">
                             {opponent.name}'s Score: {computerScore}
                         </h3>
+
+                        {gameOver && (
+                            <h2>
+                                {playerScore > computerScore
+                                ? 'You win!'
+                                : playerScore < computerScore
+                                ? `${opponent.name} wins!`
+                                : "It's a tie!"}
+                            </h2>
+                        )}
                     </div>
 
                     <div className="current-die-section">
