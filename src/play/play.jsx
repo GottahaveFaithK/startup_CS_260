@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
+import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 
 export default function Play() {
 
@@ -12,7 +13,7 @@ export default function Play() {
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
     const [playerBoard, setPlayerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
 
-    const [computerBoard, setComputerBoard] = useState([[6, 3, null], [2, null, 2],[null, 5, null]]);
+    const [computerBoard, setComputerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
     const [computerDie, setComputerDie] = useState(null);
 
 
@@ -60,23 +61,11 @@ export default function Play() {
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
 
-        const emptyCells = [];
+        const choice = chooseDuckMove(roll, computerBoard, playerBoard);
 
-        computerBoard.forEach((row, rowIndex) => {
-            row.forEach((die, colIndex) => {
-                if (die === null) {
-                    emptyCells.push({ rowIndex, colIndex });
-                }
-            });
-        });
-
-        if (emptyCells.length === 0) {
+        if (choice === null) {
             return;
         }
-
-        const choice = emptyCells[
-            Math.floor(Math.random() * emptyCells.length)
-        ];
 
         const updatedBoard = computerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
@@ -140,7 +129,6 @@ export default function Play() {
 
                         <p>Computer: <span>0</span></p>
                         <p>You: <span>18</span></p>
-                        <button onClick={computerTurn}>Test Computer Turn</button>
                     </div>
 
                     <div className="current-die-section">
