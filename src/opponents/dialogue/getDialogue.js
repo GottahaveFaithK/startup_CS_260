@@ -15,3 +15,15 @@ export function getDialogue(dialogue, trigger) {
 
   return category.lines[randomIndex];
 }
+
+const dialoguePriority = {
+  playerWins: 100,
+  playerLoses: 100,
+  playerDestroysDice: 60,
+  birdDestroysDice: 60,
+  playerGoodMove: 80,
+  birdGoodMove: 80,
+  rollOne: 30,
+  rollSix: 30,
+  gameStart: 100
+};
