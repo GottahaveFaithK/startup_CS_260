@@ -8,7 +8,7 @@ import { isBoardFull } from './game/gameRules';
 
 import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
-import { getDialogue } from '../opponents/dialogue/getDialogue';
+import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 
 export default function Play() {
 
@@ -45,6 +45,29 @@ export default function Play() {
     useEffect(() => {
         triggerDialogue('gameStart');
     }, []);
+
+    function triggerPriorityDialogue(events) {
+        const selectedTrigger = selectDialogueTrigger(events);
+
+        if (selectedTrigger !== null) {
+            triggerDialogue(selectedTrigger);
+        }
+    }
+
+    function getGameOverTrigger(finalPlayerBoard, finalComputerBoard) {
+        const finalPlayerScore = calculateScore(finalPlayerBoard);
+        const finalComputerScore = calculateScore(finalComputerBoard);
+
+        if (finalPlayerScore > finalComputerScore) {
+            return 'playerWins';
+        }
+
+        if (finalPlayerScore < finalComputerScore) {
+            return 'playerLoses';
+        }
+
+        return 'gameTie';
+    }
 
     function playAgain() {
         setPlayerBoard([
@@ -90,6 +113,24 @@ export default function Play() {
             return;
         }
 
+        const events = [];
+
+        const playerGoodMove = playerBoard.some(
+            row => row[colIndex] === currentDie
+        );
+
+        const destroyedComputerDice = computerBoard.some(
+            row => row[colIndex] === currentDie
+        );
+
+        if (playerGoodMove) {
+            events.push('playerGoodMove');
+        }
+
+        if (destroyedComputerDice) {
+            events.push('playerDestroysDice');
+        }
+
         const updatedBoard = playerBoard.map((row, r) =>
             row.map((die, c) => {
                 if (r === rowIndex && c === colIndex) {
@@ -98,16 +139,6 @@ export default function Play() {
                 return die;
             })
         );
-
-        setPlayerBoard(updatedBoard);
-
-        const destroyedComputerDice = computerBoard.some(
-            row => row[colIndex] === currentDie
-        );
-
-        if (destroyedComputerDice) {
-            triggerDialogue('playerDestroysDice');
-        }
 
         const updatedComputerBoard = computerBoard.map(row =>
             row.map((die, c) => {
@@ -118,19 +149,41 @@ export default function Play() {
             })
         );
 
+        const oldPlayerScore = calculateScore(playerBoard);
+        const newPlayerScore = calculateScore(updatedBoard);
+
+        if (newPlayerScore - oldPlayerScore >= 18) {
+            events.push('playerGoodMove');
+        }
+
+        setPlayerBoard(updatedBoard);
         setComputerBoard(updatedComputerBoard);
 
         if (isBoardFull(updatedBoard) || isBoardFull(updatedComputerBoard)) {
+            events.push(
+                getGameOverTrigger(updatedBoard, updatedComputerBoard)
+            );
+
+            triggerPriorityDialogue(events);
             setGameOver(true);
             setIsRollable(false);
             return;
         }
+
+        triggerPriorityDialogue(events)
         setIsComputerTurn(true);
 
         setTimeout(() => {
-            computerTurn(updatedComputerBoard, updatedBoard);
+            const gameEnded = computerTurn(
+                updatedComputerBoard,
+                updatedBoard
+            );
+
             setIsComputerTurn(false);
-            setIsRollable(true);
+
+            if (!gameEnded) {
+                setIsRollable(true);
+            }
         }, 1000);
     }
 
@@ -175,7 +228,7 @@ export default function Play() {
         if (destroyedPlayerDice) {
             triggerDialogue('birdDestroysDice');
         }
-        
+
         const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
                 if (colIndex === choice.colIndex && die === roll) {

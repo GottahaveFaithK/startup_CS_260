@@ -28,3 +28,16 @@ const dialoguePriority = {
   rollSix: 30,
   gameStart: 100
 };
+
+
+export function selectDialogueTrigger(events) {
+  if (events.length === 0) {
+    return null;
+  }
+
+  return events.reduce((highest, current) => {
+    return dialoguePriority[current] > dialoguePriority[highest]
+      ? current
+      : highest;
+  });
+}
