@@ -188,13 +188,14 @@ export default function Play() {
     }
 
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
+        const events = [];
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
 
         if (roll === 1) {
-            triggerDialogue('rollOne');
+            events.push('rollOne');
         } else if (roll === 6) {
-            triggerDialogue('rollSix');
+            events.push('rollSix');
         }
 
         const choice = chooseDuckMove(
@@ -204,7 +205,24 @@ export default function Play() {
         );
 
         if (choice === null) {
-            return;
+            triggerPriorityDialogue(events);
+            return false;
+        }
+
+        const birdGoodMove = currentComputerBoard.some(
+            row => row[choice.colIndex] === roll
+        );
+
+        const destroyedPlayerDice = currentPlayerBoard.some(
+            row => row[choice.colIndex] === roll
+        );
+
+        if (birdGoodMove) {
+            events.push('birdGoodMove');
+        }
+
+        if (destroyedPlayerDice) {
+            events.push('birdDestroysDice');
         }
 
         const updatedBoard = currentComputerBoard.map((row, rowIndex) =>
@@ -219,16 +237,6 @@ export default function Play() {
             })
         );
 
-        setComputerBoard(updatedBoard);
-
-        const destroyedPlayerDice = currentPlayerBoard.some(
-            row => row[choice.colIndex] === roll
-        );
-
-        if (destroyedPlayerDice) {
-            triggerDialogue('birdDestroysDice');
-        }
-
         const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
                 if (colIndex === choice.colIndex && die === roll) {
@@ -238,10 +246,26 @@ export default function Play() {
             })
         );
 
+        setComputerBoard(updatedBoard);
         setPlayerBoard(updatedPlayerBoard);
-        if (isBoardFull(updatedBoard) || isBoardFull(updatedPlayerBoard)) {
+
+        if (
+            isBoardFull(updatedBoard) ||
+            isBoardFull(updatedPlayerBoard)
+        ) {
+            events.push(
+                getGameOverTrigger(updatedPlayerBoard, updatedBoard)
+            );
+
+            triggerPriorityDialogue(events);
             setGameOver(true);
+            setIsRollable(false);
+            return true;
         }
+
+        triggerPriorityDialogue(events);
+
+        return false;
     }
 
     return (
