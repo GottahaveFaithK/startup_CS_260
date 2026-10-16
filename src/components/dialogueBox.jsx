@@ -1,27 +1,33 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
-function DialogueBox({ text, speed = 90 }) {
-  const [visibleText, setVisibleText] = useState('');
+function DialogueBox({ text, speed = 90, onComplete }) {
+    const [visibleText, setVisibleText] = useState('');
+    const onCompleteRef = useRef(onComplete);
 
-  useEffect(() => {
-    setVisibleText('');
+    useEffect(() => {
+        onCompleteRef.current = onComplete;
+    }, [onComplete]);
 
-    if (!text) return;
+    useEffect(() => {
+        setVisibleText('');
 
-    let index = 0;
+        if (!text) return;
 
-    const timer = setInterval(() => {
-      index += 1;
-      setVisibleText(text.slice(0, index));
+        let index = 0;
 
-      if (index >= text.length) {
-        clearInterval(timer);
-      }
-    }, speed);
+        const timer = setInterval(() => {
+            index += 1;
+            setVisibleText(text.slice(0, index));
 
-    return () => clearInterval(timer);
-  }, [text, speed]);
+            if (index >= text.length) {
+                clearInterval(timer);
+                onCompleteRef.current?.();
+            }
+        }, speed);
+
+        return () => clearInterval(timer);
+    }, [text, speed]);
 
   return (
     <div className="dialogue-box" aria-live="polite">

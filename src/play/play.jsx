@@ -33,6 +33,7 @@ export default function Play() {
     const isTie = playerScore === computerScore;
 
     const [currentDialogue, setCurrentDialogue] = useState('');
+    const [pendingGameOver, setPendingGameOver] = useState(false);
 
     function triggerDialogue(trigger) {
         const line = getDialogue(duckDialogue, trigger);
@@ -51,6 +52,15 @@ export default function Play() {
 
         if (selectedTrigger !== null) {
             triggerDialogue(selectedTrigger);
+        }
+    }
+
+    function handleDialogueComplete() {
+        if (pendingGameOver) {
+            setTimeout(() => {
+                setPendingGameOver(false);
+                setGameOver(true);
+            }, 500);
         }
     }
 
@@ -88,6 +98,8 @@ export default function Play() {
         setIsRolling(false);
         setIsRollable(true);
         setIsComputerTurn(false);
+        setPendingGameOver(false);
+        triggerDialogue('gameStart');
     }
 
     function rollDie() {
@@ -157,7 +169,7 @@ export default function Play() {
             );
 
             triggerPriorityDialogue(events);
-            setGameOver(true);
+            setPendingGameOver(true);
             setIsRollable(false);
             return;
         }
@@ -242,7 +254,7 @@ export default function Play() {
             );
 
             triggerPriorityDialogue(events);
-            setGameOver(true);
+            setPendingGameOver(true);
             setIsRollable(false);
             return true;
         }
@@ -265,7 +277,10 @@ export default function Play() {
 
                     <p className="opponent-name">{opponent.name}</p>
 
-                    <DialogueBox text={currentDialogue} />
+                    <DialogueBox
+                        text={currentDialogue}
+                        onComplete={handleDialogueComplete}
+                    />
                 </section>
 
                 <section className="game-panel col-md-8 board-panel order-2">
