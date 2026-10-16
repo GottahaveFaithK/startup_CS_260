@@ -19,6 +19,7 @@ export function getDialogue(dialogue, trigger) {
 const dialoguePriority = {
   playerWins: 100,
   playerLoses: 100,
+  gameTie: 100,
   playerDestroysDice: 60,
   birdDestroysDice: 60,
   playerGoodMove: 80,

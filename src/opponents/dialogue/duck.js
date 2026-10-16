@@ -40,7 +40,7 @@ const duckDialogue = {
   },
 
   playerDestroysDice: {
-    chance: 0.1,
+    chance: 0.2,
     lines: [
       "I was using those.",
       "Hey!",
@@ -49,9 +49,9 @@ const duckDialogue = {
   },
 
   birdDestroysDice: {
-    chance: 0.1,
+    chance: 0.2,
     lines: [
-      "I don't like those.",
+      "I don't like those dice of yours.",
       "Let's clear the board.",
       "Don't mind me."
     ]
@@ -81,7 +81,14 @@ const duckDialogue = {
     lines: [
       "Good luck!"
     ]
-  }
+  },
+
+  gameTie: {
+    chance: 1,
+    lines: [
+        "Well, that's a funny way to end things."
+    ]
+    }
 };
 
 export default duckDialogue;
