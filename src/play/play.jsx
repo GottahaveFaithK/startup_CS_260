@@ -1,9 +1,14 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
+
+
+import DialogueBox from '../components/dialogueBox';
+import duckDialogue from '../opponents/dialogue/duck';
+import { getDialogue } from '../opponents/dialogue/getDialogue';
 
 export default function Play() {
 
@@ -26,6 +31,20 @@ export default function Play() {
     const [gameOver, setGameOver] = useState(false);
     const playerWon = playerScore > computerScore;
     const isTie = playerScore === computerScore;
+
+    const [currentDialogue, setCurrentDialogue] = useState('');
+
+    function triggerDialogue(trigger) {
+        const line = getDialogue(duckDialogue, trigger);
+
+        if (line !== null) {
+            setCurrentDialogue(line);
+        }
+    }
+
+    useEffect(() => {
+        triggerDialogue('gameStart');
+    }, []);
 
     function playAgain() {
         setPlayerBoard([
@@ -163,9 +182,7 @@ export default function Play() {
 
                     <p className="opponent-name">{opponent.name}</p>
 
-                    <div className="dialogue-box">
-                        <p className="opponent-dialogue">{opponent.dialogue}</p>
-                    </div>
+                    <DialogueBox text={currentDialogue} />
                 </section>
 
                 <section className="game-panel col-md-8 board-panel order-2">
