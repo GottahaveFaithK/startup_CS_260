@@ -1,3 +1,5 @@
+
+
 .game-panel {
     background-color: #8a6548;
     padding: 1rem;
@@ -132,9 +134,48 @@
 
     background-repeat: no-repeat;
     background-size: 4416px 192px;
-    image-rendering: pixelated;
+    background-position: 0 0;
 
-    animation: opponent-idle 1s infinite steps(1, end);
+    image-rendering: pixelated;
+}
+
+.animation-idle {
+    animation: opponent-idle 1s steps(5, end) infinite;
+}
+
+@keyframes opponent-idle {
+    from { background-position: 0 0; }
+    to   { background-position: -960px 0; }
+}
+
+/* Blink: frames 5–14 */
+.animation-blink {
+    animation: opponent-blink 700ms steps(10, end) 1;
+}
+
+@keyframes opponent-blink {
+    from { background-position: -960px 0; }
+    to   { background-position: -2880px 0; }
+}
+
+/* Talk: frames 15–18 */
+.animation-talk {
+    animation: opponent-talk 400ms steps(4, end) infinite;
+}
+
+@keyframes opponent-talk {
+    from { background-position: -2880px 0; }
+    to   { background-position: -3648px 0; }
+}
+
+/* Talk happy: frames 19–22 */
+.animation-talk-happy {
+    animation: opponent-talk-happy 400ms steps(4, end) infinite;
+}
+
+@keyframes opponent-talk-happy {
+    from { background-position: -3648px 0; }
+    to   { background-position: -4416px 0; }
 }
 
 .opponent-panel {
