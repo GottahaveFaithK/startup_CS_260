@@ -101,6 +101,14 @@ export default function Play() {
 
         setPlayerBoard(updatedBoard);
 
+        const destroyedComputerDice = computerBoard.some(
+            row => row[colIndex] === currentDie
+        );
+
+        if (destroyedComputerDice) {
+            triggerDialogue('playerDestroysDice');
+        }
+
         const updatedComputerBoard = computerBoard.map(row =>
             row.map((die, c) => {
                 if (c === colIndex && die === currentDie) {
@@ -129,7 +137,7 @@ export default function Play() {
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
-        
+
         if (roll === 1) {
             triggerDialogue('rollOne');
         } else if (roll === 6) {
@@ -160,6 +168,14 @@ export default function Play() {
 
         setComputerBoard(updatedBoard);
 
+        const destroyedPlayerDice = currentPlayerBoard.some(
+            row => row[choice.colIndex] === roll
+        );
+
+        if (destroyedPlayerDice) {
+            triggerDialogue('birdDestroysDice');
+        }
+        
         const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
                 if (colIndex === choice.colIndex && die === roll) {
