@@ -24,10 +24,32 @@ export default function Play() {
     const computerScore = calculateScore(computerBoard);
 
     const [gameOver, setGameOver] = useState(false);
+    const playerWon = playerScore > computerScore;
+    const isTie = playerScore === computerScore;
 
+    function playAgain() {
+        setPlayerBoard([
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ]);
+
+        setComputerBoard([
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ]);
+
+        setCurrentDie(5);
+        setComputerDie(null);
+        setGameOver(false);
+        setIsRolling(false);
+        setIsRollable(true);
+        setIsComputerTurn(false);
+    }
 
     function rollDie() {
-        if(isRolling || !isRollable){
+        if(gameOver || isRolling || !isRollable){
             return;
         }
 
@@ -41,7 +63,7 @@ export default function Play() {
     }
 
     function placeDie(rowIndex, colIndex) {
-        if (isRolling || isRollable || isComputerTurn) {
+        if (gameOver || isRolling || isRollable || isComputerTurn) {
             return;
         }
 
@@ -204,7 +226,7 @@ export default function Play() {
                         <button
                             className="roll-button"
                             onClick={rollDie}
-                            disabled={isRolling || !isRollable || isComputerTurn}
+                            disabled={gameOver || isRolling || !isRollable || isComputerTurn}
                         >
                             Roll Die
                         </button>
