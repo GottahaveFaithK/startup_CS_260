@@ -12,6 +12,7 @@ import OpponentAvatar from '../components/OpponentAvatar';
 
 import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
+import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
@@ -23,6 +24,7 @@ export default function Play() {
     const opponentDialogue = {
         duck: duckDialogue,
         vulture: vultureDialogue,
+        peacock: peacockDialogue,
     }[opponentId] ?? duckDialogue;
 
     const [currentDie, setCurrentDie] = useState(5);
