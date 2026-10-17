@@ -432,3 +432,10 @@
 .rules-close-button:hover {
     background: #d9a441;
 }
+
+.leaderboard-button.submitted {
+    background-color: #4a8c59;
+    color: white;
+    border-color: #32663e;
+    cursor: default;
+}

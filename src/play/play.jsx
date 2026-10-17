@@ -41,6 +41,7 @@ export default function Play() {
     const [blinkRequested, setBlinkRequested] = useState(false);
 
     const [showRules, setShowRules] = useState(false);
+    const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
     function triggerDialogue(trigger) {
         const line = getDialogue(duckDialogue, trigger);
@@ -126,6 +127,7 @@ export default function Play() {
         setIsComputerTurn(false);
         setPendingGameOver(false);
         triggerDialogue('gameStart');
+        setScoreSubmitted(false);
     }
 
     function rollDie() {
@@ -290,6 +292,31 @@ export default function Play() {
         return false;
     }
 
+    function handleSubmitScore() {
+        const username = localStorage.getItem('currentUser') || 'Guest';
+
+        const newScore = {
+            id: Date.now(),
+            username: username,
+            score: playerScore,
+            opponent: opponent.name,
+            date: new Date().toLocaleDateString()
+        };
+
+        const savedScores = JSON.parse(
+            localStorage.getItem('leaderboardScores') || '[]'
+        );
+
+        savedScores.push(newScore);
+
+        localStorage.setItem(
+            'leaderboardScores',
+            JSON.stringify(savedScores)
+        );
+
+        setScoreSubmitted(true);
+    }
+
     return (
         <main className = "container background-table">
             <div className="row">
@@ -407,12 +434,11 @@ export default function Play() {
                                 </div>
 
                                 <button
-                                    className="leaderboard-button"
-                                    onClick={() =>
-                                    alert('Leaderboard submission will be available soon!')
-                                    }
+                                    className={`leaderboard-button ${scoreSubmitted ? 'submitted' : ''}`}
+                                    onClick={handleSubmitScore}
+                                    disabled={scoreSubmitted}
                                 >
-                                    Submit Score
+                                    {scoreSubmitted ? 'Submitted ✓' : 'Submit Score'}
                                 </button>
 
                                 <button
