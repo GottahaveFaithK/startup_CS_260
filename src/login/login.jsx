@@ -1,14 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './login.css';
 
 export default function Login() {
+    const [currentUser, setCurrentUser] = useState(
+    localStorage.getItem('currentUser') || 'Guest'
+);
+
+    useEffect(() => {
+        localStorage.setItem('currentUser', currentUser);
+    }, [currentUser]);
+
+    const [message, setMessage] = useState('');
+
+    function handleLogin(event) {
+        event.preventDefault();
+
+        const username = event.target.username.value.trim();
+
+        if (!username) {
+            setMessage('Please enter a username.');
+            return;
+        }
+
+        setCurrentUser(username);
+        setMessage(`Welcome, ${username}!`);
+    }
+
+    function handleRegister(event) {
+        event.preventDefault();
+
+        const username = event.target.username.value.trim();
+
+        if (!username) {
+            setMessage('Please enter a username.');
+            return;
+        }
+
+        setCurrentUser(username);
+        setMessage(`Account created! Welcome, ${username}!`);
+    }
     return (
         <main className="container background-table">
             <div className="row g-3">
                 <section className="login-panel col-12 col-md-6">
                     <h2>Login</h2>
 
-                    <form>
+                    <form onSubmit={handleLogin}>
                         <div>
                             <label htmlFor="login-username">Username</label>
                             <input type="text" id="login-username" name="username" />
@@ -26,7 +63,7 @@ export default function Login() {
                 <section className="register-panel col-12 col-md-6">
                     <h2>Create an Account</h2>
 
-                    <form>
+                    <form onSubmit={handleRegister}>
                         <div>
                             <label htmlFor="register-username">Username</label>
                             <input type="text" id="register-username" name="username" />
@@ -50,7 +87,11 @@ export default function Login() {
             <section className="current-user-panel">
                 <h2>Current User</h2>
 
-                <p>Logged in as: <span id="current-user">Guest</span></p>
+                <p>
+                    Logged in as: <span id="current-user">{currentUser}</span>
+                </p>
+
+                {message && <p role="status">{message}</p>}
             </section>
         </main>
     );
