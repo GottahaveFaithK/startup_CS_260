@@ -448,18 +448,20 @@ export default function Play() {
                                 <p>Score more points than your opponent by the end of the game.</p>
 
                                 <h3>Taking Your Turn</h3>
-                                <p>Roll the die, then place it in an empty space on your board.</p>
+                                <p>Roll the die, then place it in an empty space on your board. 
+                                    Your opponent will then do the same on it's turn.</p>
 
                                 <h3>Scoring</h3>
                                 <p>
-                                    Each die scores its face value. Matching dice in the same
-                                    column multiply their value by the number of matching dice.
+                                    Each die scores its face value.
+                                    Matching dice in the same column multiply their added value by the number of matching dice.
+                                    Ex: Two 1's in the same column (1 + 1) * 2 = 4 and Three 6's in the same column (6 + 6 + 6) * 3 = 54
                                 </p>
 
                                 <h3>Destroying Dice</h3>
                                 <p>
-                                    When you place a die, it destroys your opponent's dice with
-                                    the same value in the corresponding column.
+                                    When you place a die, it destroys any dice of the same number in your opponents opposing column.
+                                    Your opponent can do the same to you
                                 </p>
 
                                 <h3>Ending the Game</h3>
