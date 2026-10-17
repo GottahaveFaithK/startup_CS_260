@@ -10,10 +10,12 @@ import OpponentAvatar from '../components/opponentAvatar';
 import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
+import { useParams } from 'react-router-dom';
 
 export default function Play() {
 
-    const opponent = opponents.duck;
+    const { opponentId } = useParams();
+    const opponent = opponents[opponentId] ?? opponents.duck;
     const [currentDie, setCurrentDie] = useState(5);
     const [isRolling, setIsRolling] = useState(false)
     const [isRollable, setIsRollable] = useState(true);
