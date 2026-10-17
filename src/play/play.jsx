@@ -270,6 +270,13 @@ export default function Play() {
             })
         );
 
+        const oldBirdScore = calculateScore(computerBoard);
+        const newBirdScore = calculateScore(updatedBoard);
+
+        if (newBirdScore - oldBirdScore >= 18) {
+            events.push('birdGoodMove');
+        }
+
         setComputerBoard(updatedBoard);
         setPlayerBoard(updatedPlayerBoard);
 
