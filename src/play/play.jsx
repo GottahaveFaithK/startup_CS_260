@@ -40,6 +40,8 @@ export default function Play() {
     const animationReturnTimer = useRef(null);
     const [blinkRequested, setBlinkRequested] = useState(false);
 
+    const [showRules, setShowRules] = useState(false);
+
     function triggerDialogue(trigger) {
         const line = getDialogue(duckDialogue, trigger);
         if (line === null) return;
@@ -343,7 +345,18 @@ export default function Play() {
 
                 <section className="game-panel col-md-4 order-4 order-md-3">
                     <div className="score-section">
-                        <h2>Score</h2>
+                        <div className="score-title-row">
+                            <h2>Score</h2>
+
+                            <button
+                                className="info-button"
+                                onClick={() => setShowRules(true)}
+                                aria-label="Show game rules"
+                                title="Game rules"
+                            >
+                                <img src="/info.png" alt="" />
+                            </button>
+                        </div>
 
                         <h3 className="score-heading">
                             Your Score: {playerScore}
@@ -412,6 +425,51 @@ export default function Play() {
                             </div>
                         )}
                     </div>
+
+                    {showRules && (
+                        <div className="rules-overlay">
+                            <div
+                                className="rules-modal"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-labelledby="rules-title"
+                            >
+                                <button
+                                    className="rules-close-button"
+                                    onClick={() => setShowRules(false)}
+                                    aria-label="Close rules"
+                                >
+                                    ✕
+                                </button>
+
+                                <h2 id="rules-title">How to Play</h2>
+
+                                <h3>Objective</h3>
+                                <p>Score more points than your opponent by the end of the game.</p>
+
+                                <h3>Taking Your Turn</h3>
+                                <p>Roll the die, then place it in an empty space on your board.</p>
+
+                                <h3>Scoring</h3>
+                                <p>
+                                    Each die scores its face value. Matching dice in the same
+                                    column multiply their value by the number of matching dice.
+                                </p>
+
+                                <h3>Destroying Dice</h3>
+                                <p>
+                                    When you place a die, it destroys your opponent's dice with
+                                    the same value in the corresponding column.
+                                </p>
+
+                                <h3>Ending the Game</h3>
+                                <p>
+                                    The game ends when either board is full. The player with the
+                                    highest score wins. If both scores are equal, the game is a tie.
+                                </p>
+                            </div>
+                        </div>
+                    )}
 
                     <div className="current-die-section">
                         <h2>Current Die</h2>
