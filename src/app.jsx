@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
+import OpponentSelect from './opponents/opponentSelect';
 
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 
@@ -22,11 +23,12 @@ export default function App() {
                         <NavLink to="/login">Login</NavLink>
                     </nav>
                 </header>
-                    <Routes>
-                        <Route path="/" element={<Play />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/scores" element={<Scores />} />
-                    </Routes>
+                <Routes>
+                    <Route path="/" element={<OpponentSelect />} />
+                    <Route path="/play/:opponentId" element={<Play />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/scores" element={<Scores />} />
+                </Routes>
 
                 <footer>
                     <p>
