@@ -1,5 +1,5 @@
 
-function OpponentAvatar({ opponent, animation = 'idle' }) {
+function OpponentAvatar({ opponent, animation = 'idle', onAnimationEnd }) {
     const animationClass = `animation-${animation}`;
 
     return (
@@ -8,6 +8,7 @@ function OpponentAvatar({ opponent, animation = 'idle' }) {
             style={{
                 backgroundImage: `url("${opponent.spriteSheet}")`
             }}
+            onAnimationEnd={onAnimationEnd}
             role="img"
             aria-label={`${opponent.name} ${animation} animation`}
         />

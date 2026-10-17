@@ -2,6 +2,7 @@
 const duckDialogue = {
   rollOne: {
     chance: 0.2,
+    animation: 'talk',
     lines: [
       "That wasn't really what I had hoped for.",
       "Whelp.",
@@ -12,6 +13,7 @@ const duckDialogue = {
 
   rollSix: {
     chance: 0.2,
+    animation: 'talk-happy',
     lines: [
       "Oh! This is good!",
       "Let's roll that again next turn.",
@@ -21,6 +23,7 @@ const duckDialogue = {
 
   playerWins: {
     chance: 1,
+    animation: 'talk',
     lines: [
       "Good game!",
       "You are good at this!",
@@ -32,6 +35,7 @@ const duckDialogue = {
 
   playerLoses: {
     chance: 1,
+    animation: 'talk-happy',
     lines: [
       "Good game!",
       "Oh! I won!",
@@ -41,6 +45,7 @@ const duckDialogue = {
 
   playerDestroysDice: {
     chance: 0.2,
+    animation: 'talk',
     lines: [
       "I was using those.",
       "Hey!",
@@ -50,6 +55,7 @@ const duckDialogue = {
 
   birdDestroysDice: {
     chance: 0.2,
+    animation: 'talk-happy',
     lines: [
       "I don't like those dice of yours.",
       "Let's clear the board.",
@@ -59,6 +65,7 @@ const duckDialogue = {
 
   playerGoodMove: {
     chance: 0.5,
+    animation: 'talk',
     lines: [
       "Woah.",
       "Solid!",
@@ -69,6 +76,7 @@ const duckDialogue = {
 
   birdGoodMove: {
     chance: 0.6,
+    animation: 'talk-happy',
     lines: [
       "I think I'm getting the hang of this.",
       "Things are looking up!",
@@ -78,6 +86,7 @@ const duckDialogue = {
 
   gameStart: {
     chance: 1,
+    animation: 'talk',
     lines: [
       "Good luck!"
     ]
@@ -85,6 +94,7 @@ const duckDialogue = {
 
   gameTie: {
     chance: 1,
+    animation: 'talk',
     lines: [
         "Well, that's a funny way to end things."
     ]

@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useRef} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
@@ -36,13 +36,30 @@ export default function Play() {
     const [currentDialogue, setCurrentDialogue] = useState('');
     const [pendingGameOver, setPendingGameOver] = useState(false);
 
+    const [avatarAnimation, setAvatarAnimation] = useState('idle');
+    const animationReturnTimer = useRef(null);
+
     function triggerDialogue(trigger) {
         const line = getDialogue(duckDialogue, trigger);
+        if (line === null) return;
 
-        if (line !== null) {
-            setCurrentDialogue(line);
-        }
+        clearTimeout(animationReturnTimer.current);
+
+        setCurrentDialogue(line);
+        setAvatarAnimation(duckDialogue[trigger]?.animation ?? 'talk');
     }
+
+    useEffect(() => {
+        if (avatarAnimation !== 'idle') return;
+
+        const delay = 8000 + Math.random() * 4000;
+
+        const timer = setTimeout(() => {
+            setAvatarAnimation('blink');
+        }, delay);
+
+        return () => clearTimeout(timer);
+    }, [avatarAnimation]);
 
     useEffect(() => {
         triggerDialogue('gameStart');
@@ -57,6 +74,10 @@ export default function Play() {
     }
 
     function handleDialogueComplete() {
+        animationReturnTimer.current = setTimeout(() => {
+            setAvatarAnimation('idle');
+        }, 250);
+
         if (pendingGameOver) {
             setTimeout(() => {
                 setPendingGameOver(false);
@@ -271,7 +292,15 @@ export default function Play() {
                 <section className="game-panel opponent-panel col-md-4 order-1">
                     <h2>Opponent</h2>
 
-                    <OpponentAvatar opponent={opponent} animation="idle" />
+                    <OpponentAvatar
+                        opponent={opponent}
+                        animation={avatarAnimation}
+                        onAnimationEnd={() => {
+                            if (avatarAnimation === 'blink') {
+                                setAvatarAnimation('idle');
+                            }
+                        }}
+                    />
 
                     <p className="opponent-name">{opponent.name}</p>
 
