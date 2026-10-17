@@ -6,10 +6,9 @@ import opponentStrategies from '../opponents/opponentStrategies';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
-import OpponentAvatar from '../components/OpponentAvatar';
 
+import OpponentPanel from '../components/opponentPanel';
 
-import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
@@ -345,32 +344,15 @@ export default function Play() {
     return (
         <main className = "container background-table">
             <div className="row">
-                <section className="game-panel opponent-panel col-md-4 order-1">
-                    <h2>Opponent</h2>
-
-                    <OpponentAvatar
-                        opponent={opponent}
-                        animation={avatarAnimation}
-                        onAnimationIteration={() => {
-                            if (avatarAnimation === 'idle' && blinkRequested) {
-                                setBlinkRequested(false);
-                                setAvatarAnimation('blink');
-                            }
-                        }}
-                        onAnimationEnd={() => {
-                            if (avatarAnimation === 'blink') {
-                                setAvatarAnimation('idle');
-                            }
-                        }}
-                    />
-
-                    <p className="opponent-name">{opponent.name}</p>
-
-                    <DialogueBox
-                        text={currentDialogue}
-                        onComplete={handleDialogueComplete}
-                    />
-                </section>
+                <OpponentPanel
+                    opponent={opponent}
+                    animation={avatarAnimation}
+                    blinkRequested={blinkRequested}
+                    setBlinkRequested={setBlinkRequested}
+                    setAvatarAnimation={setAvatarAnimation}
+                    dialogue={currentDialogue}
+                    onDialogueComplete={handleDialogueComplete}
+                />
 
                 <section className="game-panel col-md-8 board-panel order-2">
                     <h2>Computer Board</h2>
