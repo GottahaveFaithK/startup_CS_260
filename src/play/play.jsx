@@ -18,6 +18,8 @@ import GameBoard from '../components/gameBoard';
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
 
+import GameOverModal from '../components/gameOverModal';
+
 export default function Play() {
 
     const { opponentId } = useParams();
@@ -390,63 +392,18 @@ export default function Play() {
                         </h3>
 
                         {gameOver && (
-                            <div className="game-over-overlay">
-                                <div
-                                className={`game-over-modal ${
-                                    isTie ? 'tie' : playerWon ? 'victory' : 'defeat'
-                                }`}
-                                role="dialog"
-                                aria-modal="true"
-                                aria-labelledby="game-over-title"
-                                >
-                                <h2 id="game-over-title">
-                                    {isTie
-                                    ? "It's a Tie!"
-                                    : playerWon
-                                    ? 'Victory!'
-                                    : 'Defeat!'}
-                                </h2>
-
-                                <p className="game-over-subtitle">
-                                    {isTie
-                                    ? 'An even match!'
-                                    : playerWon
-                                    ? `You defeated ${opponent.name}!`
-                                    : `${opponent.name} won this round.`}
-                                </p>
-
-                                <div className="final-scores">
-                                    <div className="final-score">
-                                    <span>You</span>
-                                    <strong>{playerScore}</strong>
-                                    </div>
-
-                                    <span className="score-divider">—</span>
-
-                                    <div className="final-score">
-                                    <span>{opponent.name}</span>
-                                    <strong>{computerScore}</strong>
-                                    </div>
-                                </div>
-
-                                <button
-                                    className={`leaderboard-button ${scoreSubmitted ? 'submitted' : ''}`}
-                                    onClick={handleSubmitScore}
-                                    disabled={scoreSubmitted}
-                                >
-                                    {scoreSubmitted ? 'Submitted ✓' : 'Submit Score'}
-                                </button>
-
-                                <button
-                                    className="play-again-button"
-                                    onClick={playAgain}
-                                >
-                                    Play Again
-                                </button>
-                                </div>
-                            </div>
+                            <GameOverModal
+                                isTie={isTie}
+                                playerWon={playerWon}
+                                opponent={opponent}
+                                playerScore={playerScore}
+                                computerScore={computerScore}
+                                scoreSubmitted={scoreSubmitted}
+                                onSubmitScore={handleSubmitScore}
+                                onPlayAgain={playAgain}
+                            />
                         )}
-                    </div>
+                        </div>
 
                     {showRules && (
                         <div className="rules-overlay">
