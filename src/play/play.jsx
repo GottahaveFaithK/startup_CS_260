@@ -4,6 +4,7 @@ import opponents from '../opponents/opponents';
 
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { chooseVultureMove } from '../opponents/opponentStrategies/vulture';
+import { choosePeacockMove } from '../opponents/opponentStrategies/peacock';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
@@ -14,6 +15,7 @@ import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
+
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
 
@@ -245,7 +247,9 @@ export default function Play() {
 
         const chooseMove = opponentId === 'vulture'
             ? chooseVultureMove
-            : chooseDuckMove;
+            :opponentId === 'peacock'
+                ? choosePeacockMove
+                : chooseDuckMove;
 
         const choice = chooseMove(
             roll,
