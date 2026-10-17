@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './scores.css';
 
+const sampleScores = [
+    { id: 'sample-1', username: 'PlayerOne', score: 42 },
+    { id: 'sample-2', username: 'PlayerTwo', score: 38 },
+    { id: 'sample-3', username: 'Faith', score: 35 },
+    { id: 'sample-4', username: 'PlayerFour', score: 31 },
+    { id: 'sample-5', username: 'PlayerFive', score: 27 }
+];
+
 export default function Scores() {
+    const [scores, setScores] = useState(sampleScores);
+
+    useEffect(() => {
+        const savedScores = JSON.parse(
+            localStorage.getItem('leaderboardScores') || '[]'
+        );
+
+        const combinedScores = [...sampleScores, ...savedScores];
+
+        combinedScores.sort((a, b) => b.score - a.score);
+
+        setScores(combinedScores);
+    }, []);
+
     return (
         <main className="container background-table">
             <section className="leaderboard-panel">
@@ -17,49 +39,25 @@ export default function Scores() {
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>PlayerOne</td>
-                            <td>42</td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>PlayerTwo</td>
-                            <td>38</td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Faith</td>
-                            <td>35</td>
-                        </tr>
-
-                        <tr>
-                            <td>4</td>
-                            <td>PlayerFour</td>
-                            <td>31</td>
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td>PlayerFive</td>
-                            <td>27</td>
-                        </tr>
+                        {scores.map((entry, index) => (
+                            <tr key={entry.id ?? `${entry.username}-${index}`}>
+                                <td>{index + 1}</td>
+                                <td>{entry.username}</td>
+                                <td>{entry.score}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </section>
 
             <section className="live-updates-panel">
                 <h2>Live Updates</h2>
-
                 <p>Leaderboard updates will appear here in real time.</p>
                 <p>Waiting for new scores...</p>
             </section>
 
             <section className="random-fact-panel">
                 <h2>Random Fact</h2>
-
                 <p className="random-fact">
                     A random useless fact from the Useless Facts API will appear here.
                 </p>
