@@ -21,7 +21,7 @@ export default function Scores() {
 
         combinedScores.sort((a, b) => b.score - a.score);
 
-        setScores(combinedScores);
+        setScores(combinedScores.slice(0, 10));
     }, []);
 
     return (
