@@ -52,8 +52,12 @@ export default function Scores() {
 
             <section className="live-updates-panel">
                 <h2>Live Updates</h2>
-                <p>Leaderboard updates will appear here in real time.</p>
-                <p>Waiting for new scores...</p>
+                <p>Recent leaderboard activity:</p>
+                <ul>
+                    <li>Faith submitted a score of 35!</li>
+                    <li>PlayerOne reached the top of the leaderboard!</li>
+                    <li>PlayerTwo finished a match with 38 points!</li>
+                </ul>
             </section>
 
             <section className="random-fact-panel">
