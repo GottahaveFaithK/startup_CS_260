@@ -35,3 +35,6 @@ I learned a lot more when implementing CSS on my project. There are settings to 
 
 ## React
 For this project I used Vite. All references to class need to be switched to className when using react, and the input requires a closing mark in JS when it doesn't in html. Vite is setup to expect images in the public folder, but the public folder is not meant to be part of the path when referencing the images. 
+
+Usestate is like variables, but it keeps track during renders. Things like me keeping track of dice rolls and the dice on the board. 
+Code can be broken into components which are relatively similar to classes. 
