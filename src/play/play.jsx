@@ -14,6 +14,8 @@ import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
 
+import GameBoard from '../components/gameBoard';
+
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
 
@@ -374,22 +376,11 @@ export default function Play() {
                     <h2>Computer Board</h2>
 
                     <table className="game-board">
-                        <tbody>
-                            {computerBoard.map((row, rowIndex) => (
-                                <tr key={rowIndex}>
-                                    {row.map((die, colIndex) => (
-                                        <td className="board-cell" key={colIndex}>
-                                            {die !== null && (
-                                                <span
-                                                    className={`die die-${dieFaces[die - 1]}`}
-                                                    style={{ backgroundImage: `url(${opponent.diceSheet})` }}
-                                                ></span>
-                                            )}
-                                        </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
+                        <GameBoard
+                            board={computerBoard}
+                            dieFaces={dieFaces}
+                            diceSheet={opponent.diceSheet}
+                        />
                     </table>
                 </section>
 
@@ -544,23 +535,12 @@ export default function Play() {
                 <section className="game-panel col-md-8 board-panel order-3 order-md-4">
 
                 <table className="game-board player-board">
-                    <tbody>
-                        {playerBoard.map((row, rowIndex) => (
-                            <tr key={rowIndex}>
-                                {row.map((die, colIndex) => (
-                                    <td
-                                        className="board-cell"
-                                        key={colIndex}
-                                        onClick={() => placeDie(rowIndex, colIndex)}
-                                    >
-                                        {die !== null && (
-                                            <span className={`die die-${dieFaces[die - 1]}`}></span>
-                                        )}
-                                    </td>
-                                ))}
-                            </tr>
-                        ))}
-                    </tbody>
+                    <GameBoard
+                        board={playerBoard}
+                        dieFaces={dieFaces}
+                        onCellClick={placeDie}
+                        boardClassName="player-board"
+                    />
                 </table>
 
                     <h2>Your Board</h2>
