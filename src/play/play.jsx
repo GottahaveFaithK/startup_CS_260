@@ -4,11 +4,12 @@ import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
-import OpponentAvatar from '../components/opponentAvatar';
+import OpponentAvatar from '../components/OpponentAvatar';
 
 
 import DialogueBox from '../components/dialogueBox';
 import duckDialogue from '../opponents/dialogue/duck';
+import vultureDialogue from '../opponents/dialogue/vulture';
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +17,11 @@ export default function Play() {
 
     const { opponentId } = useParams();
     const opponent = opponents[opponentId] ?? opponents.duck;
+    const opponentDialogue = {
+        duck: duckDialogue,
+        vulture: vultureDialogue,
+    }[opponentId] ?? duckDialogue;
+
     const [currentDie, setCurrentDie] = useState(5);
     const [isRolling, setIsRolling] = useState(false)
     const [isRollable, setIsRollable] = useState(true);
@@ -46,14 +52,14 @@ export default function Play() {
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
     function triggerDialogue(trigger) {
-        const line = getDialogue(duckDialogue, trigger);
+        const line = getDialogue(opponentDialogue, trigger);
         if (line === null) return;
 
         clearTimeout(animationReturnTimer.current);
 
         setCurrentDialogue(line);
         setBlinkRequested(false);
-        setAvatarAnimation(duckDialogue[trigger]?.animation ?? 'talk');
+        setAvatarAnimation(opponentDialogue[trigger]?.animation ?? 'talk');
     }
 
     useEffect(() => {
