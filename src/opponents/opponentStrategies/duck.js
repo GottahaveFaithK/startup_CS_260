@@ -64,7 +64,7 @@ export function chooseDuckMove(roll, computerBoard, playerBoard) {
         }
     }
 
-    if (counterCells.length > 0) {
+    if (counterCells.length > 0 && Math.random() < 0.2) {
         const randomIndex = Math.floor(Math.random() * counterCells.length);
         return counterCells[randomIndex];
     }
