@@ -59,7 +59,7 @@ export default function Scores() {
             <section className="random-fact-panel">
                 <h2>Random Fact</h2>
                 <p className="random-fact">
-                    A random useless fact from the Useless Facts API will appear here.
+                    A group of sharks is called a shiver.
                 </p>
             </section>
         </main>
