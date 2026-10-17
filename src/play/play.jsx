@@ -4,7 +4,7 @@ import opponents from '../opponents/opponents';
 import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
-import OpponentAvatar from '../components/OpponentAvatar';
+import OpponentAvatar from '../components/opponentAvatar';
 
 
 import DialogueBox from '../components/dialogueBox';
@@ -38,6 +38,7 @@ export default function Play() {
 
     const [avatarAnimation, setAvatarAnimation] = useState('idle');
     const animationReturnTimer = useRef(null);
+    const [blinkRequested, setBlinkRequested] = useState(false);
 
     function triggerDialogue(trigger) {
         const line = getDialogue(duckDialogue, trigger);
@@ -46,6 +47,7 @@ export default function Play() {
         clearTimeout(animationReturnTimer.current);
 
         setCurrentDialogue(line);
+        setBlinkRequested(false);
         setAvatarAnimation(duckDialogue[trigger]?.animation ?? 'talk');
     }
 
@@ -55,7 +57,7 @@ export default function Play() {
         const delay = 8000 + Math.random() * 4000;
 
         const timer = setTimeout(() => {
-            setAvatarAnimation('blink');
+            setBlinkRequested(true);
         }, delay);
 
         return () => clearTimeout(timer);
@@ -295,6 +297,12 @@ export default function Play() {
                     <OpponentAvatar
                         opponent={opponent}
                         animation={avatarAnimation}
+                        onAnimationIteration={() => {
+                            if (avatarAnimation === 'idle' && blinkRequested) {
+                                setBlinkRequested(false);
+                                setAvatarAnimation('blink');
+                            }
+                        }}
                         onAnimationEnd={() => {
                             if (avatarAnimation === 'blink') {
                                 setAvatarAnimation('idle');

@@ -147,10 +147,11 @@
     40%  { background-position: -384px 0; }
     60%  { background-position: -576px 0; }
     80%  { background-position: -768px 0; }
+    100% { background-position: 0 0; }
 }
 
 .animation-blink {
-    animation: opponent-blink 700ms steps(1, end) 1;
+    animation: opponent-blink 2s steps(1, end) 1;
 }
 
 @keyframes opponent-blink {
@@ -167,7 +168,7 @@
 }
 
 .animation-talk {
-    animation: opponent-talk 400ms steps(1, end) infinite;
+    animation: opponent-talk 600ms steps(1, end) infinite;
 }
 
 @keyframes opponent-talk {
@@ -178,7 +179,7 @@
 }
 
 .animation-talk-happy {
-    animation: opponent-talk-happy 400ms steps(1, end) infinite;
+    animation: opponent-talk-happy 600ms steps(1, end) infinite;
 }
 
 @keyframes opponent-talk-happy {
