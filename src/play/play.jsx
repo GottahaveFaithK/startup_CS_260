@@ -2,9 +2,7 @@ import React,{useState, useEffect, useRef} from 'react';
 import './play.css';
 import opponents from '../opponents/opponents';
 
-import { chooseDuckMove } from '../opponents/opponentStrategies/duck';
-import { chooseVultureMove } from '../opponents/opponentStrategies/vulture';
-import { choosePeacockMove } from '../opponents/opponentStrategies/peacock';
+import opponentStrategies from '../opponents/opponentStrategies';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
@@ -245,11 +243,8 @@ export default function Play() {
             events.push('rollSix');
         }
 
-        const chooseMove = opponentId === 'vulture'
-            ? chooseVultureMove
-            :opponentId === 'peacock'
-                ? choosePeacockMove
-                : chooseDuckMove;
+        const chooseMove = opponentStrategies[opponentId]
+            ?? opponentStrategies.duck;
 
         const choice = chooseMove(
             roll,
