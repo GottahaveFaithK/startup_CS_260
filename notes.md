@@ -38,3 +38,4 @@ For this project I used Vite. All references to class need to be switched to cla
 
 Usestate is like variables, but it keeps track during renders. Things like me keeping track of dice rolls and the dice on the board. 
 Code can be broken into components which are relatively similar to classes. 
+You can stack arrow functions
