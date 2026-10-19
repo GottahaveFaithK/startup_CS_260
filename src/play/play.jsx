@@ -299,7 +299,7 @@ export default function Play() {
             })
         );
 
-        const oldBirdScore = calculateScore(computerBoard);
+        const oldBirdScore = calculateScore(currentComputerBoard);
         const newBirdScore = calculateScore(updatedBoard);
 
         if (newBirdScore - oldBirdScore >= 18) {
@@ -369,13 +369,11 @@ export default function Play() {
                 <section className="game-panel col-md-8 board-panel order-2">
                     <h2>Computer Board</h2>
 
-                    <table className="game-board">
                         <GameBoard
                             board={computerBoard}
                             dieFaces={dieFaces}
                             diceSheet={opponent.diceSheet}
                         />
-                    </table>
                 </section>
 
                 <section className="game-panel col-md-4 order-4 order-md-3">
@@ -483,14 +481,12 @@ export default function Play() {
 
                 <section className="game-panel col-md-8 board-panel order-3 order-md-4">
 
-                <table className="game-board player-board">
                     <GameBoard
                         board={playerBoard}
                         dieFaces={dieFaces}
                         onCellClick={placeDie}
                         boardClassName="player-board"
                     />
-                </table>
 
                     <h2>Your Board</h2>
 
