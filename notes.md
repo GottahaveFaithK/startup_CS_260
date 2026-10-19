@@ -13,6 +13,11 @@ This file represents what I have learned about web programming.
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
 
+## Later Goals
+- Multiplayer
+- Clean up play.jsx
+- potential line from kea about magpie
+
 ## AWS
 
 Ensure AWS is listening to port 80 so you can access it. 
