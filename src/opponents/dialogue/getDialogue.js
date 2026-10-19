@@ -1,4 +1,4 @@
-export function getDialogue(dialogue, trigger) {
+export function getDialogue(dialogue, trigger, previousLine = null) {
   const category = dialogue[trigger];
 
   if (!category || category.lines.length === 0) {
@@ -9,11 +9,19 @@ export function getDialogue(dialogue, trigger) {
     return null;
   }
 
-  const randomIndex = Math.floor(
-    Math.random() * category.lines.length
+  const alternatives = category.lines.filter(
+    line => line !== previousLine
   );
 
-  return category.lines[randomIndex];
+  const availableLines = alternatives.length > 0
+    ? alternatives
+    : category.lines;
+
+  const randomIndex = Math.floor(
+    Math.random() * availableLines.length
+  );
+
+  return availableLines[randomIndex];
 }
 
 const dialoguePriority = {

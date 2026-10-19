@@ -67,7 +67,7 @@ export default function Play() {
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
     function triggerDialogue(trigger) {
-        const line = getDialogue(opponentDialogue, trigger);
+        const line = getDialogue(opponentDialogue, trigger, currentDialogue);
         if (line === null) return;
 
         clearTimeout(animationReturnTimer.current);
