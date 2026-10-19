@@ -33,6 +33,7 @@ export default function Play() {
         peacock: peacockDialogue,
         pigeon: pigeonDialogue,
         kea: keaDialogue,
+        magpie: magpieDialogue
 
     }[opponentId] ?? duckDialogue;
 
@@ -245,6 +246,7 @@ export default function Play() {
         const events = [];
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
+        console.log(roll)
 
         if (roll === 1) {
             events.push('rollOne');
@@ -266,8 +268,10 @@ export default function Play() {
             return false;
         }
 
+        const placedRoll = choice.roll ?? roll;
+        console.log(placedRoll)
         const destroyedPlayerDice = currentPlayerBoard.some(
-            row => row[choice.colIndex] === roll
+            row => row[choice.colIndex] === placedRoll
         );
 
         if (destroyedPlayerDice) {
@@ -280,7 +284,7 @@ export default function Play() {
                     rowIndex === choice.rowIndex &&
                     colIndex === choice.colIndex
                 ) {
-                    return roll;
+                    return placedRoll;
                 }
                 return die;
             })
@@ -288,7 +292,7 @@ export default function Play() {
 
         const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
             row.map((die, colIndex) => {
-                if (colIndex === choice.colIndex && die === roll) {
+                if (colIndex === choice.colIndex && die === placedRoll) {
                     return null;
                 }
                 return die;

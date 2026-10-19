@@ -3,6 +3,7 @@ import { chooseVultureMove } from './vulture';
 import { choosePeacockMove } from './peacock';
 import { choosePigeonMove } from './pigeon';
 import { chooseKeaMove } from './kea';
+import { chooseMagpieMove } from './magpie';
 
 const opponentStrategies = {
     duck: chooseDuckMove,
@@ -10,6 +11,7 @@ const opponentStrategies = {
     peacock: choosePeacockMove,
     pigeon: choosePigeonMove,
     kea: chooseKeaMove,
+    magpie: chooseMagpieMove
 };
 
 export default opponentStrategies;
