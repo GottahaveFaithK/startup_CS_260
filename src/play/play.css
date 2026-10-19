@@ -94,6 +94,16 @@
     transform: translateY(2px);
 }
 
+.roll-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    filter: grayscale(40%);
+}
+
+.roll-button:disabled:hover {
+    background-color: #d9a441;
+}
+
 .score-section {
     margin-bottom: 2rem;
 }
@@ -438,4 +448,61 @@
     color: white;
     border-color: #32663e;
     cursor: default;
+}
+
+.kea-offer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.65);
+}
+
+.kea-offer-modal {
+    width: 100%;
+    max-width: 380px;
+    padding: 30px 24px;
+    box-sizing: border-box;
+    border: 4px solid #3a2a20;
+    border-radius: 12px;
+    background: #f3e2c4;
+    color: #3a2a20;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+    animation: modal-appear 0.25s ease-out;
+}
+
+.kea-offer-modal h2 {
+    margin: 0 0 24px;
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.kea-offer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.kea-offer-buttons button {
+    min-width: 100px;
+    padding: 12px 20px;
+    border: 2px solid #3a2a20;
+    border-radius: 6px;
+    background: #e5c99c;
+    color: #3a2a20;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.kea-offer-buttons button:hover {
+    background: #d9a441;
+}
+
+.kea-offer-buttons button:active {
+    transform: translateY(2px);
 }

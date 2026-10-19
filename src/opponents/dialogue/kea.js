@@ -103,7 +103,38 @@ const keaDialogue = {
     lines: [
         "All tied up? This calls for a rematch!"
     ]
-    }
+    },
+
+    keaRollOffer: {
+      chance: 1,
+      animation: 'talk',
+      lines: [
+          "Can I roll your die this turn?",
+          "Let's test luck by having me roll your die! If that's okay?",
+          "Care to let me take the reins for this roll?"
+      ]
+  },
+
+  keaRollYes: {
+      chance: 1,
+      animation: 'talk-happy',
+      lines: [
+          "Thank you, my most wonderful friend!",
+          "I hope this is better than the likely counterfactual!",
+          "Ohohoho! Let's hope I roll well!",
+          "I won't let you down!"
+      ]
+  },
+
+  keaRollNo: {
+      chance: 1,
+      animation: 'talk',
+      lines: [
+          "Ah, well, yeah that is fair. Continue.",
+          "Right, sorry! Got carried away!",
+          "Didn't mean to overstep friend!"
+      ]
+  }
 };
 
 export default keaDialogue;

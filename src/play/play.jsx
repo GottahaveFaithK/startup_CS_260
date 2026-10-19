@@ -49,6 +49,10 @@ export default function Play() {
 
     const [isComputerTurn, setIsComputerTurn] = useState(false);
 
+    const [showKeaDiceOffer, setShowKeaDiceOffer] = useState(false);
+    const [keaOfferPending, setKeaOfferPending] = useState(false);
+    const [keaRollAccepted, setKeaRollAccepted] = useState(false);
+
     const playerScore = calculateScore(playerBoard);
     const computerScore = calculateScore(computerBoard);
 
@@ -101,6 +105,17 @@ export default function Play() {
         }
     }
 
+    function rollKeaDie() {
+    const roll = Math.random() * 100;
+
+    if (roll < 12) return 1;
+    if (roll < 26) return 2;
+    if (roll < 42) return 3;
+    if (roll < 60) return 4;
+    if (roll < 80) return 5;
+    return 6;
+}
+
     function handleDialogueComplete() {
         animationReturnTimer.current = setTimeout(() => {
             setAvatarAnimation('idle');
@@ -111,6 +126,23 @@ export default function Play() {
                 setPendingGameOver(false);
                 setGameOver(true);
             }, 500);
+        }
+
+        if (keaOfferPending) {
+            setKeaOfferPending(false);
+            setShowKeaDiceOffer(true);
+        }
+
+        if (keaRollAccepted) {
+            setKeaRollAccepted(false);
+
+            setIsRolling(true);
+
+            setTimeout(() => {
+                setCurrentDie(rollKeaDie());
+                setIsRolling(false);
+                setIsRollable(false);
+            }, 1500);
         }
     }
 
@@ -237,7 +269,16 @@ export default function Play() {
             setIsComputerTurn(false);
 
             if (!gameEnded) {
-                setIsRollable(true);
+                const keaEventTriggered =
+                    opponentId === 'kea' && Math.random() < 1 / 50;
+
+                if (keaEventTriggered) {
+                    setKeaOfferPending(true);
+                    setIsRollable(false);
+                    triggerDialogue('keaRollOffer');
+                } else {
+                    setIsRollable(true);
+                }
             }
         }, 1000);
     }
@@ -456,6 +497,45 @@ export default function Play() {
                                     The game ends when either board is full. The player with the
                                     highest score wins. If both scores are equal, the game is a tie.
                                 </p>
+                            </div>
+                        </div>
+                    )}
+
+                    {showKeaDiceOffer && (
+                        <div className="kea-offer-overlay">
+                            <div
+                                className="kea-offer-modal"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-labelledby="kea-offer-title"
+                            >
+                                <h2 id="kea-offer-title">
+                                    Let Kea roll your die this turn?
+                                </h2>
+
+                                <div className="kea-offer-buttons">
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setShowKeaDiceOffer(false);
+                                            setKeaRollAccepted(true);
+                                            triggerDialogue('keaRollYes');
+                                        }}
+                                    >
+                                        Yes
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => {
+                                            setShowKeaDiceOffer(false);
+                                            triggerDialogue('keaRollNo');
+                                            setIsRollable(true);
+                                        }}
+                                    >
+                                        No
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     )}
