@@ -12,6 +12,9 @@ import OpponentPanel from '../components/opponentPanel';
 import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
+import pigeonDialogue from '../opponents/dialogue/pigeon';
+import keaDialogue from '../opponents/dialogue/kea';
+import magpieDialogue from '../opponents/dialogue/magpie'
 
 import GameBoard from '../components/gameBoard';
 
@@ -28,6 +31,9 @@ export default function Play() {
         duck: duckDialogue,
         vulture: vultureDialogue,
         peacock: peacockDialogue,
+        pigeon: pigeonDialogue,
+        kea: keaDialogue,
+
     }[opponentId] ?? duckDialogue;
 
     const [currentDie, setCurrentDie] = useState(5);
