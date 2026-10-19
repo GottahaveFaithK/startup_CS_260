@@ -95,8 +95,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [X] **All functionality implemented or mocked out** - All game functionality has been mocked out (excluding three optional additional opponents that will be added later today). The leaderboard and login has fake functionality using local storage for the current user and scores.
-- [X] **Hooks** - I used useState, useRef, and useEffect to track information throughout the game. UseState was used for keeping track of the board, dice rolls, gamestate, etc. 
+- [X] **All functionality implemented or mocked out** - All game functionality has been mocked out. The leaderboard and login has fake functionality using local storage for the current user and scores, and there is a hardcoded fake representation of the random fact API.
+- [X] **Hooks** - I used useState, useRef, and useEffect to track information throughout the game. UseState was used for keeping track of the board, dice rolls, gamestate, etc.
+UseState also tracked the animation states and the dialogue states and effects, as well as what opponent had been selected.
 
 ## 🚀 Service deliverable
 
