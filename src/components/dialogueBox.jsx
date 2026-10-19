@@ -1,7 +1,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 
-function DialogueBox({ text, speed = 90, onComplete }) {
+function DialogueBox({ text, speed = 65, onComplete }) {
     const [visibleText, setVisibleText] = useState('');
     const onCompleteRef = useRef(onComplete);
 
