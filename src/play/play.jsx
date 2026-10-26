@@ -270,7 +270,7 @@ export default function Play() {
 
             if (!gameEnded) {
                 const keaEventTriggered =
-                    opponentId === 'kea' && Math.random() < 1 / 50;
+                    opponentId === 'kea' && Math.random() < 1 / 100;
 
                 if (keaEventTriggered) {
                     setKeaOfferPending(true);
