@@ -1,3 +1,4 @@
+import './opponentAvatar.css';
 
 function OpponentAvatar({ opponent, animation = 'idle', onAnimationEnd, onAnimationIteration}) {
     const animationClass = `animation-${animation}`;

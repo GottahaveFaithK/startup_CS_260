@@ -1,0 +1,63 @@
+.opponent-avatar {
+    width: 192px;
+    height: 192px;
+    margin: 1rem auto;
+
+    background-repeat: no-repeat;
+    background-size: 4416px 192px;
+    background-position: 0 0;
+
+    image-rendering: pixelated;
+}
+
+.animation-idle {
+    animation: opponent-idle 1s infinite steps(1, end);
+}
+
+@keyframes opponent-idle {
+    0%   { background-position: 0 0; }
+    20%  { background-position: -192px 0; }
+    40%  { background-position: -384px 0; }
+    60%  { background-position: -576px 0; }
+    80%  { background-position: -768px 0; }
+    100% { background-position: 0 0; }
+}
+
+.animation-blink {
+    animation: opponent-blink 2s steps(1, end) 1;
+}
+
+@keyframes opponent-blink {
+    0%   { background-position: -960px 0; }
+    10%  { background-position: -1152px 0; }
+    20%  { background-position: -1344px 0; }
+    30%  { background-position: -1536px 0; }
+    40%  { background-position: -1728px 0; }
+    50%  { background-position: -1920px 0; }
+    60%  { background-position: -2112px 0; }
+    70%  { background-position: -2304px 0; }
+    80%  { background-position: -2496px 0; }
+    90%  { background-position: -2688px 0; }
+}
+
+.animation-talk {
+    animation: opponent-talk 600ms steps(1, end) infinite;
+}
+
+@keyframes opponent-talk {
+    0%   { background-position: -2880px 0; }
+    25%  { background-position: -3072px 0; }
+    50%  { background-position: -3264px 0; }
+    75%  { background-position: -3456px 0; }
+}
+
+.animation-talk-happy {
+    animation: opponent-talk-happy 600ms steps(1, end) infinite;
+}
+
+@keyframes opponent-talk-happy {
+    0%   { background-position: -3648px 0; }
+    25%  { background-position: -3840px 0; }
+    50%  { background-position: -4032px 0; }
+    75%  { background-position: -4224px 0; }
+}
