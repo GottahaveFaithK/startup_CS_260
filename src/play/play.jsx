@@ -8,6 +8,7 @@ import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
 
 import OpponentPanel from './components/OpponentPanel';
+import ScorePanel from './components/ScorePanel';
 
 import RulesModal from './components/RulesModal';
 import KeaOfferModal from './components/KeaOfferModal';
@@ -422,26 +423,12 @@ export default function Play() {
 
                 <section className="game-panel col-md-4 order-4 order-md-3">
                     <div className="score-section">
-                        <div className="score-title-row">
-                            <h2>Score</h2>
-
-                            <button
-                                className="info-button"
-                                onClick={() => setShowRules(true)}
-                                aria-label="Show game rules"
-                                title="Game rules"
-                            >
-                                <img src="/info.png" alt="" />
-                            </button>
-                        </div>
-
-                        <h3 className="score-heading">
-                            Your Score: {playerScore}
-                        </h3>
-
-                        <h3 className="score-heading">
-                            {opponent.name}'s Score: {computerScore}
-                        </h3>
+                        <ScorePanel
+                            playerScore={playerScore}
+                            computerScore={computerScore}
+                            opponent={opponent}
+                            onShowRules={() => setShowRules(true)}
+                        />
 
                         {gameOver && (
                             <GameOverModal

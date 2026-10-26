@@ -104,10 +104,6 @@
     background-color: #d9a441;
 }
 
-.score-section {
-    margin-bottom: 2rem;
-}
-
 .current-die-section {
     border-top: 3px solid #3a2a20;
     padding-top: 1.5rem;
@@ -232,9 +228,6 @@
     overflow-wrap: anywhere;
 }
 
-.score-heading {
-  font-size: 14px;
-}
 
 .game-over-overlay {
   position: fixed;
@@ -345,43 +338,6 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
-
-
-.score-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-bottom: 1rem;
-}
-
-.score-title-row h2 {
-    margin: 0;
-}
-
-.info-button {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    line-height: 0;
-}
-
-.info-button img {
-    display: block;
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    image-rendering: pixelated;
-}
-
-.info-button:hover {
-    transform: translateY(-50%) scale(1.1);
 }
 
 .leaderboard-button.submitted {
