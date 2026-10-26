@@ -16,7 +16,8 @@ const magpieDialogue = {
       "Ehehehe...",
       "Well would you look at that.",
       "A six? How shocking.",
-      "Another six!"
+      "Another six!",
+      "I love these dice."
     ]
   },
 
@@ -27,7 +28,8 @@ const magpieDialogue = {
       "How did this happen? Do I need new dice?",
       "Fine, fine, you win.",
       "I thought I had the advantage?",
-      "This doesn't make sense."
+      "This doesn't make sense.",
+      "Are you cheating? I can respect that."
     ]
   },
 
@@ -39,7 +41,9 @@ const magpieDialogue = {
       "Wow! What a *lucky* game!",
       "Don't question the rolls darling, I won fair and square.",
       "Another win for me!",
-      "Ehehehehehe..."
+      "Ehehehehehe...",
+      "I can't believe I got so many sixes!",
+      "Don't make that face."
     ]
   },
 
@@ -49,7 +53,8 @@ const magpieDialogue = {
     lines: [
       "Hey! Don't touch those!",
       "My dice!!!",
-      "Stop it!"
+      "Stop it!",
+      "Why do you hate my dice so much?"
     ]
   },
 
@@ -59,7 +64,7 @@ const magpieDialogue = {
     lines: [
       "Yoink!",
       "You won't be needing these.",
-      "No more of those dull dice."
+      "No more of those dull dice.",
     ]
   },
 
@@ -81,7 +86,8 @@ const magpieDialogue = {
       "Can't stop me!",
       "Hehe, another great move.",
       "Here I go again!",
-      "I think I'm going to win this!"
+      "I think I'm going to win this!",
+      "Watch and learn darling."
     ]
   },
 
@@ -89,7 +95,8 @@ const magpieDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-      "Ehehehe, I have a good feeling about this match."
+      "Ehehehe, I have a good feeling about this match.",
+      "Feeling lucky?"
     ]
   },
 
