@@ -9,6 +9,9 @@ import { isBoardFull } from './game/gameRules';
 
 import OpponentPanel from './components/OpponentPanel';
 
+import RulesModal from './components/RulesModal';
+import KeaOfferModal from './components/KeaOfferModal';
+
 import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
 import vultureDialogue from '../opponents/dialogue/vulture';
@@ -270,7 +273,7 @@ export default function Play() {
 
             if (!gameEnded) {
                 const keaEventTriggered =
-                    opponentId === 'kea' && Math.random() < 1 / 100;
+                    opponentId === 'kea' && Math.random() < 1/100;
 
                 if (keaEventTriggered) {
                     setKeaOfferPending(true);
@@ -454,90 +457,21 @@ export default function Play() {
                         )}
                         </div>
 
-                    {showRules && (
-                        <div className="rules-overlay">
-                            <div
-                                className="rules-modal"
-                                role="dialog"
-                                aria-modal="true"
-                                aria-labelledby="rules-title"
-                            >
-                                <button
-                                    className="rules-close-button"
-                                    onClick={() => setShowRules(false)}
-                                    aria-label="Close rules"
-                                >
-                                    ✕
-                                </button>
-
-                                <h2 id="rules-title">How to Play</h2>
-
-                                <h3>Objective</h3>
-                                <p>Score more points than your opponent by the end of the game.</p>
-
-                                <h3>Taking Your Turn</h3>
-                                <p>Roll the die, then place it in an empty space on your board. 
-                                    Your opponent will then do the same on it's turn.</p>
-
-                                <h3>Scoring</h3>
-                                <p>
-                                    Each die scores its face value.
-                                    Matching dice in the same column multiply their added value by the number of matching dice.
-                                    Ex: Two 1's in the same column (1 + 1) * 2 = 4 and Three 6's in the same column (6 + 6 + 6) * 3 = 54
-                                </p>
-
-                                <h3>Destroying Dice</h3>
-                                <p>
-                                    When you place a die, it destroys any dice of the same number in your opponents opposing column.
-                                    Your opponent can do the same to you
-                                </p>
-
-                                <h3>Ending the Game</h3>
-                                <p>
-                                    The game ends when either board is full. The player with the
-                                    highest score wins. If both scores are equal, the game is a tie.
-                                </p>
-                            </div>
-                        </div>
+                   {showRules && (
+                        <RulesModal onClose={() => setShowRules(false)} />
                     )}
 
                     {showKeaDiceOffer && (
-                        <div className="kea-offer-overlay">
-                            <div
-                                className="kea-offer-modal"
-                                role="dialog"
-                                aria-modal="true"
-                                aria-labelledby="kea-offer-title"
-                            >
-                                <h2 id="kea-offer-title">
-                                    Let Kea roll your die this turn?
-                                </h2>
-
-                                <div className="kea-offer-buttons">
-                                    <button
-                                        type="button"
-                                        onClick={() => {
+                        <KeaOfferModal
+                            onAccept={() => {
                                             setShowKeaDiceOffer(false);
                                             setKeaRollAccepted(true);
-                                            triggerDialogue('keaRollYes');
-                                        }}
-                                    >
-                                        Yes
-                                    </button>
-
-                                    <button
-                                        type="button"
-                                        onClick={() => {
+                                            triggerDialogue('keaRollYes');}}
+                            onDecline={() => {
                                             setShowKeaDiceOffer(false);
                                             triggerDialogue('keaRollNo');
-                                            setIsRollable(true);
-                                        }}
-                                    >
-                                        No
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                                            setIsRollable(true);}}
+                        />
                     )}
 
                     <div className="current-die-section">
