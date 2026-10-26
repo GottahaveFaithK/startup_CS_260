@@ -49,7 +49,8 @@ const duckDialogue = {
     lines: [
       "I was using those.",
       "Hey!",
-      "Wait!"
+      "Wait!",
+      "Give me a moment, I'm not sure what to do now."
     ]
   },
 
@@ -59,7 +60,8 @@ const duckDialogue = {
     lines: [
       "I don't like those dice of yours.",
       "Let's clear the board.",
-      "Don't mind me."
+      "Don't mind me.",
+      "My turn to remove dice!"
     ]
   },
 
@@ -70,7 +72,8 @@ const duckDialogue = {
       "Woah.",
       "Solid!",
       "Great move!",
-      "I might be in trouble."
+      "I might be in trouble.",
+      "I don't like the look of that."
     ]
   },
 
@@ -80,7 +83,8 @@ const duckDialogue = {
     lines: [
       "I think I'm getting the hang of this.",
       "Things are looking up!",
-      "Yes!"
+      "Yes!",
+      "Did you see that?"
     ]
   },
 
@@ -88,7 +92,8 @@ const duckDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-      "Good luck!"
+      "Good luck!",
+      "I'm still figuring out some of the rules, hope that is alright!"
     ]
   },
 
@@ -96,7 +101,9 @@ const duckDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-        "Well, that's a funny way to end things."
+        "Well, that's a funny way to end things.",
+        "I didn't know we could do that",
+        "Huh! I've never tied before!"
     ]
     }
 };
