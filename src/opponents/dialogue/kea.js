@@ -19,7 +19,8 @@ const keaDialogue = {
     lines: [
       "Highest scoring potential sometimes causes overthinking, don't you think?",
       "Decisions, decisions.",
-      "Six in the mix, my board it may fix!"
+      "Six in the mix, my board it may fix!",
+      "Ohoho!"
     ]
   },
 
@@ -31,7 +32,7 @@ const keaDialogue = {
       "Rematch, please! This is the most fun I have had in a while.",
       "Again please! I have a few things I want to test.",
       "A win well deserved!",
-      "Another match!"
+      "Another match!",
     ]
   },
 
@@ -42,7 +43,8 @@ const keaDialogue = {
       "Another round? I think you can win the next one.",
       "Ah, that's unlucky friend.",
       "Not bad!",
-      "I'm always down for a rematch if you want?"
+      "I'm always down for a rematch if you want?",
+      "Winning the rematch requires a positive change of luck or strategy. What are you betting on?"
     ]
   },
 
@@ -53,7 +55,8 @@ const keaDialogue = {
       "Pruning my board? How fun!",
       "Time to pivot!",
       "Ohohoho! It's on!",
-      "Is this why the singular is called die? Ha!"
+      "Is this why the singular is called die? Ha!",
+      "Oh, I might have needed that."
     ]
   },
 
@@ -63,7 +66,8 @@ const keaDialogue = {
     lines: [
       "Let's tidy things up!",
       "The die shall die!",
-      "Pop goes the weasel! Do you know where that phrase came from? I don't!"
+      "Pop goes the weasel! Do you know where that phrase came from? I don't!",
+      "Time to go on the offensive! Or, well one could argue removing dice is actually defensive. Thoughts?"
     ]
   },
 
@@ -75,7 +79,8 @@ const keaDialogue = {
       "My position is seeming precarious!",
       "I love it!",
       "Writing that one down.",
-      "Delightful! Do it again!"
+      "Delightful! Do it again!",
+      "Lucky duck! Well... Duck isn't actually unusually lucky. But you seem to be!"
     ]
   },
 
@@ -93,7 +98,9 @@ const keaDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-      "Oooh! Let's play a game!"
+      "Oooh! Let's play a game!",
+      "Ohoho! I cannot wait!",
+      "What's your game plan? Wait! Don't tell me, I want to see it."
     ]
   },
 
@@ -101,7 +108,8 @@ const keaDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-        "All tied up? This calls for a rematch!"
+        "All tied up? This calls for a rematch!",
+        "A tie? Now that is actually hard to do!"
     ]
     },
 
@@ -111,7 +119,8 @@ const keaDialogue = {
       lines: [
           "Can I roll your die this turn?",
           "Let's test luck by having me roll your die! If that's okay?",
-          "Care to let me take the reins for this roll?"
+          "Care to let me take the reins for this roll?",
+          "Let me roll your die this round! For science!"
       ]
   },
 
