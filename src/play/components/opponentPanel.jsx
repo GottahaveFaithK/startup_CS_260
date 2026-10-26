@@ -1,6 +1,6 @@
 import React from 'react';
 import OpponentAvatar from './OpponentAvatar';
-import DialogueBox from './dialogueBox';
+import DialogueBox from './DialogueBox';
 
 function OpponentPanel({
     opponent,

@@ -7,7 +7,7 @@ import opponentStrategies from '../opponents/opponentStrategies';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
 
-import OpponentPanel from './components/opponentPanel';
+import OpponentPanel from './components/OpponentPanel';
 
 import duckDialogue from '../opponents/dialogue/duck';
 import peacockDialogue from '../opponents/dialogue/peacock';
@@ -16,12 +16,12 @@ import pigeonDialogue from '../opponents/dialogue/pigeon';
 import keaDialogue from '../opponents/dialogue/kea';
 import magpieDialogue from '../opponents/dialogue/magpie'
 
-import GameBoard from './components/gameBoard';
+import GameBoard from './components/GameBoard';
 
 import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
 import { useParams } from 'react-router-dom';
 
-import GameOverModal from './components/gameOverModal';
+import GameOverModal from './components/GameOverModal';
 
 export default function Play() {
 
