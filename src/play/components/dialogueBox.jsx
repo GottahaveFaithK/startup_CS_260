@@ -1,5 +1,6 @@
-
 import { useEffect, useState, useRef } from 'react';
+import './dialogueBox.css';
+
 
 function DialogueBox({ text, speed = 65, onComplete }) {
     const [visibleText, setVisibleText] = useState('');

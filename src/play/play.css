@@ -131,41 +131,6 @@
     }
 }
 
-
-.opponent-panel {
-    text-align: center;
-}
-
-.opponent-name {
-    text-align: center;
-    font-size: 0.85rem;
-    margin: 0.5rem 0;
-}
-
-.dialogue-box {
-    background-color: #f2e6d0;
-    border: 3px solid #3a2a20;
-    max-width: 300px;
-    height: 4rem;
-    box-sizing: border-box;
-    margin: 1rem auto 0;
-    padding: 0.75rem 1rem;
-
-    display: flex;
-    align-items: center;
-    overflow-y: auto;
-}
-
-.opponent-dialogue {
-    margin: 0;
-    width: 100%;
-    color: #2b211b;
-    font-size: 0.8rem;
-    line-height: 1.6;
-    overflow-wrap: anywhere;
-}
-
-
 .game-over-overlay {
   position: fixed;
   inset: 0;

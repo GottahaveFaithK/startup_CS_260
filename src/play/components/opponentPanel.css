@@ -1,0 +1,9 @@
+.opponent-panel {
+    text-align: center;
+}
+
+.opponent-name {
+    text-align: center;
+    font-size: 0.85rem;
+    margin: 0.5rem 0;
+}
