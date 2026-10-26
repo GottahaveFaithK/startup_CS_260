@@ -27,7 +27,8 @@ const vultureDialogue = {
     lines: [
       "Well done.",
       "You executed a better if less satisfying strategy.",
-      "I accept this defeat."
+      "I accept this defeat.",
+      "So this is how it ends. Very well."
     ]
   },
 
@@ -48,8 +49,10 @@ const vultureDialogue = {
     lines: [
       "Such a rush, isn't it?",
       "Good.",
-      "Adequate",
-      "Do you find it as rewarding as I do?"
+      "Adequate.",
+      "Do you find it as rewarding as I do?",
+      "Precisely.",
+      "You are learning. Good."
     ]
   },
 
@@ -63,7 +66,9 @@ const vultureDialogue = {
       "This is why I play.",
       "Destroyed.",
       "Watch the score fall.",
-      "Yes."
+      "Yes.",
+      "I could do this all day.",
+      "If you don't like it, don't challenge me to a game."
     ]
   },
 
@@ -83,7 +88,8 @@ const vultureDialogue = {
     lines: [
       "A needed placement.",
       "Already thinking of how to destroy this arrangement? Good.",
-      "..."
+      "...",
+      "Unforunately I can't destroy any of your dice this turn."
     ]
   },
 
