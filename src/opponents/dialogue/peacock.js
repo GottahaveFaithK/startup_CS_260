@@ -32,7 +32,11 @@ const peacockDialogue = {
       "Why you must have cheated!",
       "I don't understand.",
       "Could I speak to some sort of referee or rule keeper?",
-      "This means nothing! Nothing!"
+      "This means nothing! Nothing!",
+      "This is a worthless game anyway.",
+      "Not. A. Word.",
+      "No! This isn't over!",
+      "I let you win! Yes, I did. Express your gratitude!"
     ]
   },
 
@@ -42,7 +46,9 @@ const peacockDialogue = {
     lines: [
       "I win, how utterly predictable.",
       "All according to my master plan.",
-      "Don't feel bad, you lost to the best after all."
+      "Don't feel bad, you lost to the best after all.",
+      "You may express your adoration now.",
+      "You weren't even worth the effort."
     ]
   },
 
@@ -53,7 +59,8 @@ const peacockDialogue = {
       "How uncouth!",
       "Well I never!",
       "How did you do that?",
-      "You will regret this!"
+      "You will regret this!",
+      "I demand you stop that behavior this instant!"
     ]
   },
 
@@ -74,7 +81,8 @@ const peacockDialogue = {
       "Dumb luck.",
       "I doubt that is even legal.",
       "This changes nothing!",
-      "Harumph."
+      "Harumph.",
+      "I'm allowing you to do that. Let you have a little hope."
     ]
   },
 
@@ -84,7 +92,8 @@ const peacockDialogue = {
     lines: [
       "Yet another masterstroke by me.",
       "You've already lost.",
-      "You can forfeit anytime. "
+      "You can forfeit anytime.",
+      "I make great moves as this with such regularity that it's just baseline."
     ]
   },
 
@@ -93,7 +102,8 @@ const peacockDialogue = {
     animation: 'talk',
     lines: [
       "You dare challenge the master?",
-      "Prepare yourself to be truly humbled."
+      "Prepare yourself to be truly humbled.",
+      "I do hope you make this worth my time."
     ]
   },
 
@@ -101,7 +111,8 @@ const peacockDialogue = {
     chance: 1,
     animation: 'talk',
     lines: [
-        "We are not equals!"
+        "We are not equals!",
+        "Don't act so smug!"
     ]
     }
 };
