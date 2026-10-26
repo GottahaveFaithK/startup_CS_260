@@ -7,7 +7,8 @@ const pigeonDialogue = {
       "Can we switch dice?",
       "Oh... joy.",
       "I know it's statistics, but I think these dice hate me.",
-      "At least you know these dice arent loaded."
+      "At least you know these dice arent loaded.",
+      "This seems to happen more than probability suggests"
     ]
   },
 
@@ -17,7 +18,9 @@ const pigeonDialogue = {
     lines: [
       "Honestly I expected a 1.",
       "Let me have this.",
-      "It's the small things."
+      "It's the small things.",
+      "A 6? How novel.",
+      "Rolling like magpie."
     ]
   },
 
@@ -29,7 +32,8 @@ const pigeonDialogue = {
       "Congrats.",
       "I'm not terrible, am I?",
       "Please tell me you have a lot of experience in the game.",
-      "How...nevermind. Good game."
+      "How...nevermind. Good game.",
+      "I lost again?"
     ]
   },
 
@@ -52,7 +56,8 @@ const pigeonDialogue = {
       "Oh...",
       "Yeah, I would have done the same.",
       "Please don't.",
-      "Fair."
+      "Fair.",
+      "Thanks, Vulture."
     ]
   },
 
@@ -83,7 +88,8 @@ const pigeonDialogue = {
       "Finally!",
       "I'm happy with that one.",
       "Please don't attack this column.",
-      "Don't get excited, don't get excited. The game isn't won yet."
+      "Don't get excited, don't get excited. The game isn't won yet.",
+      "Is luck on my side for once?"
     ]
   },
 
@@ -92,7 +98,8 @@ const pigeonDialogue = {
     animation: 'talk',
     lines: [
       "Everyone assumes I'm the worst player. Peacock doesn't even know how to play!",
-      "Here we go again."
+      "Here we go again.",
+      "I'm a better player than you think. Watch."
     ]
   },
 
