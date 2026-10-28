@@ -1,8 +1,9 @@
 import React,{useState, useEffect, useRef} from 'react';
 import './play.css';
-import opponents from '../opponents/opponents';
 
+import opponents from '../opponents/opponents';
 import opponentStrategies from '../opponents/opponentStrategies';
+import opponentDialogue from '../opponents/dialogue';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { saveScore } from '../scores/scoreStorage';
@@ -19,13 +20,6 @@ import ScorePanel from './components/ScorePanel';
 import RulesModal from './components/RulesModal';
 import KeaOfferModal from './components/KeaOfferModal';
 
-import duckDialogue from '../opponents/dialogue/duck';
-import peacockDialogue from '../opponents/dialogue/peacock';
-import vultureDialogue from '../opponents/dialogue/vulture';
-import pigeonDialogue from '../opponents/dialogue/pigeon';
-import keaDialogue from '../opponents/dialogue/kea';
-import magpieDialogue from '../opponents/dialogue/magpie'
-
 import GameBoard from './components/GameBoard';
 
 import useOpponentDialogue from './hooks/useOpponentDialogue';
@@ -37,15 +31,7 @@ export default function Play() {
 
     const { opponentId } = useParams();
     const opponent = opponents[opponentId] ?? opponents.duck;
-    const opponentDialogue = {
-        duck: duckDialogue,
-        vulture: vultureDialogue,
-        peacock: peacockDialogue,
-        pigeon: pigeonDialogue,
-        kea: keaDialogue,
-        magpie: magpieDialogue
-
-    }[opponentId] ?? duckDialogue;
+    const dialogue = opponentDialogue[opponentId] ?? opponentDialogue.duck;
 
     const [currentDie, setCurrentDie] = useState(5);
     const [isRolling, setIsRolling] = useState(false)
