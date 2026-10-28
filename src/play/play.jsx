@@ -8,7 +8,7 @@ import opponentDialogue from '../opponents/dialogue';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { saveScore } from '../scores/scoreStorage';
-import { isBoardFull } from './game/gameRules';
+import { isBoardFull, createEmptyBoard } from './game/boardUtils';
 
 import {
     applyPlayerMove,
@@ -34,14 +34,15 @@ export default function Play() {
     const dialogue = opponentDialogue[opponentId] ?? opponentDialogue.duck;
 
     const [currentDie, setCurrentDie] = useState(5);
+    const [computerDie, setComputerDie] = useState(null);
     const [isRolling, setIsRolling] = useState(false)
     const [isRollable, setIsRollable] = useState(true);
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
-    const [playerBoard, setPlayerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
 
-    const [computerBoard, setComputerBoard] = useState([[null, null, null], [null, null, null], [null, null, null]]);
-    const [computerDie, setComputerDie] = useState(null);
+    const [playerBoard, setPlayerBoard] = useState(createEmptyBoard);
+    const [computerBoard, setComputerBoard] = useState(createEmptyBoard);
+
 
     const [isComputerTurn, setIsComputerTurn] = useState(false);
 
@@ -111,18 +112,8 @@ export default function Play() {
     }
 
     function playAgain() {
-        setPlayerBoard([
-            [null, null, null],
-            [null, null, null],
-            [null, null, null]
-        ]);
-
-        setComputerBoard([
-            [null, null, null],
-            [null, null, null],
-            [null, null, null]
-        ]);
-
+        setPlayerBoard(createEmptyBoard());
+        setComputerBoard(createEmptyBoard());
         setCurrentDie(5);
         setComputerDie(null);
         setGameOver(false);

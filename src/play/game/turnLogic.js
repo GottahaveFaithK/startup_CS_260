@@ -1,5 +1,5 @@
 import { calculateScore } from './scoring';
-import { isBoardFull } from './gameRules';
+import { isBoardFull } from './boardUtils';
 
 
     function getGameOverTrigger(playerBoard, computerBoard) {
