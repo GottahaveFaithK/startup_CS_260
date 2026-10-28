@@ -70,7 +70,7 @@ export default function Play() {
     triggerDialogue,
     triggerPriorityDialogue,
     handleDialogueAnimationComplete
-} = useOpponentDialogue(opponentDialogue);
+} = useOpponentDialogue(dialogue);
 
     useEffect(() => {
         triggerDialogue('gameStart');
