@@ -19,12 +19,13 @@ import OpponentPanel from './components/OpponentPanel';
 import ScorePanel from './components/ScorePanel';
 
 import RulesModal from './components/RulesModal';
+import GameOverModal from './components/GameOverModal';
 import KeaOfferModal from './components/KeaOfferModal';
 
 import GameBoard from './components/GameBoard';
 
 import useOpponentDialogue from './hooks/useOpponentDialogue';
-import GameOverModal from './components/GameOverModal';
+import useKeaEvent from './hooks/useKeaEvent';
 
 export default function Play() {
 
@@ -44,9 +45,16 @@ export default function Play() {
 
     const [isComputerTurn, setIsComputerTurn] = useState(false);
 
-    const [showKeaDiceOffer, setShowKeaDiceOffer] = useState(false);
-    const [keaOfferPending, setKeaOfferPending] = useState(false);
-    const [keaRollAccepted, setKeaRollAccepted] = useState(false);
+    const {
+        showKeaDiceOffer,
+        setShowKeaDiceOffer,
+        keaOfferPending,
+        setKeaOfferPending,
+        keaRollAccepted,
+        setKeaRollAccepted,
+        rollKeaDie,
+        shouldTriggerKeaEvent
+    } = useKeaEvent();
 
     const playerScore = calculateScore(playerBoard);
     const computerScore = calculateScore(computerBoard);
@@ -74,17 +82,6 @@ export default function Play() {
     useEffect(() => {
         triggerDialogue('gameStart');
     }, [triggerDialogue]);
-
-    function rollKeaDie() {
-        const roll = Math.random() * 100;
-
-        if (roll < 12) return 1;
-        if (roll < 26) return 2;
-        if (roll < 42) return 3;
-        if (roll < 60) return 4;
-        if (roll < 80) return 5;
-        return 6;
-    }
 
     function handleDialogueComplete() {
         handleDialogueAnimationComplete();
@@ -191,10 +188,7 @@ export default function Play() {
             setIsComputerTurn(false);
 
             if (!gameEnded) {
-                const keaEventTriggered =
-                    opponentId === 'kea' && Math.random() < 1 / 100;
-
-                if (keaEventTriggered) {
+                if (shouldTriggerKeaEvent(opponentId)) {
                     setKeaOfferPending(true);
                     setIsRollable(false);
                     triggerDialogue('keaRollOffer');
