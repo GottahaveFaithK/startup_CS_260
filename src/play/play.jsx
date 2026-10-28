@@ -74,7 +74,7 @@ export default function Play() {
 
     useEffect(() => {
         triggerDialogue('gameStart');
-    }, []);
+    }, [triggerDialogue]);
 
     function rollKeaDie() {
     const roll = Math.random() * 100;
