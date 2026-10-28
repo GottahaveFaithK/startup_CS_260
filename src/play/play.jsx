@@ -28,7 +28,7 @@ import magpieDialogue from '../opponents/dialogue/magpie'
 
 import GameBoard from './components/GameBoard';
 
-import { getDialogue, selectDialogueTrigger } from '../opponents/dialogue/getDialogue';
+import useOpponentDialogue from './hooks/useOpponentDialogue';
 import { useParams } from 'react-router-dom';
 
 import GameOverModal from './components/GameOverModal';
@@ -70,50 +70,25 @@ export default function Play() {
     const playerWon = playerScore > computerScore;
     const isTie = playerScore === computerScore;
 
-    const [currentDialogue, setCurrentDialogue] = useState('');
     const [pendingGameOver, setPendingGameOver] = useState(false);
-
-    const [avatarAnimation, setAvatarAnimation] = useState('idle');
-    const animationReturnTimer = useRef(null);
-    const [blinkRequested, setBlinkRequested] = useState(false);
 
     const [showRules, setShowRules] = useState(false);
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
-    function triggerDialogue(trigger) {
-        const line = getDialogue(opponentDialogue, trigger, currentDialogue);
-        if (line === null) return;
-
-        clearTimeout(animationReturnTimer.current);
-
-        setCurrentDialogue(line);
-        setBlinkRequested(false);
-        setAvatarAnimation(opponentDialogue[trigger]?.animation ?? 'talk');
-    }
-
-    useEffect(() => {
-        if (avatarAnimation !== 'idle') return;
-
-        const delay = 8000 + Math.random() * 4000;
-
-        const timer = setTimeout(() => {
-            setBlinkRequested(true);
-        }, delay);
-
-        return () => clearTimeout(timer);
-    }, [avatarAnimation]);
+    const {
+    currentDialogue,
+    avatarAnimation,
+    blinkRequested,
+    setBlinkRequested,
+    setAvatarAnimation,
+    triggerDialogue,
+    triggerPriorityDialogue,
+    handleDialogueAnimationComplete
+} = useOpponentDialogue(opponentDialogue);
 
     useEffect(() => {
         triggerDialogue('gameStart');
     }, []);
-
-    function triggerPriorityDialogue(events) {
-        const selectedTrigger = selectDialogueTrigger(events);
-
-        if (selectedTrigger !== null) {
-            triggerDialogue(selectedTrigger);
-        }
-    }
 
     function rollKeaDie() {
     const roll = Math.random() * 100;
@@ -127,9 +102,7 @@ export default function Play() {
 }
 
     function handleDialogueComplete() {
-        animationReturnTimer.current = setTimeout(() => {
-            setAvatarAnimation('idle');
-        }, 250);
+        handleDialogueAnimationComplete();
 
         if (pendingGameOver) {
             setTimeout(() => {
@@ -145,7 +118,6 @@ export default function Play() {
 
         if (keaRollAccepted) {
             setKeaRollAccepted(false);
-
             setIsRolling(true);
 
             setTimeout(() => {
