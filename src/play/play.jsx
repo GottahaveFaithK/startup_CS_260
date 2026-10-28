@@ -1,4 +1,4 @@
-import React,{useState, useEffect, useRef} from 'react';
+import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import './play.css';
 
@@ -6,7 +6,7 @@ import opponents from '../opponents/opponents';
 import opponentStrategies from '../opponents/opponentStrategies';
 import opponentDialogue from '../opponents/dialogue';
 
-import { calculateColumnScore, calculateScore } from './game/scoring';
+import { calculateScore } from './game/scoring';
 import { saveScore } from '../scores/scoreStorage';
 import { isBoardFull, createEmptyBoard } from './game/boardUtils';
 
@@ -35,7 +35,7 @@ export default function Play() {
 
     const [currentDie, setCurrentDie] = useState(5);
     const [computerDie, setComputerDie] = useState(null);
-    const [isRolling, setIsRolling] = useState(false)
+    const [isRolling, setIsRolling] = useState(false);
     const [isRollable, setIsRollable] = useState(true);
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
@@ -130,12 +130,12 @@ export default function Play() {
             return;
         }
 
-        setIsRolling(true)
-        setIsRollable(false)
+        setIsRolling(true);
+        setIsRollable(false);
 
         setTimeout(() => {
             setCurrentDie(Math.floor(Math.random() * 6) + 1)
-            setIsRolling(false)
+            setIsRolling(false);
         }, 1500);
     }
 

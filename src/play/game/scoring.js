@@ -1,5 +1,5 @@
 
-export function calculateColumnScore(board, colIndex) {
+function calculateColumnScore(board, colIndex) {
     const column = board
     .map(row => row[colIndex])
     .filter(die => die !== null);
