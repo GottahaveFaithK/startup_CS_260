@@ -1,4 +1,5 @@
 import React,{useState, useEffect, useRef} from 'react';
+import { useParams } from 'react-router-dom';
 import './play.css';
 
 import opponents from '../opponents/opponents';
@@ -23,8 +24,6 @@ import KeaOfferModal from './components/KeaOfferModal';
 import GameBoard from './components/GameBoard';
 
 import useOpponentDialogue from './hooks/useOpponentDialogue';
-import { useParams } from 'react-router-dom';
-
 import GameOverModal from './components/GameOverModal';
 
 export default function Play() {
@@ -62,30 +61,30 @@ export default function Play() {
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
     const {
-    currentDialogue,
-    avatarAnimation,
-    blinkRequested,
-    setBlinkRequested,
-    setAvatarAnimation,
-    triggerDialogue,
-    triggerPriorityDialogue,
-    handleDialogueAnimationComplete
-} = useOpponentDialogue(dialogue);
+        currentDialogue,
+        avatarAnimation,
+        blinkRequested,
+        setBlinkRequested,
+        setAvatarAnimation,
+        triggerDialogue,
+        triggerPriorityDialogue,
+        handleDialogueAnimationComplete
+    } = useOpponentDialogue(dialogue);
 
     useEffect(() => {
         triggerDialogue('gameStart');
     }, [triggerDialogue]);
 
     function rollKeaDie() {
-    const roll = Math.random() * 100;
+        const roll = Math.random() * 100;
 
-    if (roll < 12) return 1;
-    if (roll < 26) return 2;
-    if (roll < 42) return 3;
-    if (roll < 60) return 4;
-    if (roll < 80) return 5;
-    return 6;
-}
+        if (roll < 12) return 1;
+        if (roll < 26) return 2;
+        if (roll < 42) return 3;
+        if (roll < 60) return 4;
+        if (roll < 80) return 5;
+        return 6;
+    }
 
     function handleDialogueComplete() {
         handleDialogueAnimationComplete();
