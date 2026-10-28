@@ -5,6 +5,7 @@ import opponents from '../opponents/opponents';
 import opponentStrategies from '../opponents/opponentStrategies';
 
 import { calculateColumnScore, calculateScore } from './game/scoring';
+import { saveScore } from '../scores/scoreStorage';
 import { isBoardFull } from './game/gameRules';
 
 import {
@@ -290,23 +291,13 @@ export default function Play() {
 
         const newScore = {
             id: Date.now(),
-            username: username,
+            username,
             score: playerScore,
             opponent: opponent.name,
             date: new Date().toLocaleDateString()
         };
 
-        const savedScores = JSON.parse(
-            localStorage.getItem('leaderboardScores') || '[]'
-        );
-
-        savedScores.push(newScore);
-
-        localStorage.setItem(
-            'leaderboardScores',
-            JSON.stringify(savedScores)
-        );
-
+        saveScore(newScore);
         setScoreSubmitted(true);
     }
 
