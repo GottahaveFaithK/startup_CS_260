@@ -7,6 +7,11 @@ import opponentStrategies from '../opponents/opponentStrategies';
 import { calculateColumnScore, calculateScore } from './game/scoring';
 import { isBoardFull } from './game/gameRules';
 
+import {
+    applyPlayerMove,
+    applyComputerMove
+} from './game/turnLogic';
+
 import OpponentPanel from './components/OpponentPanel';
 import ScorePanel from './components/ScorePanel';
 
@@ -150,21 +155,6 @@ export default function Play() {
         }
     }
 
-    function getGameOverTrigger(finalPlayerBoard, finalComputerBoard) {
-        const finalPlayerScore = calculateScore(finalPlayerBoard);
-        const finalComputerScore = calculateScore(finalComputerBoard);
-
-        if (finalPlayerScore > finalComputerScore) {
-            return 'playerWins';
-        }
-
-        if (finalPlayerScore < finalComputerScore) {
-            return 'playerLoses';
-        }
-
-        return 'gameTie';
-    }
-
     function playAgain() {
         setPlayerBoard([
             [null, null, null],
@@ -203,78 +193,48 @@ export default function Play() {
         }, 1500);
     }
 
+ 
     function placeDie(rowIndex, colIndex) {
         if (gameOver || isRolling || isRollable || isComputerTurn) {
             return;
         }
 
-        if (playerBoard[rowIndex][colIndex] !== null) {
+        const result = applyPlayerMove({
+            playerBoard,
+            computerBoard,
+            rowIndex,
+            colIndex,
+            die: currentDie
+        });
+
+        if (!result.valid) {
             return;
         }
 
-        const events = [];
+        setPlayerBoard(result.playerBoard);
+        setComputerBoard(result.computerBoard);
 
-        const destroyedComputerDice = computerBoard.some(
-            row => row[colIndex] === currentDie
-        );
-
-        if (destroyedComputerDice) {
-            events.push('playerDestroysDice');
-        }
-
-        const updatedBoard = playerBoard.map((row, r) =>
-            row.map((die, c) => {
-                if (r === rowIndex && c === colIndex) {
-                    return currentDie;
-                }
-                return die;
-            })
-        );
-
-        const updatedComputerBoard = computerBoard.map(row =>
-            row.map((die, c) => {
-                if (c === colIndex && die === currentDie) {
-                    return null;
-                }
-                return die;
-            })
-        );
-
-        const oldPlayerScore = calculateScore(playerBoard);
-        const newPlayerScore = calculateScore(updatedBoard);
-
-        if (newPlayerScore - oldPlayerScore >= 18) {
-            events.push('playerGoodMove');
-        }
-
-        setPlayerBoard(updatedBoard);
-        setComputerBoard(updatedComputerBoard);
-
-        if (isBoardFull(updatedBoard) || isBoardFull(updatedComputerBoard)) {
-            events.push(
-                getGameOverTrigger(updatedBoard, updatedComputerBoard)
-            );
-
-            triggerPriorityDialogue(events);
+        if (result.gameEnded) {
+            triggerPriorityDialogue(result.events);
             setPendingGameOver(true);
             setIsRollable(false);
             return;
         }
 
-        triggerPriorityDialogue(events)
+        triggerPriorityDialogue(result.events);
         setIsComputerTurn(true);
 
         setTimeout(() => {
             const gameEnded = computerTurn(
-                updatedComputerBoard,
-                updatedBoard
+                result.computerBoard,
+                result.playerBoard
             );
 
             setIsComputerTurn(false);
 
             if (!gameEnded) {
                 const keaEventTriggered =
-                    opponentId === 'kea' && Math.random() < 1/100;
+                    opponentId === 'kea' && Math.random() < 1 / 100;
 
                 if (keaEventTriggered) {
                     setKeaOfferPending(true);
@@ -288,19 +248,11 @@ export default function Play() {
     }
 
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
-        const events = [];
         const roll = Math.floor(Math.random() * 6) + 1;
         setComputerDie(roll);
-        console.log(roll)
 
-        if (roll === 1) {
-            events.push('rollOne');
-        } else if (roll === 6) {
-            events.push('rollSix');
-        }
-
-        const chooseMove = opponentStrategies[opponentId]
-            ?? opponentStrategies.duck;
+        const chooseMove =
+            opponentStrategies[opponentId] ?? opponentStrategies.duck;
 
         const choice = chooseMove(
             roll,
@@ -308,67 +260,27 @@ export default function Play() {
             currentPlayerBoard
         );
 
-        if (choice === null) {
-            triggerPriorityDialogue(events);
+        const result = applyComputerMove({
+            computerBoard: currentComputerBoard,
+            playerBoard: currentPlayerBoard,
+            roll,
+            choice
+        });
+
+        triggerPriorityDialogue(result.events);
+
+        if (!result.moved) {
             return false;
         }
 
-        const placedRoll = choice.roll ?? roll;
-        console.log(placedRoll)
-        const destroyedPlayerDice = currentPlayerBoard.some(
-            row => row[choice.colIndex] === placedRoll
-        );
+        setComputerBoard(result.computerBoard);
+        setPlayerBoard(result.playerBoard);
 
-        if (destroyedPlayerDice) {
-            events.push('birdDestroysDice');
-        }
-
-        const updatedBoard = currentComputerBoard.map((row, rowIndex) =>
-            row.map((die, colIndex) => {
-                if (
-                    rowIndex === choice.rowIndex &&
-                    colIndex === choice.colIndex
-                ) {
-                    return placedRoll;
-                }
-                return die;
-            })
-        );
-
-        const updatedPlayerBoard = currentPlayerBoard.map((row, rowIndex) =>
-            row.map((die, colIndex) => {
-                if (colIndex === choice.colIndex && die === placedRoll) {
-                    return null;
-                }
-                return die;
-            })
-        );
-
-        const oldBirdScore = calculateScore(currentComputerBoard);
-        const newBirdScore = calculateScore(updatedBoard);
-
-        if (newBirdScore - oldBirdScore >= 18) {
-            events.push('birdGoodMove');
-        }
-
-        setComputerBoard(updatedBoard);
-        setPlayerBoard(updatedPlayerBoard);
-
-        if (
-            isBoardFull(updatedBoard) ||
-            isBoardFull(updatedPlayerBoard)
-        ) {
-            events.push(
-                getGameOverTrigger(updatedPlayerBoard, updatedBoard)
-            );
-
-            triggerPriorityDialogue(events);
+        if (result.gameEnded) {
             setPendingGameOver(true);
             setIsRollable(false);
             return true;
         }
-
-        triggerPriorityDialogue(events);
 
         return false;
     }
