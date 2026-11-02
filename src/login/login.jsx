@@ -2,42 +2,83 @@ import React, { useState, useEffect } from 'react';
 import './login.css';
 
 export default function Login() {
-    const [currentUser, setCurrentUser] = useState(
-    localStorage.getItem('currentUser') || 'Guest'
-);
-
-    useEffect(() => {
-        localStorage.setItem('currentUser', currentUser);
-    }, [currentUser]);
-
+    const [currentUser, setCurrentUser] = useState('Guest');
     const [message, setMessage] = useState('');
 
-    function handleLogin(event) {
+    async function handleLogin(event) {
         event.preventDefault();
 
         const username = event.target.username.value.trim();
+        const password = event.target.password.value;
 
-        if (!username) {
-            setMessage('Please enter a username.');
+        if (!username || !password) {
+            setMessage('Please enter your username and password.');
             return;
         }
 
-        setCurrentUser(username);
-        setMessage(`Welcome, ${username}!`);
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setMessage(data.message);
+                return;
+            }
+
+            setCurrentUser(data.username);
+            setMessage(`Welcome back, ${data.username}!`);
+        } catch (error) {
+            setMessage('Unable to connect to the server.');
+        }
     }
 
-    function handleRegister(event) {
+    async function handleRegister(event) {
         event.preventDefault();
 
         const username = event.target.username.value.trim();
+        const password = event.target.password.value;
+        const confirmPassword = event.target['confirm-password'].value;
 
-        if (!username) {
-            setMessage('Please enter a username.');
+        if (!username || !password || !confirmPassword) {
+            setMessage('Please fill in all fields.');
             return;
         }
 
-        setCurrentUser(username);
-        setMessage(`Account created! Welcome, ${username}!`);
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match.');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/auth/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                setMessage(data.message);
+                return;
+            }
+
+            setCurrentUser(data.username);
+            setMessage(`Account created! Welcome, ${data.username}!`);
+        } catch (error) {
+            setMessage('Unable to connect to the server.');
+        }
     }
     return (
         <main className="container background-table">
