@@ -103,14 +103,14 @@ UseState also tracked the animation states and the dialogue states and effects, 
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Supports registration, login, logout, and restricted endpoint** - I did not complete this part of the deliverable.
-- [ ] **Uses BCrypt to hash passwords** - I did not complete this part of the deliverable.
+- [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [X] **Node.js/Express HTTP service** - This project uses the Express HTTP service
+- [X] **Static middleware for frontend** - Express uses express.static('public') to serve static frontend assets, including images and other files in the public directory
+- [X] **Calls to third party endpoints** - A call is made to the random facts API on the leaderboard page.
+- [X] **Backend service endpoints** - I implemented endpoints for login, logout, create, check authenticated user, get scores, and submit scores.
+- [X] **Frontend calls service endpoints** - The frontend uses fetch to talk to the backend. It calls the authentication endpoints, and it retrieves scores and submits scores through the backend API.
+- [x] **Supports registration, login, logout, and restricted endpoint** - I implemented and tested registering, login, and logout. Submitting scores is the restricted endpoint, and it does not allow any user that isnt signed in to submit a score to the leaderboard, and it provides a feedback message.
+- [X] **Uses BCrypt to hash passwords** - BCrypt is used to hash the passwords.
 
 ## 🚀 DB deliverable
 
