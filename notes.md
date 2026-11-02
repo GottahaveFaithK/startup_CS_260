@@ -49,3 +49,12 @@ Code can be broken into components which are relatively similar to classes.
 You can stack arrow functions
 
 I also learned that you can make custom hooks, which use the basic react hooks and help capture certain pieces of logic.
+
+## Service
+The backend should be run seperately using npm start in the proper folder, and vite needs to be configured to listen to the proper port.
+Middleware needs to be run before any functions that would need to access it.
+The actual post and put methods are rather simple to implement once you have the proper middleware and imports in place.
+Reference the proper tables to see what respones messages should return (ex: 200, 204).
+Service layer only has temporary storage in memory, this will later be replaced with a database.
+Handling of trimming the leaderboard by 10 should be on the backend, as the backend needs to have the one authoritative version for every client.
+Cookies are useful to store if a user is logged in and other authentication details.
