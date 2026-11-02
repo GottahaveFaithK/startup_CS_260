@@ -80,6 +80,45 @@ export default function Login() {
             setMessage('Unable to connect to the server.');
         }
     }
+
+    async function handleLogout() {
+        try {
+            const response = await fetch('/api/auth/logout', {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+
+            if (!response.ok) {
+                setMessage('Unable to log out.');
+                return;
+            }
+
+            setCurrentUser('Guest');
+            setMessage('You have logged out.');
+        } catch (error) {
+            setMessage('Unable to connect to the server.');
+        }
+    }
+
+    useEffect(() => {
+        async function checkLogin() {
+            try {
+                const response = await fetch('/api/auth/me', {
+                    credentials: 'include'
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setCurrentUser(data.username);
+                }
+            } catch (error) {
+                setMessage('Unable to check login status.');
+            }
+        }
+
+        checkLogin();
+    }, []);
+
     return (
         <main className="container background-table">
             <div className="row g-3">
@@ -131,6 +170,12 @@ export default function Login() {
                 <p>
                     Logged in as: <span id="current-user">{currentUser}</span>
                 </p>
+
+                {currentUser !== 'Guest' && (
+                    <button onClick={handleLogout} className="roll-button mt-3">
+                        Logout
+                    </button>
+                )}
 
                 {message && <p role="status">{message}</p>}
             </section>
