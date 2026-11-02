@@ -8,6 +8,7 @@ opponent,
 playerScore,
 computerScore,
 scoreSubmitted,
+submitMessage,
 onSubmitScore,
 onPlayAgain,
 }) {
@@ -60,6 +61,12 @@ aria-labelledby="game-over-title"
             >
                 {scoreSubmitted ? 'Submitted ✓' : 'Submit Score'}
             </button>
+
+            {submitMessage && (
+                <p className="submit-message" role="alert">
+                    {submitMessage}
+                </p>
+            )}
 
             <button
                 className="play-again-button"

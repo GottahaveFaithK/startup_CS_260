@@ -67,6 +67,7 @@ export default function Play() {
 
     const [showRules, setShowRules] = useState(false);
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
+    const [submitMessage, setSubmitMessage] = useState('');
 
     const {
         currentDialogue,
@@ -122,6 +123,7 @@ export default function Play() {
         setPendingGameOver(false);
         triggerDialogue('gameStart');
         setScoreSubmitted(false);
+        setSubmitMessage('');
     }
 
     function rollDie() {
@@ -244,13 +246,19 @@ export default function Play() {
             const data = await response.json();
 
             if (!response.ok) {
-                console.error(data.message);
+                setSubmitMessage(
+                    response.status === 401
+                        ? 'You must log in to submit your score.'
+                        : data.message || 'Unable to submit your score.'
+                );
                 return;
             }
 
+            setSubmitMessage('');
+
             setScoreSubmitted(true);
         } catch (error) {
-            console.error('Unable to submit score:', error);
+            setSubmitMessage('Unable to connect to the server. Please try again.');
         }
     }
 
@@ -296,6 +304,7 @@ export default function Play() {
                                 scoreSubmitted={scoreSubmitted}
                                 onSubmitScore={handleSubmitScore}
                                 onPlayAgain={playAgain}
+                                submitMessage={submitMessage}
                             />
                         )}
                         </div>
