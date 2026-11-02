@@ -1,27 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import './scores.css';
 
-const sampleScores = [
-    { id: 'sample-1', username: 'PlayerOne', score: 42 },
-    { id: 'sample-2', username: 'PlayerTwo', score: 38 },
-    { id: 'sample-3', username: 'Faith', score: 35 },
-    { id: 'sample-4', username: 'PlayerFour', score: 31 },
-    { id: 'sample-5', username: 'PlayerFive', score: 27 }
-];
 
 export default function Scores() {
-    const [scores, setScores] = useState(sampleScores);
+    const [scores, setScores] = useState([]);
+    const [randomFact, setRandomFact] = useState('Loading a random fact...');
 
     useEffect(() => {
-        const savedScores = JSON.parse(
-            localStorage.getItem('leaderboardScores') || '[]'
-        );
+        async function fetchScores() {
+            try {
+                const response = await fetch('/api/scores');
 
-        const combinedScores = [...sampleScores, ...savedScores];
+                if (!response.ok) {
+                    throw new Error('Failed to fetch scores');
+                }
 
-        combinedScores.sort((a, b) => b.score - a.score);
+                const data = await response.json();
+                setScores(data);
+            } catch (error) {
+                console.error('Unable to load leaderboard:', error);
+            }
+        }
 
-        setScores(combinedScores.slice(0, 10));
+        fetchScores();
+    }, []);
+
+    useEffect(() => {
+        async function fetchRandomFact() {
+            try {
+                const response = await fetch(
+                    'https://uselessfacts.jsph.pl/api/v2/facts/random?language=en'
+                );
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch random fact');
+                }
+
+                const data = await response.json();
+                setRandomFact(data.text);
+            } catch (error) {
+                console.error('Unable to load random fact:', error);
+                setRandomFact('Unable to load a random fact right now.');
+            }
+        }
+
+        fetchRandomFact();
     }, []);
 
     return (
@@ -63,7 +86,7 @@ export default function Scores() {
             <section className="random-fact-panel">
                 <h2>Random Fact</h2>
                 <p className="random-fact">
-                    A group of sharks is called a shiver.
+                    {randomFact}
                 </p>
             </section>
         </main>

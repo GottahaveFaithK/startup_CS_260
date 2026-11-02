@@ -7,7 +7,6 @@ import opponentStrategies from '../opponents/opponentStrategies';
 import opponentDialogue from '../opponents/dialogue';
 
 import { calculateScore } from './game/scoring';
-import { saveScore } from '../scores/scoreStorage';
 import { isBoardFull, createEmptyBoard } from './game/boardUtils';
 
 import {
@@ -228,19 +227,31 @@ export default function Play() {
         return false;
     }
 
-    function handleSubmitScore() {
-        const username = localStorage.getItem('currentUser') || 'Guest';
+    async function handleSubmitScore() {
+        try {
+            const response = await fetch('/api/score', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    score: playerScore,
+                    opponent: opponent.name
+                })
+            });
 
-        const newScore = {
-            id: Date.now(),
-            username,
-            score: playerScore,
-            opponent: opponent.name,
-            date: new Date().toLocaleDateString()
-        };
+            const data = await response.json();
 
-        saveScore(newScore);
-        setScoreSubmitted(true);
+            if (!response.ok) {
+                console.error(data.message);
+                return;
+            }
+
+            setScoreSubmitted(true);
+        } catch (error) {
+            console.error('Unable to submit score:', error);
+        }
     }
 
     return (
