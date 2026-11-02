@@ -9,7 +9,6 @@ export default function OpponentSelect() {
     return (
         <main className="opponent-select">
             <h2>Choose Your Opponent</h2>
-            <p>Potential subtext here</p>
 
             <div className="opponent-grid">
                 {Object.entries(opponents).map(([id, opponent]) => (
