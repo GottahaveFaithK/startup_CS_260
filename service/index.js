@@ -105,6 +105,52 @@ apiRouter.delete('/auth/logout', (req, res) => {
     res.status(204).end();
 });
 
+apiRouter.get('/auth/me', (req, res) => {
+    const user = findUser('token', req.cookies[authCookieName]);
+
+    if (!user) {
+        return res.status(401).json({
+            message: 'Not logged in'
+        });
+    }
+
+    res.json({
+        username: user.username
+    });
+});
+
+apiRouter.get('/scores', (_req, res) => {
+    res.json(scores);
+});
+
+apiRouter.post('/score', verifyAuth, (req, res) => {
+    const { score, opponent } = req.body;
+
+    if (
+        typeof score !== 'number' ||
+        !Number.isFinite(score) ||
+        score < 0 ||
+        typeof opponent !== 'string' ||
+        !opponent.trim()
+    ) {
+        return res.status(400).json({
+            message: 'Invalid score submission'
+        });
+    }
+
+    const newScore = {
+        id: uuidv4(),
+        username: req.user.username,
+        score,
+        opponent,
+        date: new Date().toLocaleDateString()
+    };
+
+    const updatedScores = updateScores(newScore);
+
+    res.status(201).json(updatedScores);
+});
+
 
 async function createUser(username, password) {
     const passwordHash = await bcrypt.hash(password, 10);
@@ -135,6 +181,37 @@ function findUser(field, value) {
 
     return users.find(user => user[field] === value);
 }
+
+function updateScores(newScore) {
+    let found = false;
+
+    for (const [i, prevScore] of scores.entries()) {
+        if (newScore.score > prevScore.score) {
+            scores.splice(i, 0, newScore);
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        scores.push(newScore);
+    }
+
+    if (scores.length > 10) {
+        scores.length = 10;
+    }
+
+    return scores;
+}
+
+
+app.use((err, req, res, next) => {
+    console.error(err);
+
+    res.status(500).json({
+        message: 'Internal server error'
+    });
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
