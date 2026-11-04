@@ -4,16 +4,18 @@ const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 
 const client = new MongoClient(url);
-const db = client.db('rental');
-const collection = db.collection('house');
+const db = client.db('diceDuel');
+const userCollection = db.collection('users');
+const scoreCollection = db.collection('scores');
 
-async function main() {
-  try {
-    // add all the following database code here
-    
-  } finally {
-    client.close();
-  }
+async function connectToDatabase() {
+    await client.connect();
+    await db.command({ ping: 1 });
+    console.log('Connected to MongoDB');
 }
 
-main();
+
+module.exports = {
+    connectToDatabase,
+    // Other database functions will go here
+};
