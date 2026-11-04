@@ -19,3 +19,5 @@ node_modules
 
 dist/
 cookies.txt
+
+dbConfig.json
