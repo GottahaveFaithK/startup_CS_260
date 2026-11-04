@@ -14,8 +14,34 @@ async function connectToDatabase() {
     console.log('Connected to MongoDB');
 }
 
+function getUser(username) {
+  return userCollection.findOne({ username: username });
+}
+
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
+async function addUser(user) {
+  await userCollection.insertOne(user);
+}
+
+async function updateUser(user) {
+  await userCollection.updateOne({ username: user.username }, { $set: user });
+}
+
+async function updateUserRemoveAuth(user) {
+    await userCollection.updateOne(
+        { username: user.username },
+        { $unset: { token: 1 } }
+    );
+}
 
 module.exports = {
     connectToDatabase,
-    // Other database functions will go here
+    getUser,
+    getUserByToken,
+    addUser,
+    updateUser,
+    updateUserRemoveAuth
 };
