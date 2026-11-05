@@ -129,11 +129,12 @@ apiRouter.get('/auth/me', async (req, res) => {
     });
 });
 
-apiRouter.get('/scores', (_req, res) => {
+apiRouter.get('/scores', async (_req, res) => {
+    const scores = await getHighScores();
     res.json(scores);
 });
 
-apiRouter.post('/score', verifyAuth, (req, res) => {
+apiRouter.post('/score', verifyAuth,  async (req, res) => {
     const { score, opponent } = req.body;
 
     if (
@@ -156,7 +157,8 @@ apiRouter.post('/score', verifyAuth, (req, res) => {
         date: new Date().toLocaleDateString()
     };
 
-    const updatedScores = updateScores(newScore);
+    await addScore(newScore);
+    const updatedScores = await getHighScores();
 
     res.status(201).json(updatedScores);
 });
@@ -196,28 +198,6 @@ async function findUser(field, value) {
     return getUser(value);
 }
 
-function updateScores(newScore) {
-    let found = false;
-
-    for (const [i, prevScore] of scores.entries()) {
-        if (newScore.score > prevScore.score) {
-            scores.splice(i, 0, newScore);
-            found = true;
-            break;
-        }
-    }
-
-    if (!found) {
-        scores.push(newScore);
-    }
-
-    if (scores.length > 10) {
-        scores.length = 10;
-    }
-
-    return scores;
-}
-
 
 app.use((err, req, res, next) => {
     console.error(err);
@@ -227,6 +207,17 @@ app.use((err, req, res, next) => {
     });
 });
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-});
+async function startServer() {
+    try {
+        await connectToDatabase();
+
+        app.listen(port, () => {
+            console.log(`Listening on port ${port}`);
+        });
+    } catch (error) {
+        console.error('Failed to connect to MongoDB:', error);
+        process.exit(1);
+    }
+}
+
+startServer();
