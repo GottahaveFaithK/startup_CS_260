@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
@@ -198,6 +199,13 @@ async function findUser(field, value) {
     return getUser(value);
 }
 
+apiRouter.use((_req, res) => {
+    res.status(404).json({ message: 'API route not found' });
+});
+
+app.get('/{*splat}', (_req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.use((err, req, res, next) => {
     console.error(err);
