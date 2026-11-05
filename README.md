@@ -116,9 +116,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [X] **Stores data in MongoDB** - The user info and the scores are stored in MongoDB
+- [X] **Stores credentials in MongoDB** - User login credentials are stored in MongoDB (passwords are still hashed)
 
 ## 🚀 WebSocket deliverable
 
