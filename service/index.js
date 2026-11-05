@@ -46,7 +46,7 @@ apiRouter.post('/auth/create', async (req, res) => {
         });
     }
 
-    const existingUser = findUser('username', username);
+    const existingUser = await findUser('username', username);
 
     if (existingUser) {
         return res.status(409).json({
@@ -73,7 +73,7 @@ apiRouter.post('/auth/login', async (req, res) => {
         });
     }
 
-    const user = findUser('username', username);
+    const user = await findUser('username', username);
 
     if (!user) {
         return res.status(401).json({
@@ -90,6 +90,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     }
 
     user.token = uuidv4();
+    await updateUser(user);
 
     setAuthCookie(res, user.token);
 
@@ -98,11 +99,11 @@ apiRouter.post('/auth/login', async (req, res) => {
     });
 });
 
-apiRouter.delete('/auth/logout', (req, res) => {
-    const user = findUser('token', req.cookies[authCookieName]);
+apiRouter.delete('/auth/logout', async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
 
     if (user) {
-        delete user.token;
+        await updateUserRemoveAuth(user);
     }
 
     res.clearCookie(authCookieName, {
@@ -114,8 +115,8 @@ apiRouter.delete('/auth/logout', (req, res) => {
     res.status(204).end();
 });
 
-apiRouter.get('/auth/me', (req, res) => {
-    const user = findUser('token', req.cookies[authCookieName]);
+apiRouter.get('/auth/me', async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
 
     if (!user) {
         return res.status(401).json({
@@ -170,7 +171,7 @@ async function createUser(username, password) {
         token: uuidv4()
     };
 
-    users.push(user);
+    await addUser(user);
 
     return user;
 }
