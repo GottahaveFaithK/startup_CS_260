@@ -26,8 +26,8 @@ const {
 
 const authCookieName = 'token';
 
-function verifyAuth(req, res, next) {
-    const user = findUser('token', req.cookies[authCookieName]);
+const verifyAuth = async (req, res, next) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
 
     if (user) {
         req.user = user;
@@ -35,7 +35,7 @@ function verifyAuth(req, res, next) {
     } else {
         res.status(401).json({ message: 'Unauthorized' });
     }
-}
+};
 
 apiRouter.post('/auth/create', async (req, res) => {
     const { username, password } = req.body;
@@ -185,10 +185,14 @@ function setAuthCookie(res, authToken) {
     });
 }
 
-function findUser(field, value) {
+async function findUser(field, value) {
     if (!value) return null;
 
-    return users.find(user => user[field] === value);
+    if (field == 'token') {
+        return getUserByToken(value);
+    }
+
+    return getUser(value);
 }
 
 function updateScores(newScore) {
