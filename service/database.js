@@ -37,11 +37,27 @@ async function updateUserRemoveAuth(user) {
     );
 }
 
+async function addScore(score) {
+  return scoreCollection.insertOne(score);
+}
+
+function getHighScores() {
+  const query = { score: { $gte: 0, $lt: 200 } };
+  const options = {
+    sort: { score: -1 },
+    limit: 10,
+  };
+  const cursor = scoreCollection.find(query, options);
+  return cursor.toArray();
+}
+
 module.exports = {
     connectToDatabase,
     getUser,
     getUserByToken,
     addUser,
     updateUser,
-    updateUserRemoveAuth
+    updateUserRemoveAuth,
+    addScore,
+    getHighScores
 };
