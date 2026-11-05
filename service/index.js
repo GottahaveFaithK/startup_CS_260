@@ -13,8 +13,17 @@ app.use(express.static('public'));
 const apiRouter = express.Router();
 app.use('/api', apiRouter);
 
-const users = [];
-const scores = [];
+const {
+    connectToDatabase,
+    getUser,
+    getUserByToken,
+    addUser,
+    updateUser,
+    updateUserRemoveAuth,
+    addScore,
+    getHighScores
+} = require('./database');
+
 const authCookieName = 'token';
 
 function verifyAuth(req, res, next) {
