@@ -58,3 +58,8 @@ Reference the proper tables to see what respones messages should return (ex: 200
 Service layer only has temporary storage in memory, this will later be replaced with a database.
 Handling of trimming the leaderboard by 10 should be on the backend, as the backend needs to have the one authoritative version for every client.
 Cookies are useful to store if a user is logged in and other authentication details.
+
+## Database
+Always storedata on an external database
+Calls to the database return promises so use async and await
+Never expose the dbConfig.json
