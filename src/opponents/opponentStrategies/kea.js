@@ -64,14 +64,13 @@ function isBoardFull(board) {
     return board.every(row => row.every(die => die !== null));
 }
 
-export function chooseKeaMove(roll, computerBoard, playerBoard) {
+export function evaluateKeaRoll(roll, computerBoard, playerBoard) {
     let bestAverageValue = -Infinity;
     let bestMove = null;
 
     computerBoard.forEach((row, rowIndex) => {
         row.forEach((die, colIndex) => {
             if (die === null) {
-
                 const firstMove = simulateMove(
                     roll,
                     rowIndex,
@@ -114,11 +113,8 @@ export function chooseKeaMove(roll, computerBoard, playerBoard) {
                     }
 
                     if (
-                        playerMove !== null &&
-                        (
-                            isBoardFull(playerMove.turnBoard) ||
-                            isBoardFull(playerMove.opposingBoard)
-                        )
+                        isBoardFull(playerMove.turnBoard) ||
+                        isBoardFull(playerMove.opposingBoard)
                     ) {
                         totalValue +=
                             calculateScore(playerMove.opposingBoard) -
@@ -126,7 +122,6 @@ export function chooseKeaMove(roll, computerBoard, playerBoard) {
 
                         continue;
                     }
-
 
                     let totalReplyValue = 0;
 
@@ -153,7 +148,6 @@ export function chooseKeaMove(roll, computerBoard, playerBoard) {
                     }
 
                     const averageReplyValue = totalReplyValue / 6;
-
                     totalValue += averageReplyValue;
                 }
 
@@ -167,5 +161,16 @@ export function chooseKeaMove(roll, computerBoard, playerBoard) {
         });
     });
 
-    return bestMove;
+    return {
+        move: bestMove,
+        value: bestAverageValue,
+    };
+}
+
+export function chooseKeaMove(roll, computerBoard, playerBoard) {
+    return evaluateKeaRoll(
+        roll,
+        computerBoard,
+        playerBoard
+    ).move;
 }

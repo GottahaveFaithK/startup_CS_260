@@ -1,3 +1,6 @@
+import { evaluateKeaRoll } from './keaStrategy';
+
+
 export function shouldPeacockReroll(roll) {
     return roll === 1;
 }
@@ -54,6 +57,27 @@ export function shouldPigeonReroll(roll, computerBoard, playerBoard) {
     }
 
     const averageValue = totalValue / 6;
+
+    return currentValue < averageValue;
+}
+
+export function shouldKeaReroll(roll, computerBoard, playerBoard) {
+    const evaluations = [];
+
+    for (let possibleRoll = 1; possibleRoll <= 6; possibleRoll++) {
+        evaluations.push(
+            evaluateKeaRoll(
+                possibleRoll,
+                computerBoard,
+                playerBoard
+            ).value
+        );
+    }
+
+    const currentValue = evaluations[roll - 1];
+
+    const averageValue =
+        evaluations.reduce((total, value) => total + value, 0) / 6;
 
     return currentValue < averageValue;
 }
