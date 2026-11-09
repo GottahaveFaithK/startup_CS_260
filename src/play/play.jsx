@@ -25,6 +25,7 @@ import GameBoard from './components/GameBoard';
 
 import useOpponentDialogue from './hooks/useOpponentDialogue';
 import useKeaEvent from './hooks/useKeaEvent';
+import opponentRerollStrategies from '../opponents/opponentRerollStrategies';
 
 export default function Play() {
 
@@ -36,7 +37,9 @@ export default function Play() {
     const [computerDie, setComputerDie] = useState(null);
     const [isRolling, setIsRolling] = useState(false);
     const [isRollable, setIsRollable] = useState(true);
+
     const [rerollsRemaining, setRerollsRemaining] = useState(1);
+    const [computerRerollsRemaining, setComputerRerollsRemaining] = useState(1);
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
 
@@ -128,6 +131,7 @@ export default function Play() {
         setScoreSubmitted(false);
         setSubmitMessage('');
         setRerollsRemaining(1);
+        setComputerRerollsRemaining(1);
     }
 
     function rollDie() {
@@ -210,7 +214,21 @@ export default function Play() {
     }
 
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
-        const roll = Math.floor(Math.random() * 6) + 1;
+        let roll = Math.floor(Math.random() * 6) + 1;
+
+        const shouldReroll =
+            opponentRerollStrategies[opponentId];
+
+        if (
+            shouldReroll &&
+            computerRerollsRemaining > 0 &&
+            shouldReroll(roll, currentComputerBoard, currentPlayerBoard)
+        ) {
+            roll = Math.floor(Math.random() * 6) + 1;
+
+            setComputerRerollsRemaining(prev => prev - 1);
+        }
+
         setComputerDie(roll);
 
         const chooseMove =
