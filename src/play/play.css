@@ -53,3 +53,10 @@
 .current-die-section .roll-button {
     margin-top: 0.5rem;
 }
+
+.rerolls-remaining {
+    font-size: 0.65rem;
+    margin-top: 0.75rem;
+    color: #f2e6d0;
+    text-align: center;
+}

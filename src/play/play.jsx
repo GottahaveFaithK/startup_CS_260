@@ -36,6 +36,7 @@ export default function Play() {
     const [computerDie, setComputerDie] = useState(null);
     const [isRolling, setIsRolling] = useState(false);
     const [isRollable, setIsRollable] = useState(true);
+    const [rerollsRemaining, setRerollsRemaining] = useState(1);
 
     const dieFaces = ['one', 'two', 'three', 'four', 'five', 'six'];
 
@@ -126,6 +127,7 @@ export default function Play() {
         triggerDialogue('gameStart');
         setScoreSubmitted(false);
         setSubmitMessage('');
+        setRerollsRemaining(1);
     }
 
     function rollDie() {
@@ -138,6 +140,20 @@ export default function Play() {
 
         setTimeout(() => {
             setCurrentDie(Math.floor(Math.random() * 6) + 1)
+            setIsRolling(false);
+        }, 1500);
+    }
+
+    function rerollDie() {
+        if (gameOver || pendingGameOver || isRolling || isComputerTurn || rerollsRemaining <= 0) {
+            return;
+        }
+
+        setIsRolling(true);
+        setRerollsRemaining(prev => prev - 1);
+
+        setTimeout(() => {
+            setCurrentDie(Math.floor(Math.random() * 6) + 1);
             setIsRolling(false);
         }, 1500);
     }
@@ -350,11 +366,21 @@ export default function Play() {
 
                         <button
                             className="roll-button"
-                            onClick={rollDie}
-                            disabled={gameOver || isRolling || !isRollable || isComputerTurn}
+                            onClick={isRollable ? rollDie : rerollDie}
+                            disabled={
+                                gameOver ||
+                                pendingGameOver ||
+                                isRolling ||
+                                isComputerTurn ||
+                                (!isRollable && rerollsRemaining <= 0)
+                            }
                         >
-                            Roll Die
+                            {isRollable ? 'Roll Die' : 'Reroll Die'}
                         </button>
+
+                        <p className="rerolls-remaining">
+                            Rerolls remaining: {rerollsRemaining}
+                        </p>
                     </div>
                 </section>
 
