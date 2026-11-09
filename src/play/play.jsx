@@ -33,15 +33,6 @@ export default function Play() {
     const opponent = opponents[opponentId] ?? opponents.duck;
     const dialogue = opponentDialogue[opponentId] ?? opponentDialogue.duck;
 
-    const opponentRerollStrategies = {
-        duck: shouldPeacockReroll,
-        peacock: shouldPeacockReroll,
-        magpie: shouldMagpieReroll,
-        vulture: shouldVultureReroll,
-        pigeon: shouldPigeonReroll,
-        kea: shouldKeaReroll,
-    };
-
     const [currentDie, setCurrentDie] = useState(5);
     const [computerDie, setComputerDie] = useState(null);
     const [isRolling, setIsRolling] = useState(false);
@@ -224,15 +215,16 @@ export default function Play() {
 
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
         let roll = Math.floor(Math.random() * 6) + 1;
+        console.log(roll)
 
-        const shouldReroll =
-            opponentRerollStrategies[opponentId];
+        const shouldReroll = opponentRerollStrategies[opponentId];
 
         if (
             shouldReroll &&
             computerRerollsRemaining > 0 &&
             shouldReroll(roll, currentComputerBoard, currentPlayerBoard)
         ) {
+            console.log("Rerolling")
             roll = Math.floor(Math.random() * 6) + 1;
 
             setComputerRerollsRemaining(prev => prev - 1);
