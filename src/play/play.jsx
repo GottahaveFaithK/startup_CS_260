@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react';
+import React,{useState, useEffect, useRef} from 'react';
 import { useParams } from 'react-router-dom';
 import './play.css';
 
@@ -68,6 +68,8 @@ export default function Play() {
     const [showRules, setShowRules] = useState(false);
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
     const [submitMessage, setSubmitMessage] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const isSubmittingRef = useRef(false);
 
     const {
         currentDialogue,
@@ -230,6 +232,13 @@ export default function Play() {
     }
 
     async function handleSubmitScore() {
+        if (scoreSubmitted || isSubmittingRef.current) {
+            return;
+        }
+
+        isSubmittingRef.current = true;
+        setIsSubmitting(true);
+
         try {
             const response = await fetch('/api/score', {
                 method: 'POST',
@@ -259,6 +268,9 @@ export default function Play() {
             setScoreSubmitted(true);
         } catch (error) {
             setSubmitMessage('Unable to connect to the server. Please try again.');
+        } finally {
+            isSubmittingRef.current = false;
+            setIsSubmitting(false);
         }
     }
 
@@ -305,6 +317,7 @@ export default function Play() {
                                 onSubmitScore={handleSubmitScore}
                                 onPlayAgain={playAgain}
                                 submitMessage={submitMessage}
+                                isSubmitting={isSubmitting}
                             />
                         )}
                         </div>

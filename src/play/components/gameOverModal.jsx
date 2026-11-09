@@ -8,6 +8,7 @@ opponent,
 playerScore,
 computerScore,
 scoreSubmitted,
+isSubmitting,
 submitMessage,
 onSubmitScore,
 onPlayAgain,
@@ -57,9 +58,13 @@ aria-labelledby="game-over-title"
                     scoreSubmitted ? 'submitted' : ''
                 }`}
                 onClick={onSubmitScore}
-                disabled={scoreSubmitted}
+                disabled={scoreSubmitted || isSubmitting}
             >
-                {scoreSubmitted ? 'Submitted ✓' : 'Submit Score'}
+                {scoreSubmitted
+                    ? 'Submitted ✓'
+                    : isSubmitting
+                        ? 'Submitting...'
+                        : 'Submit Score'}
             </button>
 
             {submitMessage && (
