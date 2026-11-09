@@ -52,6 +52,25 @@
     font-size: 0.85rem;
 }
 
+.live-updates-panel p {
+    margin: 0.75rem 0;
+    text-align: center;
+    color: #f2e6d0;
+}
+
+.live-updates-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0;
+}
+
+.live-updates-panel li {
+    color: #f2e6d0;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
 .random-fact-panel {
     background-color: #8a6548;
     padding: 0.75rem 1rem;
@@ -93,3 +112,4 @@
     color: #f2e6d0;
     font-weight: bold;
 }
+
