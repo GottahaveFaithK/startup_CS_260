@@ -1,4 +1,4 @@
-import { evaluateKeaRoll } from './keaStrategy';
+import { evaluateKeaRoll } from './opponentStrategies/kea.js';
 
 
 export function shouldPeacockReroll(roll) {
@@ -81,3 +81,14 @@ export function shouldKeaReroll(roll, computerBoard, playerBoard) {
 
     return currentValue < averageValue;
 }
+
+const opponentRerollStrategies = {
+    duck: shouldPeacockReroll,
+    peacock: shouldPeacockReroll,
+    magpie: shouldMagpieReroll,
+    vulture: shouldVultureReroll,
+    pigeon: shouldPigeonReroll,
+    kea: shouldKeaReroll,
+};
+
+export default opponentRerollStrategies;
