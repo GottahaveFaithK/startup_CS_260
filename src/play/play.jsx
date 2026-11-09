@@ -375,7 +375,9 @@ export default function Play() {
                                 (!isRollable && rerollsRemaining <= 0)
                             }
                         >
-                            {isRollable ? 'Roll Die' : 'Reroll Die'}
+                            {isRollable || isRolling || rerollsRemaining <= 0
+                                ? 'Roll Die'
+                                : 'Reroll Die'}
                         </button>
 
                         <p className="rerolls-remaining">
