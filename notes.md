@@ -15,7 +15,6 @@ This file represents what I have learned about web programming.
 
 ## Later Goals
 - Multiplayer
-- potential line from kea about magpie
 - kea inverse mode
 - shop!
 
