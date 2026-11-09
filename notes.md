@@ -17,7 +17,6 @@ This file represents what I have learned about web programming.
 - Multiplayer
 - potential line from kea about magpie
 - kea inverse mode
-- reroll mechanic
 - shop!
 
 ## AWS
