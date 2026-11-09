@@ -62,4 +62,10 @@ Cookies are useful to store if a user is logged in and other authentication deta
 ## Database
 Always storedata on an external database
 Calls to the database return promises so use async and await
-Never expose the dbConfig.json
+Never expose the dbConfig.json, and it is important that the dbConfig.json is located within the service directory or it will not deploy.
+
+
+## Websocket
+peerProxy.js is used to establish websocket connections, previous routes in index.js need to be reconfigured to use the websocket routes. 
+Installing ws is required in the service directory not the main project directory
+The frontend can establish the connection and dictate when it is closed
