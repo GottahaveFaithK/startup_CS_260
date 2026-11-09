@@ -5,6 +5,7 @@ import './scores.css';
 export default function Scores() {
     const [scores, setScores] = useState([]);
     const [randomFact, setRandomFact] = useState('Loading a random fact...');
+    const [recentUpdates, setRecentUpdates] = useState([]);
 
     useEffect(() => {
         async function fetchScores() {
@@ -47,6 +48,35 @@ export default function Scores() {
         fetchRandomFact();
     }, []);
 
+    useEffect(() => {
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+
+        const socket = new WebSocket(
+            `${protocol}://${window.location.host}/ws`
+        );
+
+        socket.onmessage = async (event) => {
+            const message = JSON.parse(event.data);
+
+            if (message.type === 'scoreSubmitted') {
+                setRecentUpdates((previous) =>
+                    [message.score, ...previous].slice(0, 5)
+                );
+
+                const response = await fetch('/api/scores');
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setScores(data);
+                }
+            }
+        };
+
+        return () => {
+            socket.close();
+        };
+    }, []);
+
     return (
         <main className="container background-table">
             <section className="leaderboard-panel">
@@ -76,10 +106,17 @@ export default function Scores() {
             <section className="live-updates-panel">
                 <h2>Live Updates</h2>
                 <p>Recent leaderboard activity:</p>
+                
                 <ul>
-                    <li>Faith submitted a score of 35!</li>
-                    <li>PlayerOne reached the top of the leaderboard!</li>
-                    <li>PlayerTwo finished a match with 38 points!</li>
+                    {recentUpdates.length > 0 ? (
+                        recentUpdates.map((entry) => (
+                            <li key={entry.id}>
+                                {entry.username} submitted a score of {entry.score}!
+                            </li>
+                        ))
+                    ) : (
+                        <li>Waiting for new scores...</li>
+                    )}
                 </ul>
             </section>
 
