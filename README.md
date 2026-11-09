@@ -124,9 +124,9 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [X] I completed the prerequisites for this deliverable (Simon deployed, GitHub link, Git commits)
+- [X] **Backend listens for WebSocket connection** - created peerProxy, and configured backend server to support websockets
+- [X] **Frontend makes WebSocket connection** - Leaderboard page establishes a connection when the page loads and closes it when the user leaves the page
+- [X] **Data sent over WebSocket connection** - When a user submits a score the data is broadcasted to all connected clients
+- [X] **WebSocket data displayed** - Websocket data is displayed on the live updates section of the leaderboard
+- [X] **Application is fully functional** - The application is fully functional
