@@ -33,6 +33,15 @@ export default function Play() {
     const opponent = opponents[opponentId] ?? opponents.duck;
     const dialogue = opponentDialogue[opponentId] ?? opponentDialogue.duck;
 
+    const opponentRerollStrategies = {
+        duck: shouldPeacockReroll,
+        peacock: shouldPeacockReroll,
+        magpie: shouldMagpieReroll,
+        vulture: shouldVultureReroll,
+        pigeon: shouldPigeonReroll,
+        kea: shouldKeaReroll,
+    };
+
     const [currentDie, setCurrentDie] = useState(5);
     const [computerDie, setComputerDie] = useState(null);
     const [isRolling, setIsRolling] = useState(false);
