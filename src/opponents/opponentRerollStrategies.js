@@ -1,4 +1,5 @@
 import { evaluateKeaRoll } from './opponentStrategies/kea.js';
+import { getBestPigeonMoveValue } from './opponentStrategies/pigeon.js';
 
 
 export function shouldPeacockReroll(roll) {
