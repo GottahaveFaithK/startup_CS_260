@@ -28,6 +28,7 @@ const dialoguePriority = {
   playerWins: 100,
   playerLoses: 100,
   gameTie: 100,
+  magpieDice: 85,
   keaRollOffer: 90,
   keaRollYes: 90,
   keaRollNo: 90,

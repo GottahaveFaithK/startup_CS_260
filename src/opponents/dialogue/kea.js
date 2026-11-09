@@ -143,7 +143,15 @@ const keaDialogue = {
           "Right, sorry! Got carried away!",
           "Didn't mean to overstep friend!"
       ]
-  }
+  },
+
+  magpieDice: {
+      chance: 1,
+      animation: 'talk',
+      lines: [
+          "Are you using Magpie's dice?"
+      ]
+  },
 };
 
 export default keaDialogue;

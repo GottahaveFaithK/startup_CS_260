@@ -60,6 +60,8 @@ export default function Play() {
         shouldTriggerKeaEvent
     } = useKeaEvent();
 
+    const [consecutiveSixes, setConsecutiveSixes] = useState(0);
+
     const playerScore = calculateScore(playerBoard);
     const computerScore = calculateScore(computerBoard);
 
@@ -132,10 +134,29 @@ export default function Play() {
         setSubmitMessage('');
         setRerollsRemaining(1);
         setComputerRerollsRemaining(1);
+        setConsecutiveSixes(0);
+    }
+
+    function handlePlayerRoll(roll) {
+        setCurrentDie(roll);
+
+        if (roll === 6) {
+            setConsecutiveSixes(prev => {
+                const next = prev + 1;
+
+                if (next === 3 && opponentId === 'kea') {
+                    triggerPriorityDialogue(['magpieDice']);
+                }
+
+                return next;
+            });
+        } else {
+            setConsecutiveSixes(0);
+        }
     }
 
     function rollDie() {
-        if(gameOver || isRolling || !isRollable){
+        if (gameOver || isRolling || !isRollable) {
             return;
         }
 
@@ -143,7 +164,10 @@ export default function Play() {
         setIsRollable(false);
 
         setTimeout(() => {
-            setCurrentDie(Math.floor(Math.random() * 6) + 1)
+            const roll = Math.floor(Math.random() * 6) + 1;
+
+            handlePlayerRoll(roll);
+
             setIsRolling(false);
         }, 1500);
     }
@@ -157,7 +181,10 @@ export default function Play() {
         setRerollsRemaining(prev => prev - 1);
 
         setTimeout(() => {
-            setCurrentDie(Math.floor(Math.random() * 6) + 1);
+            const roll = Math.floor(Math.random() * 6) + 1;
+
+            handlePlayerRoll(roll);
+
             setIsRolling(false);
         }, 1500);
     }
