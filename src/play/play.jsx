@@ -215,7 +215,6 @@ export default function Play() {
 
     function computerTurn(currentComputerBoard, currentPlayerBoard) {
         let roll = Math.floor(Math.random() * 6) + 1;
-        console.log(roll)
 
         const shouldReroll = opponentRerollStrategies[opponentId];
 
@@ -224,7 +223,6 @@ export default function Play() {
             computerRerollsRemaining > 0 &&
             shouldReroll(roll, currentComputerBoard, currentPlayerBoard)
         ) {
-            console.log("Rerolling")
             roll = Math.floor(Math.random() * 6) + 1;
 
             setComputerRerollsRemaining(prev => prev - 1);
