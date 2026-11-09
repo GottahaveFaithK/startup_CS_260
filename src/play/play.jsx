@@ -137,24 +137,6 @@ export default function Play() {
         setConsecutiveSixes(0);
     }
 
-    function handlePlayerRoll(roll) {
-        setCurrentDie(roll);
-
-        if (roll === 6) {
-            setConsecutiveSixes(prev => {
-                const next = prev + 1;
-
-                if (next === 3 && opponentId === 'kea') {
-                    triggerPriorityDialogue(['magpieDice']);
-                }
-
-                return next;
-            });
-        } else {
-            setConsecutiveSixes(0);
-        }
-    }
-
     function rollDie() {
         if (gameOver || isRolling || !isRollable) {
             return;
@@ -166,7 +148,7 @@ export default function Play() {
         setTimeout(() => {
             const roll = Math.floor(Math.random() * 6) + 1;
 
-            handlePlayerRoll(roll);
+            setCurrentDie(roll);
 
             setIsRolling(false);
         }, 1500);
@@ -183,7 +165,7 @@ export default function Play() {
         setTimeout(() => {
             const roll = Math.floor(Math.random() * 6) + 1;
 
-            handlePlayerRoll(roll);
+            setCurrentDie(roll);
 
             setIsRolling(false);
         }, 1500);
@@ -205,6 +187,20 @@ export default function Play() {
 
         if (!result.valid) {
             return;
+        }
+
+        if (currentDie === 6) {
+            setConsecutiveSixes(prev => {
+                const next = prev + 1;
+
+                if (next === 3 && opponentId === 'kea') {
+                    triggerPriorityDialogue(['magpieDice']);
+                }
+
+                return next;
+            });
+        } else {
+            setConsecutiveSixes(0);
         }
 
         setPlayerBoard(result.playerBoard);
