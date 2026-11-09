@@ -7,6 +7,9 @@ const { v4: uuidv4 } = require('uuid');
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
+const http = require('http');
+const { peerProxy } = require('./peerProxy');
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
@@ -159,6 +162,9 @@ apiRouter.post('/score', verifyAuth,  async (req, res) => {
     };
 
     await addScore(newScore);
+
+    broadcastScore(newScore);
+    
     const updatedScores = await getHighScores();
 
     res.status(201).json(updatedScores);
@@ -219,7 +225,11 @@ async function startServer() {
     try {
         await connectToDatabase();
 
-        app.listen(port, () => {
+        const httpServer = http.createServer(app);
+
+        const broadcastScore = peerProxy(httpServer);
+
+        httpServer.listen(port, () => {
             console.log(`Listening on port ${port}`);
         });
     } catch (error) {
