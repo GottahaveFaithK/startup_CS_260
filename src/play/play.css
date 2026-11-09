@@ -55,8 +55,8 @@
 }
 
 .rerolls-remaining {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
     margin-top: 0.75rem;
     color: #f2e6d0;
-    text-align: center;
+    text-align: left;
 }
