@@ -35,3 +35,25 @@ export function shouldVultureReroll(roll, computerBoard, playerBoard) {
 
     return true;
 }
+
+export function shouldPigeonReroll(roll, computerBoard, playerBoard) {
+    const currentValue = getBestPigeonMoveValue(
+        roll,
+        computerBoard,
+        playerBoard
+    );
+
+    let totalValue = 0;
+
+    for (let possibleRoll = 1; possibleRoll <= 6; possibleRoll++) {
+        totalValue += getBestPigeonMoveValue(
+            possibleRoll,
+            computerBoard,
+            playerBoard
+        );
+    }
+
+    const averageValue = totalValue / 6;
+
+    return currentValue < averageValue;
+}

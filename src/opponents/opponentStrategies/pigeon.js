@@ -37,3 +37,39 @@ export function choosePigeonMove(roll, computerBoard, playerBoard) {
 
     return bestMove;
 }
+
+export function getBestPigeonMoveValue(
+    roll,
+    computerBoard,
+    playerBoard
+) {
+    const currentComputerScore = calculateScore(computerBoard);
+    const currentPlayerScore = calculateScore(playerBoard);
+
+    let highestValue = -Infinity;
+
+    computerBoard.forEach((row, rowIndex) => {
+        row.forEach((die, colIndex) => {
+            if (die === null) {
+                const testComputerBoard = structuredClone(computerBoard);
+                const testPlayerBoard = structuredClone(playerBoard);
+
+                testComputerBoard[rowIndex][colIndex] = roll;
+
+                testPlayerBoard.forEach(row => {
+                    if (row[colIndex] === roll) {
+                        row[colIndex] = null;
+                    }
+                });
+
+                const moveValue =
+                    (calculateScore(testComputerBoard) - currentComputerScore) +
+                    (currentPlayerScore - calculateScore(testPlayerBoard));
+
+                highestValue = Math.max(highestValue, moveValue);
+            }
+        });
+    });
+
+    return highestValue;
+}
