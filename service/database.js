@@ -9,9 +9,9 @@ const userCollection = db.collection('users');
 const scoreCollection = db.collection('scores');
 
 async function connectToDatabase() {
-    await client.connect();
-    await db.command({ ping: 1 });
-    console.log('Connected to MongoDB');
+  await client.connect();
+  await db.command({ ping: 1 });
+  console.log('Connected to MongoDB');
 }
 
 function getUser(username) {
@@ -27,40 +27,47 @@ async function addUser(user) {
 }
 
 async function updateUser(user) {
-    await userCollection.updateOne(
-        { username: user.username },
-        { $set: { token: user.token } }
-    );
+  await userCollection.updateOne(
+    { username: user.username },
+    { $set: { token: user.token } }
+  );
 }
 
 async function updateUserRemoveAuth(user) {
-    await userCollection.updateOne(
-        { username: user.username },
-        { $unset: { token: 1 } }
-    );
+  await userCollection.updateOne(
+    { username: user.username },
+    { $unset: { token: 1 } }
+  );
 }
 
 async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
 
-function getHighScores() {
-  const query = { score: { $gte: 0, $lt: 200 } };
+function getHighScores(opponent = null) {
+  const query = {
+    score: { $gte: 0, $lt: 200 }
+  };
+
+  if (opponent) {
+    query.opponent = opponent;
+  }
+
   const options = {
     sort: { score: -1 },
     limit: 10,
   };
-  const cursor = scoreCollection.find(query, options);
-  return cursor.toArray();
+
+  return scoreCollection.find(query, options).toArray();
 }
 
 module.exports = {
-    connectToDatabase,
-    getUser,
-    getUserByToken,
-    addUser,
-    updateUser,
-    updateUserRemoveAuth,
-    addScore,
-    getHighScores
+  connectToDatabase,
+  getUser,
+  getUserByToken,
+  addUser,
+  updateUser,
+  updateUserRemoveAuth,
+  addScore,
+  getHighScores
 };
