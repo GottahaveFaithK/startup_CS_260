@@ -9,7 +9,7 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 const http = require('http');
 const { peerProxy } = require('./peerProxy');
-let broadcastScore = () => {};
+let broadcastScore = () => { };
 
 app.use(express.json());
 app.use(cookieParser());
@@ -134,12 +134,15 @@ apiRouter.get('/auth/me', async (req, res) => {
     });
 });
 
-apiRouter.get('/scores', async (_req, res) => {
-    const scores = await getHighScores();
+apiRouter.get('/scores', async (req, res) => {
+    const opponent = req.query.opponent || null;
+
+    const scores = await getHighScores(opponent);
+
     res.json(scores);
 });
 
-apiRouter.post('/score', verifyAuth,  async (req, res) => {
+apiRouter.post('/score', verifyAuth, async (req, res) => {
     const { score, opponent } = req.body;
 
     if (
