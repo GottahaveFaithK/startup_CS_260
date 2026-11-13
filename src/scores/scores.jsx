@@ -1,30 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './scores.css';
+import opponents from '../opponents/opponents';
 
 
 export default function Scores() {
     const [scores, setScores] = useState([]);
     const [randomFact, setRandomFact] = useState('Loading a random fact...');
     const [recentUpdates, setRecentUpdates] = useState([]);
+    const [selectedOpponent, setSelectedOpponent] = useState('All');
+
+    const selectedOpponentRef = useRef(selectedOpponent);
 
     useEffect(() => {
-        async function fetchScores() {
-            try {
-                const response = await fetch('/api/scores');
+        selectedOpponentRef.current = selectedOpponent;
+    }, [selectedOpponent]);
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch scores');
-                }
+    async function fetchScores(opponent) {
+        try {
+            const url = opponent === 'All'
+                ? '/api/scores'
+                : `/api/scores?opponent=${encodeURIComponent(opponent)}`;
 
-                const data = await response.json();
-                setScores(data);
-            } catch (error) {
-                console.error('Unable to load leaderboard:', error);
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch scores');
             }
-        }
 
-        fetchScores();
-    }, []);
+            const data = await response.json();
+            setScores(data);
+        } catch (error) {
+            console.error('Unable to load leaderboard:', error);
+        }
+    }
+
+    useEffect(() => {
+        fetchScores(selectedOpponent);
+    }, [selectedOpponent]);
 
     useEffect(() => {
         async function fetchRandomFact() {
@@ -55,7 +67,7 @@ export default function Scores() {
             `${protocol}://${window.location.host}/ws`
         );
 
-        socket.onmessage = async (event) => {
+        socket.onmessage = (event) => {
             const message = JSON.parse(event.data);
 
             if (message.type === 'scoreSubmitted') {
@@ -63,12 +75,7 @@ export default function Scores() {
                     [message.score, ...previous].slice(0, 5)
                 );
 
-                const response = await fetch('/api/scores');
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setScores(data);
-                }
+                fetchScores(selectedOpponentRef.current);
             }
         };
 
@@ -81,7 +88,26 @@ export default function Scores() {
         <main className="container background-table">
             <section className="leaderboard-panel">
                 <h2>Leaderboard</h2>
+                <div className="opponent-selectors">
+                    <button
+                        onClick={() => setSelectedOpponent('All')}
+                        className={selectedOpponent === 'All' ? 'active' : ''}
+                    >
+                        All
+                    </button>
 
+                    {Object.values(opponents).map((opponent) => (
+                        <button
+                            key={opponent.name}
+                            onClick={() => (setSelectedOpponent(opponent.name))}
+                            className={
+                                selectedOpponent === opponent.name ? 'active' : ''
+                            }
+                        >
+                            {opponent.name}
+                        </button>
+                    ))}
+                </div>
                 <table className="leaderboard">
                     <thead>
                         <tr>
@@ -106,12 +132,12 @@ export default function Scores() {
             <section className="live-updates-panel">
                 <h2>Live Updates</h2>
                 <p>Recent leaderboard activity:</p>
-                
+
                 <ul>
                     {recentUpdates.length > 0 ? (
                         recentUpdates.map((entry) => (
                             <li key={entry.id}>
-                                {entry.username} submitted a score of {entry.score}!
+                                {entry.username} scored {entry.score} against {entry.opponent}!
                             </li>
                         ))
                     ) : (
