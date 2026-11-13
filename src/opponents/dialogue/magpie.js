@@ -1,6 +1,6 @@
 const magpieDialogue = {
   rollOne: {
-    chance: 0.2,
+    chance: 1.0,
     animation: 'talk',
     lines: [
       "How did you hack the system?!"
