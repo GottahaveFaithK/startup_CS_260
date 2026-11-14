@@ -1,4 +1,4 @@
-# Dice Duel (placeholder name)
+# Dice Duel 
 
 [My Notes](notes.md)
 
