@@ -44,7 +44,7 @@ async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
 
-function getHighScores(opponent = null) {
+async function getHighScores(opponent = null) {
   const query = {
     score: { $gte: 0, $lt: 200 }
   };
@@ -53,12 +53,28 @@ function getHighScores(opponent = null) {
     query.opponent = opponent;
   }
 
-  const options = {
-    sort: { score: -1 },
-    limit: 10,
-  };
-
-  return scoreCollection.find(query, options).toArray();
+  return scoreCollection.aggregate([
+    { $match: query },
+    {
+      $addFields: {
+        sortDate: {
+          $ifNull: ['$submittedAt', '$date']
+        }
+      }
+    },
+    {
+      $sort: {
+        score: -1,
+        sortDate: 1
+      }
+    },
+    { $limit: 10 },
+    {
+      $project: {
+        sortDate: 0
+      }
+    }
+  ]).toArray();
 }
 
 module.exports = {

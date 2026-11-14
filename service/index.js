@@ -162,7 +162,8 @@ apiRouter.post('/score', verifyAuth, async (req, res) => {
         username: req.user.username,
         score,
         opponent,
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
+        submittedAt: new Date()
     };
 
     await addScore(newScore);
